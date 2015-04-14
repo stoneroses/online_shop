@@ -25,7 +25,7 @@ public class NewsController {
 
   @RequestMapping(value = "/create", method = RequestMethod.GET)
   public ModelAndView newNewsPage() {
-    ModelAndView mav = new ModelAndView("news-new", "news", new News());
+    ModelAndView mav = new ModelAndView("news/news-new", "news", new News());
     return mav;
   }
 
@@ -41,7 +41,7 @@ public class NewsController {
 
   @RequestMapping(value = "/list", method = RequestMethod.GET)
   public ModelAndView newsListPage() {
-    ModelAndView mav = new ModelAndView("news-list");
+    ModelAndView mav = new ModelAndView("news/news-list");
     List<News> newsList = newsServvice.findAll();
     mav.addObject("newsList", newsList);
     return mav;
@@ -49,7 +49,7 @@ public class NewsController {
 
   @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
   public ModelAndView editNewsPage(@PathVariable Integer id) {
-    ModelAndView mav = new ModelAndView("news-list");
+    ModelAndView mav = new ModelAndView("news/news-list");
     News news = null;
     try {
       news = newsServvice.findById(id);
@@ -64,7 +64,7 @@ public class NewsController {
   @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
   public ModelAndView editNews(@ModelAttribute News news, @PathVariable Integer id,
       final RedirectAttributes redirectAttributes) {
-    ModelAndView mav = new ModelAndView("redirect:/index.jsp");
+    ModelAndView mav = new ModelAndView("redirect:news/index.jsp");
     String message = "News was successfully updated.";
     try {
       newsServvice.update(news);
@@ -76,9 +76,9 @@ public class NewsController {
     return mav;
   }
 
-  @RequestMapping(value = "/{id}/delete", method = RequestMethod.DELETE)
+  @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
   public ModelAndView deleteNews(@PathVariable Integer id, final RedirectAttributes redirectAttributes) {
-    ModelAndView mav = new ModelAndView("redirect:/index.jsp");
+    ModelAndView mav = new ModelAndView("redirect:news/index.jsp");
     try {
       newsServvice.delete(id);
     } catch (NewsNotFound e) {
@@ -99,8 +99,7 @@ public class NewsController {
 
   @RequestMapping(value = "/news", method = RequestMethod.GET, produces = { "text/html" })
   public ModelAndView getNewsList() {
-    ModelAndView mav = new ModelAndView();
-    mav.setViewName("news");
+    ModelAndView mav = new ModelAndView("news/news-list");
     List<News> result = listNews();
     mav.addObject("newsList", result);
     return mav;
