@@ -13,14 +13,14 @@
 <table>
 <tbody>
 <tr>
-<td>News name:</td>
-<td><form:input path="name" /></td>
-<td><form:errors path="name" cssStyle="color: red;"/></td>
+<td>Title:</td>
+<td><form:input path="title" /></td>
+<td><form:errors path="title" cssStyle="color: red;"/></td>
 </tr>
 <tr>
-<td>Employees number:</td>
-<td><form:input path="emplNumber" /></td>
-<td><form:errors path="emplNumber" cssStyle="color: red;"/></td>
+<td>Content:</td>
+<td><form:input path="content" /></td>
+<td><form:errors path="content" cssStyle="color: red;"/></td>
 </tr>
 <tr>
 <td><input type="submit" value="Create" /></td>

@@ -29,6 +29,7 @@
       </c:forEach>
     </tbody>
   </table>
+  <a href="${pageContext.request.contextPath}/news/create">create</a>
   <a href="${pageContext.request.contextPath}/">Home page</a>
 </body>
 </html>

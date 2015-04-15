@@ -9,8 +9,8 @@
   <h1>Home page</h1>
   <p>
     Welcome to "Shop application".<br /> <i>${message}</i><br /> <a
-      href="${pageContext.request.contextPath}/news/create.html">Create a new news</a><br /> <a
-      href="${pageContext.request.contextPath}/news/list.html">View all news</a><br />
+      href="${pageContext.request.contextPath}/news/create">Create a new news</a><br /> <a
+      href="${pageContext.request.contextPath}/news/list">View all news</a><br />
   </p>
 </body>
 </html>

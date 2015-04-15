@@ -2,9 +2,9 @@ package com.wang.michael.online_shop.service.impl;
 
 import java.util.List;
 
-import javax.annotation.Resource;
-
 import org.joda.time.DateTime;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.wang.michael.online_shop.exception.NewsNotFound;
@@ -12,9 +12,10 @@ import com.wang.michael.online_shop.model.News;
 import com.wang.michael.online_shop.repository.NewsRepository;
 import com.wang.michael.online_shop.service.NewsService;
 
+@Service("newsService")
 public class NewsServiceImpl implements NewsService {
 
-  @Resource
+  @Autowired
   private NewsRepository newsRepository;
 
   @Override
@@ -45,7 +46,7 @@ public class NewsServiceImpl implements NewsService {
   @Override
   @Transactional(rollbackFor = NewsNotFound.class)
   public News update(News news) throws NewsNotFound {
-    News updatedNews = newsRepository.findOne((int) news.getId());
+    News updatedNews = newsRepository.findOne(news.getId().intValue());
     if (updatedNews == null) {
       throw new NewsNotFound();
     }

@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 @Entity
@@ -15,32 +16,34 @@ public class News {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private Integer id;
+  private Long id;
   @Column(name = "title")
   private String title;
   @Column(name = "content")
   private String content;
   @Column(name = "createdDateTime")
+  @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
   private DateTime createdDateTime;
   @Column(name = "updatedDateTime")
+  @Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
   private DateTime updatedDateTime;
 
-  public News(int id, String title, String content) {
+  public News(Long id, String title, String content) {
     this.id = id;
     this.title = title;
     this.content = content;
-    this.createdDateTime = new DateTime(2015, 4, id, id, 00, 00);
-    this.updatedDateTime = new DateTime(2015, 4, id * 2, id * 2, 00, 00);
+    this.createdDateTime = new DateTime(2015, 4, id.intValue(), id.intValue(), 00, 00);
+    this.updatedDateTime = new DateTime(2015, 4, id.intValue() * 2, id.intValue() * 2, 00, 00);
   }
 
   public News() {
   }
 
-  public long getId() {
+  public Long getId() {
     return id;
   }
 
-  public void setId(Integer id) {
+  public void setId(Long id) {
     this.id = id;
   }
 

@@ -107,9 +107,9 @@ public class NewsController {
 
   private List<News> listNews() {
     List<News> result = new ArrayList<News>();
-    result.add(new News(1, "test title 1", "test content 1"));
-    result.add(new News(2, "test title 2", "test content 2"));
-    result.add(new News(3, "test title 3", "test content 3"));
+    result.add(new News(Long.valueOf(1), "test title 1", "test content 1"));
+    result.add(new News(Long.valueOf(2), "test title 2", "test content 2"));
+    result.add(new News(Long.valueOf(3), "test title 3", "test content 3"));
     return result;
   }
 }
