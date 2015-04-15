@@ -23,7 +23,7 @@
 <td><form:errors path="content" cssStyle="color: red;"/></td>
 </tr>
 <tr>
-<td><input type="submit" value="Create" /></td>
+<td><input type="submit" value="Update" /></td>
 <td></td>
 <td></td>
 </tr>

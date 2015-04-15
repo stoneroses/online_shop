@@ -21,7 +21,7 @@ import com.wang.michael.online_shop.service.NewsService;
 public class NewsController {
 
   @Autowired
-  private NewsService newsServvice;
+  private NewsService newsService;
 
   @RequestMapping(value = "/create", method = RequestMethod.GET)
   public ModelAndView newNewsPage() {
@@ -31,9 +31,8 @@ public class NewsController {
 
   @RequestMapping(value = "/create", method = RequestMethod.POST)
   public ModelAndView createNewNews(@ModelAttribute News news, final RedirectAttributes redirectAttributes) {
-    ModelAndView mav = new ModelAndView();
-    newsServvice.create(news);
-    mav.setViewName("redirect:/index.jsp");
+    ModelAndView mav = new ModelAndView("redirect:/news/list");
+    newsService.create(news);
     String message = "News was successfully created.";
     redirectAttributes.addFlashAttribute("message", message);
     return mav;
@@ -42,17 +41,17 @@ public class NewsController {
   @RequestMapping(value = "/list", method = RequestMethod.GET)
   public ModelAndView newsListPage() {
     ModelAndView mav = new ModelAndView("news/news-list");
-    List<News> newsList = newsServvice.findAll();
+    List<News> newsList = newsService.findAll();
     mav.addObject("newsList", newsList);
     return mav;
   }
 
   @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
   public ModelAndView editNewsPage(@PathVariable Integer id) {
-    ModelAndView mav = new ModelAndView("news/news-list");
+    ModelAndView mav = new ModelAndView("news/news-edit");
     News news = null;
     try {
-      news = newsServvice.findById(id);
+      news = newsService.findById(Long.valueOf(id));
     } catch (NewsNotFound e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -64,10 +63,10 @@ public class NewsController {
   @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
   public ModelAndView editNews(@ModelAttribute News news, @PathVariable Integer id,
       final RedirectAttributes redirectAttributes) {
-    ModelAndView mav = new ModelAndView("redirect:news/index.jsp");
+    ModelAndView mav = new ModelAndView("redirect:/news/list");
     String message = "News was successfully updated.";
     try {
-      newsServvice.update(news);
+      newsService.update(news);
     } catch (NewsNotFound e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
@@ -78,9 +77,9 @@ public class NewsController {
 
   @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
   public ModelAndView deleteNews(@PathVariable Integer id, final RedirectAttributes redirectAttributes) {
-    ModelAndView mav = new ModelAndView("redirect:news/index.jsp");
+    ModelAndView mav = new ModelAndView("redirect:/news/list");
     try {
-      newsServvice.delete(id);
+      newsService.delete(Long.valueOf(id));
     } catch (NewsNotFound e) {
       // TODO Auto-generated catch block
       e.printStackTrace();

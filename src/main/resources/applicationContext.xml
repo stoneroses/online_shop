@@ -38,10 +38,10 @@
     <property name="persistenceUnitName" value="spring-jpa" />
     <property name="jpaVendorAdapter">
       <bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-        <property name="generateDdl" value="false" />
-        <property name="showSql" value="false" />
-        <property name="databasePlatform" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
-        <property name="database" value="MYSQL" />
+        <property name="generateDdl" value="${hibernate.generateDdl}" />
+        <property name="showSql" value="${hibernate.show_sql}" />
+        <property name="databasePlatform" value="${hibernate.dialect}" />
+        <property name="database" value="${hibernate.database}" />
       </bean>
     </property>
     <property name="jpaProperties">
@@ -52,6 +52,7 @@
         <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>
         <prop key="hibernate.cache.provider_class">${hibernate.cache.provider_class}</prop>
         <prop key="hibernate.cache.region.factory_class">${hibernate.cache.region.factory_class}</prop>
+        <prop key="jadira.usertype.autoRegisterUserTypes">${jadira.usertype.autoRegisterUserTypes}</prop>
       </props>
     </property>
     <property name="packagesToScan">

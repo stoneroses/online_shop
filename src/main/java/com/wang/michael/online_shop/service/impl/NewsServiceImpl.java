@@ -28,7 +28,7 @@ public class NewsServiceImpl implements NewsService {
 
   @Override
   @Transactional(rollbackFor = NewsNotFound.class)
-  public News delete(int id) throws NewsNotFound {
+  public News delete(Long id) throws NewsNotFound {
     News deletedNews = newsRepository.findOne(id);
     if (deletedNews == null) {
       throw new NewsNotFound();
@@ -46,7 +46,7 @@ public class NewsServiceImpl implements NewsService {
   @Override
   @Transactional(rollbackFor = NewsNotFound.class)
   public News update(News news) throws NewsNotFound {
-    News updatedNews = newsRepository.findOne(news.getId().intValue());
+    News updatedNews = newsRepository.findOne(news.getId());
     if (updatedNews == null) {
       throw new NewsNotFound();
     }
@@ -58,7 +58,7 @@ public class NewsServiceImpl implements NewsService {
 
   @Override
   @Transactional
-  public News findById(int id) throws NewsNotFound {
+  public News findById(Long id) throws NewsNotFound {
     return newsRepository.findOne(id);
   }
 

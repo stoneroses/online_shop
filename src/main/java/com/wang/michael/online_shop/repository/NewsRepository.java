@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.wang.michael.online_shop.model.News;
 
 @Repository
-public interface NewsRepository extends JpaRepository<News, Integer> {
+public interface NewsRepository extends JpaRepository<News, Long> {
 
 }
