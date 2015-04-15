@@ -89,26 +89,4 @@ public class NewsController {
     return mav;
 
   }
-
-  @RequestMapping(value = "/news", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
-  public List<News> getNewsListViaJson() {
-    List<News> result = listNews();
-    return result;
-  }
-
-  @RequestMapping(value = "/news", method = RequestMethod.GET, produces = { "text/html" })
-  public ModelAndView getNewsList() {
-    ModelAndView mav = new ModelAndView("news/news-list");
-    List<News> result = listNews();
-    mav.addObject("newsList", result);
-    return mav;
-  }
-
-  private List<News> listNews() {
-    List<News> result = new ArrayList<News>();
-    result.add(new News(Long.valueOf(1), "test title 1", "test content 1"));
-    result.add(new News(Long.valueOf(2), "test title 2", "test content 2"));
-    result.add(new News(Long.valueOf(3), "test title 3", "test content 3"));
-    return result;
-  }
 }
