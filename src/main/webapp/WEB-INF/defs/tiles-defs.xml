@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+  <definition name="default_layout" template="/WEB-INF/jsp/layouts/default/main.jsp">
+    <put-attribute name="title" value="Tiles tutorial homepage" />
+    <put-attribute name="header" value="/WEB-INF/jsp/layouts/default/header.jsp" />
+    <put-attribute name="menu" value="/WEB-INF/jsp/layouts/default/menu.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/layouts/default/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/layouts/default/footer.jsp" />
+  </definition>
+
+  <definition name="news-index" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/news/list.jsp" />
+  </definition>
+
+  <definition name="news-new" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/news/new.jsp" />
+  </definition>
+
+  <definition name="news-edit" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/news/edit.jsp" />
+  </definition>
+</tiles-definitions>

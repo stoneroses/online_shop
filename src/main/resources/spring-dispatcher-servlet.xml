@@ -10,7 +10,7 @@ http://www.springframework.org/schema/context
 http://www.springframework.org/schema/context/spring-context-3.0.xsd
 http://www.springframework.org/schema/data/jpa
 http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
-<import resource="classpath:applicationContext.xml" />
+  <import resource="classpath:applicationContext.xml" />
 
   <mvc:annotation-driven content-negotiation-manager="contentManager" />
 
@@ -28,8 +28,15 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
       </map>
     </property>
   </bean>
-  <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-    <property name="prefix" value="/WEB-INF/jsp/" />
-    <property name="suffix" value=".jsp" />
+  <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+    <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
+  </bean>
+  <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+    <property name="definitions">
+      <list>
+        <value>/WEB-INF/defs/tiles-defs.xml</value>
+      </list>
+    </property>
+    <property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
   </bean>
 </beans>

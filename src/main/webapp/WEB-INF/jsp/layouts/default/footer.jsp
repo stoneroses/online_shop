@@ -1,0 +1,1 @@
+<p>p tag in footer.jsp</p>

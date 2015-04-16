@@ -1,9 +1,9 @@
 package com.wang.michael.online_shop.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,7 +25,7 @@ public class NewsController {
 
   @RequestMapping(value = "/create", method = RequestMethod.GET)
   public ModelAndView newNewsPage() {
-    ModelAndView mav = new ModelAndView("news/news-new", "news", new News());
+    ModelAndView mav = new ModelAndView("news-new", "news", new News());
     return mav;
   }
 
@@ -38,9 +38,9 @@ public class NewsController {
     return mav;
   }
 
-  @RequestMapping(value = "/list", method = RequestMethod.GET)
-  public ModelAndView newsListPage() {
-    ModelAndView mav = new ModelAndView("news/news-list");
+  @RequestMapping(value = { "/list", "/", ""}, method = RequestMethod.GET)
+  public ModelAndView newsListPage(Model model) {
+    ModelAndView mav = new ModelAndView("news-index");
     List<News> newsList = newsService.findAll();
     mav.addObject("newsList", newsList);
     return mav;
@@ -48,7 +48,7 @@ public class NewsController {
 
   @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
   public ModelAndView editNewsPage(@PathVariable Integer id) {
-    ModelAndView mav = new ModelAndView("news/news-edit");
+    ModelAndView mav = new ModelAndView("news-edit");
     News news = null;
     try {
       news = newsService.findById(Long.valueOf(id));
