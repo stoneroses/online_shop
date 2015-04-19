@@ -3,3 +3,4 @@
 .project
 .jsdtscope
 /.settings/*
+/.tern-project
