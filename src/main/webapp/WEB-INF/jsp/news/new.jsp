@@ -1,7 +1,7 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <h1>New News page</h1>
-<form:form method="POST" commandName="news" action="${pageContext.request.contextPath}/news/create">
+<form:form method="POST" commandName="news" action="${ctx}/news/create">
   <table>
     <tbody>
       <tr>
@@ -22,4 +22,4 @@
     </tbody>
   </table>
 </form:form>
-<a href="${pageContext.request.contextPath}/">Home page</a>
+<a href="${ctx}/news">news list</a>

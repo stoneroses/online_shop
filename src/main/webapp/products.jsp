@@ -28,6 +28,6 @@
       </tbody>
     </table>
   </div>
-  <a href="index.jsp">home</a>
+  <a href="${ctx}">home</a>
 </body>
 </html>

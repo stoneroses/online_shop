@@ -10,6 +10,18 @@
     <put-attribute name="body" value="/WEB-INF/jsp/layouts/default/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/jsp/layouts/default/footer.jsp" />
   </definition>
+  
+  <definition name="index" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
+  </definition>
+
+  <definition name="about_us" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/about_us.jsp" />
+  </definition>
+
+  <definition name="contact_us" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/contact_us.jsp" />
+  </definition>
 
   <definition name="news-index" extends="default_layout">
     <put-attribute name="body" value="/WEB-INF/jsp/news/list.jsp" />

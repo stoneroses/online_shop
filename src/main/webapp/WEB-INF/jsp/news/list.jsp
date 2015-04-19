@@ -15,11 +15,10 @@
         <td>${news.id}</td>
         <td>${news.title}</td>
         <td>${news.content}</td>
-        <td><a href="${pageContext.request.contextPath}/news/${news.id}/edit">Edit</a><br /> <a
-          href="${pageContext.request.contextPath}/news/${news.id}/delete">Delete</a><br /></td>
+        <td><a href="${ctx}/news/${news.id}/edit">Edit</a><br /> <a
+          href="${ctx}/news/${news.id}/delete">Delete</a><br /></td>
       </tr>
     </c:forEach>
   </tbody>
 </table>
-<a href="${pageContext.request.contextPath}/news/create">create</a>
-<a href="${pageContext.request.contextPath}/">Home page</a>
+<a href="${ctx}/news/create">create</a>
