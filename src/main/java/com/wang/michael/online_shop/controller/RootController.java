@@ -18,18 +18,21 @@ public class RootController {
   @RequestMapping(value = "/", method = RequestMethod.GET)
   public ModelAndView indexPage() {
     ModelAndView mav = new ModelAndView("index");
+    mav.addObject("pageTitle", "Home");
     return mav;
   }
 
   @RequestMapping(value = "/about_us", method = RequestMethod.GET)
   public ModelAndView aboutUsPage() {
     ModelAndView mav = new ModelAndView("about_us");
+    mav.addObject("pageTitle", "About Us");
     return mav;
   }
 
   @RequestMapping(value = "/contact_us", method = RequestMethod.GET)
   public ModelAndView contactUsPage() {
     ModelAndView mav = new ModelAndView("contact_us");
+    mav.addObject("pageTitle", "Contact Us");
     return mav;
   }
 }

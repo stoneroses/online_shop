@@ -1,4 +1,4 @@
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <h1>Edit News page</h1>
 <form:form method="POST" commandName="news" action="${ctx}/news/${news.id}/edit">

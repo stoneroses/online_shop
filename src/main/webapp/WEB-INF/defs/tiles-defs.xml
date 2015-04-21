@@ -4,13 +4,13 @@
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
   <definition name="default_layout" template="/WEB-INF/jsp/layouts/default/main.jsp">
-    <put-attribute name="title" value="Tiles tutorial homepage" />
+    <put-attribute name="title" expression="${pageTitle}" />
     <put-attribute name="header" value="/WEB-INF/jsp/layouts/default/header.jsp" />
     <put-attribute name="menu" value="/WEB-INF/jsp/layouts/default/menu.jsp" />
     <put-attribute name="body" value="/WEB-INF/jsp/layouts/default/body.jsp" />
     <put-attribute name="footer" value="/WEB-INF/jsp/layouts/default/footer.jsp" />
   </definition>
-  
+
   <definition name="index" extends="default_layout">
     <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
   </definition>

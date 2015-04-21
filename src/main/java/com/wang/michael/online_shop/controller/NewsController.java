@@ -26,6 +26,7 @@ public class NewsController {
   @RequestMapping(value = "/create", method = RequestMethod.GET)
   public ModelAndView newNewsPage() {
     ModelAndView mav = new ModelAndView("news-new", "news", new News());
+    mav.addObject("pageTitle", "Create News");
     return mav;
   }
 
@@ -43,6 +44,7 @@ public class NewsController {
     ModelAndView mav = new ModelAndView("news-index");
     List<News> newsList = newsService.findAll();
     mav.addObject("newsList", newsList);
+    mav.addObject("pageTitle", "News List");
     return mav;
   }
 
@@ -57,6 +59,7 @@ public class NewsController {
       e.printStackTrace();
     }
     mav.addObject("news", news);
+    mav.addObject("pageTitle", "Edit News " + news.getTitle());
     return mav;
   }
 

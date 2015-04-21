@@ -6,3 +6,23 @@ body {
 .navbar {
   margin-bottom: 20px;
 }
+
+.navbar-default {
+  background: linear-gradient(#81BF1C, #5B8D13);
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #fff;
+  font: bold 14px arial
+}
+
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover {
+  color: #fff;
+  background: #5B8D13;
+  font: bold 14px arial
+}
+
+.navbar-default .navbar-brand {
+  color: #fff;
+}
+
