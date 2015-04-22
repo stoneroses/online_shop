@@ -1,4 +1,4 @@
-package com.wang.michael.online_shop.controller;
+package com.wang.michael.online_shop.web.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;

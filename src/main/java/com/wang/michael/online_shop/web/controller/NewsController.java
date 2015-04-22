@@ -1,4 +1,4 @@
-package com.wang.michael.online_shop.controller;
+package com.wang.michael.online_shop.web.controller;
 
 import java.util.List;
 
