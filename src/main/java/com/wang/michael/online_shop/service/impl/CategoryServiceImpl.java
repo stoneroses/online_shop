@@ -59,7 +59,11 @@ public class CategoryServiceImpl implements CategoryService {
   @Override
   @Transactional
   public Category findById(Long id) throws CategoryNotFound {
-    return categoryRepository.findOne(id);
+    Category result = categoryRepository.findOne(id);
+    if (result == null) {
+      throw new CategoryNotFound();
+    }
+    return result;
   }
 
 }

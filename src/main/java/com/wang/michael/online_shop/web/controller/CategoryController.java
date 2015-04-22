@@ -24,7 +24,7 @@ public class CategoryController {
   private CategoryService categoryService;
 
   @RequestMapping(value = "/create", method = RequestMethod.GET)
-  public ModelAndView newCategoryPage() {
+  public ModelAndView newCategoryPage() throws Exception {
     ModelAndView mav = new ModelAndView("category-new", "category", new Category());
     mav.addObject("pageTitle", "Create Category");
     return mav;
@@ -49,15 +49,10 @@ public class CategoryController {
   }
 
   @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
-  public ModelAndView editCategoryPage(@PathVariable Integer id) {
+  public ModelAndView editCategoryPage(@PathVariable Integer id) throws CategoryNotFound {
     ModelAndView mav = new ModelAndView("category-edit");
     Category category = null;
-    try {
-      category = categoryService.findById(Long.valueOf(id));
-    } catch (CategoryNotFound e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    category = categoryService.findById(Long.valueOf(id));
     mav.addObject("category", category);
     mav.addObject("pageTitle", "Edit Category " + category.getName());
     return mav;
@@ -65,28 +60,19 @@ public class CategoryController {
 
   @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
   public ModelAndView editCategory(@ModelAttribute Category category, @PathVariable Integer id,
-      final RedirectAttributes redirectAttributes) {
+      final RedirectAttributes redirectAttributes) throws CategoryNotFound {
     ModelAndView mav = new ModelAndView("redirect:/categories/list");
     String message = "Category was successfully updated.";
-    try {
-      categoryService.update(category);
-    } catch (CategoryNotFound e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    categoryService.update(category);
     redirectAttributes.addFlashAttribute("message", message);
     return mav;
   }
 
   @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-  public ModelAndView deleteCategory(@PathVariable Integer id, final RedirectAttributes redirectAttributes) {
+  public ModelAndView deleteCategory(@PathVariable Integer id, final RedirectAttributes redirectAttributes)
+      throws CategoryNotFound {
     ModelAndView mav = new ModelAndView("redirect:/categories/list");
-    try {
-      categoryService.delete(Long.valueOf(id));
-    } catch (CategoryNotFound e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    categoryService.delete(Long.valueOf(id));
     String message = "Category was successfully deleted.";
     redirectAttributes.addFlashAttribute("message", message);
     return mav;

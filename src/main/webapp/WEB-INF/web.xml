@@ -24,6 +24,10 @@
       <param-name>contextConfigLocation</param-name>
       <param-value>classpath:spring-dispatcher-servlet.xml</param-value>
     </init-param>
+    <init-param>
+      <param-name>throwExceptionIfNoHandlerFound</param-name>
+      <param-value>true</param-value>
+    </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
   <servlet-mapping>
@@ -33,5 +37,5 @@
   <servlet-mapping>
     <servlet-name>default</servlet-name>
     <url-pattern>/common/*</url-pattern>
-</servlet-mapping>
+  </servlet-mapping>
 </web-app>

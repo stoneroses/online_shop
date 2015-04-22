@@ -59,7 +59,11 @@ public class NewsServiceImpl implements NewsService {
   @Override
   @Transactional
   public News findById(Long id) throws NewsNotFound {
-    return newsRepository.findOne(id);
+    News result = newsRepository.findOne(id);
+    if (result == null) {
+      throw new NewsNotFound();
+    }
+    return result;
   }
 
 }

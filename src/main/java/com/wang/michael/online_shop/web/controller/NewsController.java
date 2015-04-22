@@ -39,7 +39,7 @@ public class NewsController {
     return mav;
   }
 
-  @RequestMapping(value = { "/list", "/", ""}, method = RequestMethod.GET)
+  @RequestMapping(value = { "/list", "/", "" }, method = RequestMethod.GET)
   public ModelAndView newsListPage(Model model) {
     ModelAndView mav = new ModelAndView("news-index");
     List<News> newsList = newsService.findAll();
@@ -49,15 +49,10 @@ public class NewsController {
   }
 
   @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
-  public ModelAndView editNewsPage(@PathVariable Integer id) {
+  public ModelAndView editNewsPage(@PathVariable Integer id) throws NewsNotFound {
     ModelAndView mav = new ModelAndView("news-edit");
     News news = null;
-    try {
-      news = newsService.findById(Long.valueOf(id));
-    } catch (NewsNotFound e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    news = newsService.findById(Long.valueOf(id));
     mav.addObject("news", news);
     mav.addObject("pageTitle", "Edit News " + news.getTitle());
     return mav;
@@ -65,28 +60,19 @@ public class NewsController {
 
   @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
   public ModelAndView editNews(@ModelAttribute News news, @PathVariable Integer id,
-      final RedirectAttributes redirectAttributes) {
+      final RedirectAttributes redirectAttributes) throws NewsNotFound {
     ModelAndView mav = new ModelAndView("redirect:/news/list");
     String message = "News was successfully updated.";
-    try {
-      newsService.update(news);
-    } catch (NewsNotFound e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    newsService.update(news);
     redirectAttributes.addFlashAttribute("message", message);
     return mav;
   }
 
   @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-  public ModelAndView deleteNews(@PathVariable Integer id, final RedirectAttributes redirectAttributes) {
+  public ModelAndView deleteNews(@PathVariable Integer id, final RedirectAttributes redirectAttributes)
+      throws NewsNotFound {
     ModelAndView mav = new ModelAndView("redirect:/news/list");
-    try {
-      newsService.delete(Long.valueOf(id));
-    } catch (NewsNotFound e) {
-      // TODO Auto-generated catch block
-      e.printStackTrace();
-    }
+    newsService.delete(Long.valueOf(id));
     String message = "News was successfully deleted.";
     redirectAttributes.addFlashAttribute("message", message);
     return mav;
