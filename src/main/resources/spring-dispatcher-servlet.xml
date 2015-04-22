@@ -39,4 +39,8 @@ http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
     </property>
     <property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
   </bean>
+
+  <mvc:interceptors>
+    <bean id="categoryListLoader" class="com.wang.michael.online_shop.web.interceptor.CategoryListLoaderInterceptor" />
+  </mvc:interceptors>
 </beans>
