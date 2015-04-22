@@ -18,10 +18,22 @@
 </head>
 <body>
   <div class="container">
-    <tiles:insertAttribute name="header" />
-    <tiles:insertAttribute name="menu" />
-    <tiles:insertAttribute name="body" />
-    <tiles:insertAttribute name="footer" />
+    <div class="container">
+      <tiles:insertAttribute name="header" />
+    </div>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-lg-3">
+          <tiles:insertAttribute name="menu" />
+        </div>
+        <div class="col-lg-8 col-lg-offset-1">
+          <tiles:insertAttribute name="body" />
+        </div>
+      </div>
+    </div>
+    <div class="container-fluid pull-right">
+      <tiles:insertAttribute name="footer" />
+    </div>
   </div>
   <!-- Latest compiled and minified JavaScript -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>

@@ -32,7 +32,7 @@
           </ul></li>
       </ul>
     </div>
-    <!--/.nav-collapse -->
+    <!--/.container-fluid -->
   </div>
-  <!--/.container-fluid -->
+  <!--/.nav-collapse -->
 </nav>
