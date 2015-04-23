@@ -6,5 +6,5 @@
   <c:forEach items="${pageContext.exception.stackTrace}" var="element">
   $("#detailErrorMessage").append("<c:out value="${element}" /><br />");
   </c:forEach>
-  $("#errorMessage").append("${pageContext.exception.message}");
+  $("#errorMessage").append("${pageContext.exception}");
 </script>

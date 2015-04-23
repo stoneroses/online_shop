@@ -12,21 +12,23 @@ import com.google.common.base.Throwables;
 
 @ControllerAdvice
 public class ExceptionController {
-  @ExceptionHandler(value = NoHandlerFoundException.class)
-  @ResponseStatus(HttpStatus.NOT_FOUND)
-  public ModelAndView handleMissingResource(Exception e) {
-    ModelAndView modelAndView = new ModelAndView("error/404");
-    modelAndView.addObject("pageTitle", "Page not found.");
-    return modelAndView;
-  }
 
-  @ExceptionHandler(value = Exception.class)
-  @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-  public ModelAndView exception(Exception exception, WebRequest request) {
-    ModelAndView modelAndView = new ModelAndView("error/500");
-    modelAndView.addObject("pageTitle", "Errors!");
-    modelAndView.addObject("errorMessage", Throwables.getRootCause(exception));
-    modelAndView.addObject("detailErrorMessage", Throwables.getStackTraceAsString(exception));
-    return modelAndView;
-  }
+    @ExceptionHandler(value = NoHandlerFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ModelAndView handleMissingResource(Exception e) {
+        ModelAndView modelAndView = new ModelAndView("error/404");
+        modelAndView.addObject("pageTitle", "Page not found.");
+        return modelAndView;
+    }
+
+    @ExceptionHandler(value = Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ModelAndView exception(Exception exception, WebRequest request) {
+        ModelAndView modelAndView = new ModelAndView("error/500");
+        modelAndView.addObject("pageTitle", "Errors!");
+        modelAndView.addObject("errorMessage",
+                exception.getMessage() + " - " + Throwables.getRootCause(exception) + " - " + Throwables.getRootCause(exception).getMessage());
+        modelAndView.addObject("detailErrorMessage", Throwables.getStackTraceAsString(exception));
+        return modelAndView;
+    }
 }
