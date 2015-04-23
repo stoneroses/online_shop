@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public User create(User user) {
         User createdUser = user;
-        createdUser.setCreatedTime(new DateTime());
+        createdUser.setCreatedDateTime(new DateTime());
         return userRepository.save(createdUser);
     }
 

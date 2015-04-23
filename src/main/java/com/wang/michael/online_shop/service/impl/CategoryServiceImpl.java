@@ -15,55 +15,55 @@ import com.wang.michael.online_shop.service.CategoryService;
 @Service("categoryService")
 public class CategoryServiceImpl implements CategoryService {
 
-  @Autowired
-  private CategoryRepository categoryRepository;
+    @Autowired
+    private CategoryRepository categoryRepository;
 
-  @Override
-  @Transactional
-  public Category create(Category category) {
-    Category createdCategory = category;
-    createdCategory.setCreatedTime(new DateTime());
-    return categoryRepository.save(createdCategory);
-  }
-
-  @Override
-  @Transactional(rollbackFor = CategoryNotFound.class)
-  public Category delete(Long id) throws CategoryNotFound {
-    Category deletedCategory = categoryRepository.findOne(id);
-    if (deletedCategory == null) {
-      throw new CategoryNotFound();
+    @Override
+    @Transactional
+    public Category create(Category category) {
+        Category createdCategory = category;
+        createdCategory.setCreatedDateTime(new DateTime());
+        return categoryRepository.save(createdCategory);
     }
-    categoryRepository.delete(deletedCategory);
-    return deletedCategory;
-  }
 
-  @Override
-  @Transactional
-  public List<Category> findAll() {
-    return categoryRepository.findAll();
-  }
-
-  @Override
-  @Transactional(rollbackFor = CategoryNotFound.class)
-  public Category update(Category category) throws CategoryNotFound {
-    Category updatedCategory = categoryRepository.findOne(category.getId());
-    if (updatedCategory == null) {
-      throw new CategoryNotFound();
+    @Override
+    @Transactional(rollbackFor = CategoryNotFound.class)
+    public Category delete(Long id) throws CategoryNotFound {
+        Category deletedCategory = categoryRepository.findOne(id);
+        if (deletedCategory == null) {
+            throw new CategoryNotFound();
+        }
+        categoryRepository.delete(deletedCategory);
+        return deletedCategory;
     }
-    updatedCategory.setName(category.getName());
-    updatedCategory.setDescription(category.getDescription());
-    updatedCategory.setUpdatedDateTime(new DateTime());
-    return updatedCategory;
-  }
 
-  @Override
-  @Transactional
-  public Category findById(Long id) throws CategoryNotFound {
-    Category result = categoryRepository.findOne(id);
-    if (result == null) {
-      throw new CategoryNotFound();
+    @Override
+    @Transactional
+    public List<Category> findAll() {
+        return categoryRepository.findAll();
     }
-    return result;
-  }
+
+    @Override
+    @Transactional(rollbackFor = CategoryNotFound.class)
+    public Category update(Category category) throws CategoryNotFound {
+        Category updatedCategory = categoryRepository.findOne(category.getId());
+        if (updatedCategory == null) {
+            throw new CategoryNotFound();
+        }
+        updatedCategory.setName(category.getName());
+        updatedCategory.setDescription(category.getDescription());
+        updatedCategory.setUpdatedDateTime(new DateTime());
+        return updatedCategory;
+    }
+
+    @Override
+    @Transactional
+    public Category findById(Long id) throws CategoryNotFound {
+        Category result = categoryRepository.findOne(id);
+        if (result == null) {
+            throw new CategoryNotFound();
+        }
+        return result;
+    }
 
 }
