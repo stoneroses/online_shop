@@ -4,7 +4,7 @@
   <div class="panel-heading ">Categories</div>
   <div class="list-group">
     <c:forEach var="category" items="${categoryList}">
-      <a href="#" class="list-group-item"><span class="badge">${category.productList.size()}</span>${category.name}</a>
+      <a href="${ctx}/categories/${category.id}" class="list-group-item"><span class="badge">${category.productList.size()}</span>${category.name}</a>
     </c:forEach>
   </div>
 </div>

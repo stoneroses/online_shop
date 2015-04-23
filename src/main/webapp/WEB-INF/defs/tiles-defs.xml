@@ -54,4 +54,8 @@
   <definition name="category-edit" extends="default_layout">
     <put-attribute name="body" value="/WEB-INF/jsp/category/edit.jsp" />
   </definition>
+
+  <definition name="category-view" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/category/view.jsp" />
+  </definition>
 </tiles-definitions>
