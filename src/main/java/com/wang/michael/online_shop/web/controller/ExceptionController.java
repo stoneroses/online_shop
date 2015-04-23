@@ -14,15 +14,19 @@ import com.google.common.base.Throwables;
 public class ExceptionController {
   @ExceptionHandler(value = NoHandlerFoundException.class)
   @ResponseStatus(HttpStatus.NOT_FOUND)
-  public String handleMissingResource(Exception e) {
-    return "error/404";
+  public ModelAndView handleMissingResource(Exception e) {
+    ModelAndView modelAndView = new ModelAndView("error/404");
+    modelAndView.addObject("pageTitle", "Page not found.");
+    return modelAndView;
   }
 
   @ExceptionHandler(value = Exception.class)
   @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
   public ModelAndView exception(Exception exception, WebRequest request) {
     ModelAndView modelAndView = new ModelAndView("error/500");
+    modelAndView.addObject("pageTitle", "Errors!");
     modelAndView.addObject("errorMessage", Throwables.getRootCause(exception));
+    modelAndView.addObject("detailErrorMessage", Throwables.getStackTraceAsString(exception));
     return modelAndView;
   }
 }
