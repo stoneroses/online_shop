@@ -4,20 +4,17 @@
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
-      <th width="25px">id</th>
-      <th width="150px">title</th>
-      <th width="25px">content</th>
-      <th width="50px">actions</th>
+      <th width="150px">Title</th>
+      <th width="25px">Content</th>
+      <th width="50px">Actions</th>
     </tr>
   </thead>
   <tbody>
     <c:forEach var="news" items="${newsList}">
       <tr>
-        <td>${news.id}</td>
-        <td>${news.title}</td>
+        <td><a href="${ctx}/news/${news.id}">${news.title}</a></td>
         <td>${news.content}</td>
-        <td><a href="${ctx}/news/${news.id}/edit">Edit</a><br /> <a
-          href="${ctx}/news/${news.id}/delete">Delete</a><br /></td>
+        <td><a href="${ctx}/news/${news.id}/edit">Edit</a> <a href="${ctx}/news/${news.id}/delete">Delete</a></td>
       </tr>
     </c:forEach>
   </tbody>

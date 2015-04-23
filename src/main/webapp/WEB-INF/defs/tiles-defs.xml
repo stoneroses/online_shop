@@ -43,6 +43,10 @@
     <put-attribute name="body" value="/WEB-INF/jsp/news/edit.jsp" />
   </definition>
 
+  <definition name="news-view" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/news/view.jsp" />
+  </definition>
+
   <definition name="category-index" extends="default_layout">
     <put-attribute name="body" value="/WEB-INF/jsp/category/list.jsp" />
   </definition>
