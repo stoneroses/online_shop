@@ -28,7 +28,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-lg-3">
-          <tiles:insertAttribute name="menu" />
+          <tiles:insertAttribute name="menu" ignore="true" />
         </div>
         <div class="col-lg-8 col-lg-offset-1">
           <tiles:insertAttribute name="body" />

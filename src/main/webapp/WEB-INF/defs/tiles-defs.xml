@@ -3,22 +3,20 @@
        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
-  <definition name="error_layout" template="/WEB-INF/jsp/layouts/error/main.jsp">
+
+  <definition name="base_layout" template="/WEB-INF/jsp/layouts/default/main.jsp">
     <put-attribute name="title" expression="${pageTitle}" />
-    <put-attribute name="header" value="/WEB-INF/jsp/layouts/error/header.jsp" />
-    <put-attribute name="body" value="/WEB-INF/jsp/layouts/error/body.jsp" />
-    <put-attribute name="footer" value="/WEB-INF/jsp/layouts/error/footer.jsp" />
+    <put-attribute name="header" value="/WEB-INF/jsp/layouts/default/header.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/layouts/default/body.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/layouts/default/footer.jsp" />
   </definition>
-  <definition name="error/*" extends="error_layout">
+
+  <definition name="error/*" extends="base_layout">
     <put-attribute name="body" value="/WEB-INF/jsp/error/{1}.jsp" />
   </definition>
 
-  <definition name="default_layout" template="/WEB-INF/jsp/layouts/default/main.jsp">
-    <put-attribute name="title" expression="${pageTitle}" />
-    <put-attribute name="header" value="/WEB-INF/jsp/layouts/default/header.jsp" />
+  <definition name="default_layout" extends="base_layout">
     <put-attribute name="menu" value="/WEB-INF/jsp/layouts/default/menu.jsp" />
-    <put-attribute name="body" value="/WEB-INF/jsp/layouts/default/body.jsp" />
-    <put-attribute name="footer" value="/WEB-INF/jsp/layouts/default/footer.jsp" />
   </definition>
 
   <definition name="index" extends="default_layout">
