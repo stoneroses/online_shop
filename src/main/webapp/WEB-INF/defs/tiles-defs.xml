@@ -62,4 +62,21 @@
   <definition name="category-view" extends="default_layout">
     <put-attribute name="body" value="/WEB-INF/jsp/category/view.jsp" />
   </definition>
+
+  <definition name="user-index" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/user/list.jsp" />
+  </definition>
+
+  <definition name="user-new" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/user/new.jsp" />
+  </definition>
+
+  <definition name="user-edit" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/user/edit.jsp" />
+  </definition>
+
+  <definition name="user-view" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/user/view.jsp" />
+  </definition>
+
 </tiles-definitions>
