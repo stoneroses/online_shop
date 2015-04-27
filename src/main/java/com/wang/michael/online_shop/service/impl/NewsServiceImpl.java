@@ -2,7 +2,6 @@ package com.wang.michael.online_shop.service.impl;
 
 import java.util.List;
 
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +20,6 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     @Transactional
-    @RequiresRoles("user")
     public News create(News news) {
         News createdNews = news;
         createdNews.setCreatedDateTime(new DateTime());
@@ -30,7 +28,6 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     @Transactional(rollbackFor = NewsNotFound.class)
-    @RequiresRoles("admin")
     public News delete(Long id) throws NewsNotFound {
         News deletedNews = newsRepository.findOne(id);
         if (deletedNews == null) {
@@ -48,7 +45,6 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     @Transactional(rollbackFor = NewsNotFound.class)
-    @RequiresRoles("user")
     public News update(News news) throws NewsNotFound {
         News updatedNews = newsRepository.findOne(news.getId());
         if (updatedNews == null) {
