@@ -15,7 +15,7 @@ public class CategoryListLoaderInterceptor extends HandlerInterceptorAdapter {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        // request.setAttribute("categoryList", this.categoryService.findAll());
+        request.setAttribute("categoryList", this.categoryService.findAll());
         return super.preHandle(request, response, handler);
     }
 
