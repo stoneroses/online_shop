@@ -83,4 +83,20 @@
     <put-attribute name="body" value="/WEB-INF/jsp/user/view.jsp" />
   </definition>
 
+  <definition name="permission-index" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/permission/list.jsp" />
+  </definition>
+
+  <definition name="permission-new" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/permission/new.jsp" />
+  </definition>
+
+  <definition name="permission-edit" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/permission/edit.jsp" />
+  </definition>
+
+  <definition name="permission-view" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/permission/view.jsp" />
+  </definition>
+
 </tiles-definitions>
