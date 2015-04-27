@@ -30,14 +30,11 @@ public class Permission implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(length = 50)
+    @Column(length = 256)
     private String name;
 
     @Column(length = 1024)
     private String description;
-
-    @Column(length = 256)
-    private String permission;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "permissions")
     private Collection<Role> roles;

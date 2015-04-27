@@ -71,8 +71,8 @@ public class ShiroDataBaseRealm extends AuthorizingRealm {
                     if (role.getPermissions() != null && role.getPermissions().size() > 0) {
                         // 获取权限
                         for (Permission permission : role.getPermissions()) {
-                            if (!StringUtils.isEmpty(permission.getPermission())) {
-                                permissions.add(permission.getPermission());
+                            if (!StringUtils.isEmpty(permission.getName())) {
+                                permissions.add(permission.getName());
                             }
                         }
                     }

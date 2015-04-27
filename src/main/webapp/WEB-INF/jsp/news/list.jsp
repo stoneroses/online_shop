@@ -15,16 +15,16 @@
       <tr>
         <td><a href="${ctx}/news/${news.id}">${news.title}</a></td>
         <td>${news.content}</td>
-        <td><shiro:hasPermission name="news:edit">
+        <td><shiro:hasPermission name="news_edit">
             <a href="${ctx}/news/${news.id}/edit">Edit</a>
           </shiro:hasPermission>
-          <shiro:hasPermission name="news:delete">
+          <shiro:hasPermission name="news_delete">
             <a href="${ctx}/news/${news.id}/delete">Delete</a>
           </shiro:hasPermission></td>
       </tr>
     </c:forEach>
   </tbody>
 </table>
-<shiro:hasPermission name="news:create">
+<shiro:hasPermission name="news_create">
   <a href="${ctx}/news/create">create</a>
 </shiro:hasPermission>
