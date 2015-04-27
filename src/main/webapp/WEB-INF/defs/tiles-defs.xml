@@ -99,4 +99,20 @@
     <put-attribute name="body" value="/WEB-INF/jsp/permission/view.jsp" />
   </definition>
 
+  <definition name="role-index" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/role/list.jsp" />
+  </definition>
+
+  <definition name="role-new" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/role/new.jsp" />
+  </definition>
+
+  <definition name="role-edit" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/role/edit.jsp" />
+  </definition>
+
+  <definition name="role-view" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/role/view.jsp" />
+  </definition>
+
 </tiles-definitions>
