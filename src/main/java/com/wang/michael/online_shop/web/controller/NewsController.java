@@ -2,7 +2,7 @@ package com.wang.michael.online_shop.web.controller;
 
 import java.util.List;
 
-import org.apache.shiro.authz.annotation.RequiresRoles;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -25,7 +25,7 @@ public class NewsController {
     private NewsService newsService;
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    @RequiresRoles("admin")
+    @RequiresPermissions("news:create")
     public ModelAndView newNewsPage() {
         ModelAndView mav = new ModelAndView("news-new", "news", new News());
         mav.addObject("pageTitle", "Create News");
@@ -33,7 +33,7 @@ public class NewsController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    @RequiresRoles("admin")
+    @RequiresPermissions("news:save")
     public ModelAndView createNewNews(@ModelAttribute News news, final RedirectAttributes redirectAttributes) {
         ModelAndView mav = new ModelAndView("redirect:/news/list");
         newsService.create(news);
@@ -52,7 +52,7 @@ public class NewsController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
-    @RequiresRoles("admin")
+    @RequiresPermissions("news:edit")
     public ModelAndView editNewsPage(@PathVariable Integer id) throws NewsNotFound {
         ModelAndView mav = new ModelAndView("news-edit");
         News news = null;
@@ -63,7 +63,7 @@ public class NewsController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    @RequiresRoles("admin")
+    @RequiresPermissions("news:save")
     public ModelAndView editNews(@ModelAttribute News news, @PathVariable Integer id, final RedirectAttributes redirectAttributes)
             throws NewsNotFound {
         ModelAndView mav = new ModelAndView("redirect:/news/list");
@@ -74,7 +74,7 @@ public class NewsController {
     }
 
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-    @RequiresRoles("admin")
+    @RequiresPermissions("news:delete")
     public ModelAndView deleteNews(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws NewsNotFound {
         ModelAndView mav = new ModelAndView("redirect:/news/list");
         newsService.delete(Long.valueOf(id));
