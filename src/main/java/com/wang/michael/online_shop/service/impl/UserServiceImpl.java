@@ -51,6 +51,7 @@ public class UserServiceImpl implements UserService {
             throw new UserNotFound();
         }
         updatedUser.setName(user.getName());
+        updatedUser.setEmail(user.getEmail());
         updatedUser.setPassword(user.getPassword());
         updatedUser.setDescription(user.getDescription());
         updatedUser.setUpdatedDateTime(new DateTime());
@@ -67,4 +68,15 @@ public class UserServiceImpl implements UserService {
         return result;
     }
 
+    @Override
+    public User getByEmail(String email) throws UserNotFound {
+        List<User> result = userRepository.findByEmail(email);
+        if (result == null) {
+            throw new UserNotFound("No user found.");
+        } else if (result.size() > 1) {
+            throw new UserNotFound("More than one user found. Please contact admin.");
+        } else {
+            return result.get(0);
+        }
+    }
 }

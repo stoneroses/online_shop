@@ -10,13 +10,13 @@ import com.wang.michael.online_shop.service.CategoryService;
 
 public class CategoryListLoaderInterceptor extends HandlerInterceptorAdapter {
 
-  @Autowired
-  private CategoryService categoryService;
+    @Autowired
+    private CategoryService categoryService;
 
-  @Override
-  public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-    request.setAttribute("categoryList", this.categoryService.findAll());
-    return super.preHandle(request, response, handler);
-  }
+    @Override
+    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+        // request.setAttribute("categoryList", this.categoryService.findAll());
+        return super.preHandle(request, response, handler);
+    }
 
 }

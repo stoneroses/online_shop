@@ -10,7 +10,12 @@
         <td><form:errors path="name" cssStyle="color: red;" /></td>
       </tr>
       <tr>
-        <td>Name:</td>
+        <td>Email:</td>
+        <td><form:input path="email" /></td>
+        <td><form:errors path="email" cssStyle="color: red;" /></td>
+      </tr>
+      <tr>
+        <td>Password:</td>
         <td><form:input path="password" /></td>
         <td><form:errors path="password" cssStyle="color: red;" /></td>
       </tr>

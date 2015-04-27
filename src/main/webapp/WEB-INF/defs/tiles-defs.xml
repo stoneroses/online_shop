@@ -23,6 +23,10 @@
     <put-attribute name="body" value="/WEB-INF/jsp/index.jsp" />
   </definition>
 
+  <definition name="login" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/login.jsp" />
+  </definition>
+
   <definition name="about_us" extends="default_layout">
     <put-attribute name="body" value="/WEB-INF/jsp/about_us.jsp" />
   </definition>

@@ -16,4 +16,6 @@ public interface UserService {
     public User update(User user) throws UserNotFound;
 
     public User findById(Long id) throws UserNotFound;
+
+    public User getByEmail(String email) throws UserNotFound;
 }

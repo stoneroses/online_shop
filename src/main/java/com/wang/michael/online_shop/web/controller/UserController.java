@@ -2,6 +2,7 @@ package com.wang.michael.online_shop.web.controller;
 
 import java.util.List;
 
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -18,6 +19,7 @@ import com.wang.michael.online_shop.service.UserService;
 
 @RestController
 @RequestMapping(value = "/users")
+@RequiresRoles("admin")
 public class UserController {
 
     @Autowired

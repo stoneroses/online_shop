@@ -7,13 +7,13 @@ import com.wang.michael.online_shop.model.News;
 
 public interface NewsService {
 
-  public News create(News news);
+    public News create(News news);
 
-  public News delete(Long id) throws NewsNotFound;
+    public News delete(Long id) throws NewsNotFound;
 
-  public List<News> findAll();
+    public List<News> findAll();
 
-  public News update(News news) throws NewsNotFound;
+    public News update(News news) throws NewsNotFound;
 
-  public News findById(Long id) throws NewsNotFound;
+    public News findById(Long id) throws NewsNotFound;
 }
