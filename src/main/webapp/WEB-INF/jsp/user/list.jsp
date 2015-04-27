@@ -17,14 +17,16 @@
         <td><a href="${ctx}/users/${user.id}">${user.name}</a></td>
         <td>${user.email}</td>
         <td>${user.description}</td>
-        <td><shiro:hasRole name="admin">
+        <td><shiro:hasPermission name="user:edit">
             <a href="${ctx}/users/${user.id}/edit">Edit</a>
+          </shiro:hasPermission>
+          <shiro:hasPermission name="user:delete">
             <a href="${ctx}/users/${user.id}/delete">Delete</a>
-          </shiro:hasRole></td>
+          </shiro:hasPermission></td>
       </tr>
     </c:forEach>
   </tbody>
 </table>
-<shiro:hasRole name="admin">
+<shiro:hasPermission name="user:create">
   <a href="${ctx}/users/create">create</a>
-</shiro:hasRole>
+</shiro:hasPermission>

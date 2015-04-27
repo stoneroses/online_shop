@@ -3,5 +3,9 @@
 <p>${news.title}</p>
 <p>${news.content}</p>
 <a href="${ctx}/news">News list</a>
-<shiro:hasRole name="user"><a href="${ctx}/news/${news.id}/edit">Edit</a></shiro:hasRole>
-<shiro:hasRole name="admin"><a href="${ctx}/news/${news.id}/delete">Delete</a></shiro:hasRole>
+<shiro:hasPermission name="news:edit">
+  <a href="${ctx}/news/${news.id}/edit">Edit</a>
+</shiro:hasPermission>
+<shiro:hasPermission name="news:delete">
+  <a href="${ctx}/news/${news.id}/delete">Delete</a>
+</shiro:hasPermission>
