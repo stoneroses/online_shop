@@ -25,7 +25,7 @@ public class NewsController {
     private NewsService newsService;
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
-    @RequiresPermissions("news:create")
+    @RequiresPermissions("news_create")
     public ModelAndView newNewsPage() {
         ModelAndView mav = new ModelAndView("news-new", "news", new News());
         mav.addObject("pageTitle", "Create News");
@@ -33,7 +33,7 @@ public class NewsController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    @RequiresPermissions("news:save")
+    @RequiresPermissions("news_save")
     public ModelAndView createNewNews(@ModelAttribute News news, final RedirectAttributes redirectAttributes) {
         ModelAndView mav = new ModelAndView("redirect:/news/list");
         newsService.create(news);
@@ -52,7 +52,7 @@ public class NewsController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
-    @RequiresPermissions("news:edit")
+    @RequiresPermissions("news_edit")
     public ModelAndView editNewsPage(@PathVariable Integer id) throws NewsNotFound {
         ModelAndView mav = new ModelAndView("news-edit");
         News news = null;
@@ -63,7 +63,7 @@ public class NewsController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    @RequiresPermissions("news:save")
+    @RequiresPermissions("news_save")
     public ModelAndView editNews(@ModelAttribute News news, @PathVariable Integer id, final RedirectAttributes redirectAttributes)
             throws NewsNotFound {
         ModelAndView mav = new ModelAndView("redirect:/news/list");
@@ -74,7 +74,7 @@ public class NewsController {
     }
 
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
-    @RequiresPermissions("news:delete")
+    @RequiresPermissions("news_delete")
     public ModelAndView deleteNews(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws NewsNotFound {
         ModelAndView mav = new ModelAndView("redirect:/news/list");
         newsService.delete(Long.valueOf(id));

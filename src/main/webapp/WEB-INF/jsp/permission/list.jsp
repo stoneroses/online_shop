@@ -6,7 +6,6 @@
   <thead>
     <tr>
       <th width="150px">Name</th>
-      <th width="25px">Permission</th>
       <th width="25px">Description</th>
       <th width="50px">Actions</th>
     </tr>
@@ -15,7 +14,6 @@
     <c:forEach var="permission" items="${permissionList}">
       <tr>
         <td><a href="${ctx}/permissions/${permission.id}">${permission.name}</a></td>
-        <td>${permission.permission}</td>
         <td>${permission.description}</td>
         <td><shiro:hasPermission name="permission:edit">
             <a href="${ctx}/permissions/${permission.id}/edit">Edit</a>

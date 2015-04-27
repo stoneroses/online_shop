@@ -1,7 +1,8 @@
 DELETE FROM `permissions`;
 
-INSERT INTO `permissions` (`id`, `name`, `permission`, `description`, `createdDateTime`, `updatedDateTime`) VALUES (1, 'create news', 'news:create', 'create news', NOW(), NULL);
-INSERT INTO `permissions` (`id`, `name`, `permission`, `description`, `createdDateTime`, `updatedDateTime`) VALUES (2, 'save news', 'news:save', 'save news', NOW(), NULL);
-INSERT INTO `permissions` (`id`, `name`, `permission`, `description`, `createdDateTime`, `updatedDateTime`) VALUES (3, 'edit news', 'news:edit', 'edit news', NOW(), NULL);
-INSERT INTO `permissions` (`id`, `name`, `permission`, `description`, `createdDateTime`, `updatedDateTime`) VALUES (4, 'delete news', 'news:delete', 'delete news', NOW(), NULL);
+INSERT INTO `permissions` (`id`, `name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES (1, 'news_create', 'create news', NOW(), NULL);
+INSERT INTO `permissions` (`id`, `name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES (2, 'news_save', 'save news', NOW(), NULL);
+INSERT INTO `permissions` (`id`, `name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES (3, 'news_edit', 'edit news', NOW(), NULL);
+INSERT INTO `permissions` (`id`, `name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES (4, 'news_delete', 'delete news', NOW(), NULL);
+INSERT INTO `permissions` (`id`, `name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES (5, 'news_view', 'delete news', NOW(), NULL);
 

@@ -10,11 +10,6 @@
         <td><form:errors path="name" cssStyle="color: red;" /></td>
       </tr>
       <tr>
-        <td>Permission:</td>
-        <td><form:input path="permission" /></td>
-        <td><form:errors path="permission" cssStyle="color: red;" /></td>
-      </tr>
-      <tr>
         <td>Description:</td>
         <td><form:input path="description" /></td>
         <td><form:errors path="description" cssStyle="color: red;" /></td>

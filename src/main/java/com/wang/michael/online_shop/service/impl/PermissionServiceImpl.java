@@ -51,7 +51,6 @@ public class PermissionServiceImpl implements PermissionService {
             throw new PermissionNotFound();
         }
         updatedPermission.setName(permission.getName());
-        updatedPermission.setPermission(permission.getPermission());
         updatedPermission.setDescription(permission.getDescription());
         updatedPermission.setUpdatedDateTime(new DateTime());
         return updatedPermission;
