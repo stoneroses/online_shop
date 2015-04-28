@@ -27,8 +27,9 @@ body {
   color: #fff;
 }
 
-.panel-default>.panel-heading {
+.panel-green>.panel-heading {
   background: linear-gradient(#81BF1C, #5B8D13);
   color: #fff;
   font: bold 14px arial
 }
+
