@@ -13,6 +13,7 @@
 
   <definition name="error/*" extends="base_layout">
     <put-attribute name="body" value="/WEB-INF/jsp/error/{1}.jsp" />
+    <put-attribute name="footer" value="/WEB-INF/jsp/layouts/error/footer.jsp" />
   </definition>
 
   <definition name="default_layout" extends="base_layout">

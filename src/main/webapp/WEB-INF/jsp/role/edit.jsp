@@ -1,25 +1,46 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="/WEB-INF/custom-functions.tld" prefix="cf"%>
 
-<h1>Edit Role page</h1>
-<form:form method="POST" commandName="role" action="${ctx}/roles/${role.id}/edit">
-  <table>
-    <tbody>
-      <tr>
-        <td>Name:</td>
-        <td><form:input path="name" /></td>
-        <td><form:errors path="name" cssStyle="color: red;" /></td>
-      </tr>
-      <tr>
-        <td>Description:</td>
-        <td><form:input path="description" /></td>
-        <td><form:errors path="description" cssStyle="color: red;" /></td>
-      </tr>
-      <tr>
-        <td><input type="submit" value="Update" /></td>
-        <td></td>
-        <td></td>
-      </tr>
-    </tbody>
-  </table>
-</form:form>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <form:form method="POST" modelAttribute="role" action="${ctx}/roles/${role.id}/edit" class="form-horizontal">
+      <fieldset>
+        <legend>Edit Role page</legend>
+        <div class="form-group">
+          <label for="name" class="col-sm-2 control-label">Name</label>
+          <div class="col-sm-10">
+            <form:input path="name" class="form-control" />
+            <form:errors path="name" cssStyle="color: red;" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="description" class="col-sm-2 control-label">Description</label>
+          <div class="col-sm-10">
+            <form:input path="description" class="form-control" />
+            <form:errors path="description" cssStyle="color: red;" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-2 control-label"></div>
+          <div class="col-sm-10">
+            <c:forEach var="permission" items="${allPermissions}" varStatus="row">
+              <div class="checkbox">
+                <label> <input name="permissions[${row.index}].id" id="permissions[${row.index}].id"
+                  type="checkbox" value="${permission.id}"
+                  <c:if test="${ cf:contains(role.permissions, permission)}">checked</c:if> /> ${permission.name}
+                </label>
+              </div>
+            </c:forEach>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button type="submit" class="btn btn-default">Update Role</button>
+          </div>
+        </div>
+      </fieldset>
+    </form:form>
+  </div>
+</div>
 <a href="${ctx}/roles">role list</a>
