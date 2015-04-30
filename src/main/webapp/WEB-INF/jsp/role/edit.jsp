@@ -26,8 +26,7 @@
           <div class="col-sm-10">
             <c:forEach var="permission" items="${allPermissions}" varStatus="row">
               <div class="checkbox">
-                <label> <input name="permissions[${row.index}].id" id="permissions[${row.index}].id"
-                  type="checkbox" value="${permission.id}"
+                <label> <input name="permissions" type="checkbox" value="${permission.id}"
                   <c:if test="${ cf:contains(role.permissions, permission)}">checked</c:if> /> ${permission.name}
                 </label>
               </div>

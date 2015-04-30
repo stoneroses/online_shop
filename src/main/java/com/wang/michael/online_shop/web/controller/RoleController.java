@@ -3,10 +3,7 @@ package com.wang.michael.online_shop.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.propertyeditors.CustomCollectionEditor;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.WebDataBinder;
-import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +27,11 @@ public class RoleController {
 
     @Autowired
     private PermissionService permissionService;
+
+    @ModelAttribute("allPermissions")
+    public List<Permission> getAllPermissions() {
+        return permissionService.findAll();
+    }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView newRolePage() throws Exception {
@@ -64,17 +66,6 @@ public class RoleController {
         mav.addObject("role", role);
         mav.addObject("pageTitle", "Edit Role " + role.getName());
         return mav;
-    }
-
-    @ModelAttribute("allPermissions")
-    public List<Permission> getAllPermissions() {
-        return permissionService.findAll();
-    }
-
-    @InitBinder
-    protected void initBinder(WebDataBinder binder) throws Exception {
-        binder.registerCustomEditor(List.class, "permissions", new CustomCollectionEditor(List.class) {
-        });
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)

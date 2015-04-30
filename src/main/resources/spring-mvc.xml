@@ -14,9 +14,20 @@ http://www.springframework.org/schema/aop
 http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
   <aop:config proxy-target-class="true"></aop:config>
   <mvc:resources mapping="/common/**" location="/common/" />
-  <mvc:annotation-driven content-negotiation-manager="contentManager" />
-  <context:component-scan base-package="com.wang.michael.online_shop.web.controller" />
+
+  <mvc:annotation-driven conversion-service="conversionService" />
+  <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
+    <property name="converters">
+      <set>
+        <bean class="com.wang.michael.online_shop.web.converter.StringToPermissionConverter" />
+      </set>
+    </property>
+  </bean>
+
+  <context:component-scan base-package="com.wang.michael.online_shop.web" />
   <bean id="productDetails" class="com.wang.michael.online_shop.model.ProductDetails" />
+
+  <mvc:annotation-driven content-negotiation-manager="contentManager" />
   <bean id="contentManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
     <property name="favorPathExtension" value="true" />
     <property name="ignoreAcceptHeader" value="true" />

@@ -1,6 +1,5 @@
 package com.wang.michael.online_shop.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.joda.time.DateTime;
@@ -9,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.wang.michael.online_shop.exception.RoleNotFound;
-import com.wang.michael.online_shop.model.Permission;
 import com.wang.michael.online_shop.model.Role;
 import com.wang.michael.online_shop.repository.PermissionRepository;
 import com.wang.michael.online_shop.repository.RoleRepository;
@@ -57,15 +55,8 @@ public class RoleServiceImpl implements RoleService {
             throw new RoleNotFound();
         }
         updatedRole.setName(role.getName());
-        updatedRole.setPermissions(new ArrayList<Permission>());
-        if (role.getPermissions() != null) {
-            for (Permission permission : role.getPermissions()) {
-                if (permission.getId() != null) {
-                    updatedRole.getPermissions().add(permissionRepository.findOne(permission.getId()));
-                }
-            }
-        }
         updatedRole.setDescription(role.getDescription());
+        updatedRole.setPermissions(role.getPermissions());
         updatedRole.setUpdatedDateTime(new DateTime());
         return updatedRole;
     }
