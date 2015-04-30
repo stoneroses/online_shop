@@ -4,8 +4,9 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form:form method="POST" modelAttribute="role" action="${formAction}" class="form-horizontal">
+    <form:form method="POST" modelAttribute="role" action="${ctx}/roles/save" class="form-horizontal">
       <fieldset>
+        <form:hidden path="id"/>
         <legend>${formLegend}</legend>
         <div class="form-group">
           <label for="name" class="col-sm-2 control-label">Name</label>

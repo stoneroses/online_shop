@@ -48,14 +48,14 @@ public class RoleController {
         return mav;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView createNewRole(@Valid Role role, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public ModelAndView daveRole(@Valid Role role, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("role-new");
+            return new ModelAndView("role-edit");
         }
         ModelAndView mav = new ModelAndView("redirect:/roles/list");
-        roleService.create(role);
-        String message = "Role was successfully created.";
+        roleService.save(role);
+        String message = "Role was successfully saved.";
         redirectAttributes.addFlashAttribute("message", message);
         return mav;
     }
@@ -76,19 +76,6 @@ public class RoleController {
         role = roleService.findById(Long.valueOf(id));
         mav.addObject("role", role);
         mav.addObject("pageTitle", "Edit Role " + role.getName());
-        return mav;
-    }
-
-    @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    public ModelAndView editRole(@Valid Role role, BindingResult bindingResult, @PathVariable Integer id, final RedirectAttributes redirectAttributes)
-            throws RoleNotFound {
-        if (bindingResult.hasErrors()) {
-            return new ModelAndView("role-edit");
-        }
-        ModelAndView mav = new ModelAndView("redirect:/roles/list");
-        String message = "Role was successfully updated.";
-        roleService.update(role);
-        redirectAttributes.addFlashAttribute("message", message);
         return mav;
     }
 

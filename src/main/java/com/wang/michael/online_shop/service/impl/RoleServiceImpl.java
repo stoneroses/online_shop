@@ -23,14 +23,6 @@ public class RoleServiceImpl implements RoleService {
     private PermissionRepository permissionRepository;
 
     @Override
-    @Transactional
-    public Role create(Role role) {
-        Role createdRole = role;
-        createdRole.setCreatedDateTime(new DateTime());
-        return roleRepository.save(createdRole);
-    }
-
-    @Override
     @Transactional(rollbackFor = RoleNotFound.class)
     public Role delete(Long id) throws RoleNotFound {
         Role deletedRole = roleRepository.findOne(id);
@@ -48,20 +40,6 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    @Transactional(rollbackFor = RoleNotFound.class)
-    public Role update(Role role) throws RoleNotFound {
-        Role updatedRole = roleRepository.findOne(role.getId());
-        if (updatedRole == null) {
-            throw new RoleNotFound();
-        }
-        updatedRole.setName(role.getName());
-        updatedRole.setDescription(role.getDescription());
-        updatedRole.setPermissions(role.getPermissions());
-        updatedRole.setUpdatedDateTime(new DateTime());
-        return updatedRole;
-    }
-
-    @Override
     @Transactional
     public Role findById(Long id) throws RoleNotFound {
         Role result = roleRepository.findOne(id);
@@ -69,6 +47,19 @@ public class RoleServiceImpl implements RoleService {
             throw new RoleNotFound();
         }
         return result;
+    }
+
+    @Override
+    public Role save(Role role) {
+        if (role.getId() != null) {
+            Role oldRole = roleRepository.findOne(role.getId());
+            role.setCreatedDateTime(oldRole.getCreatedDateTime());
+            role.setUpdatedDateTime(new DateTime());
+        } else {
+            role.setCreatedDateTime(new DateTime());
+        }
+        return roleRepository.save(role);
+
     }
 
 }
