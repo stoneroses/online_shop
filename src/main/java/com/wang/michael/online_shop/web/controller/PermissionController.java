@@ -32,18 +32,6 @@ public class PermissionController {
         return mav;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView createNewPermission(@Valid Permission permission, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors()) {
-            return new ModelAndView("permission-new");
-        }
-        ModelAndView mav = new ModelAndView("redirect:/permissions/list");
-        permissionService.create(permission);
-        String message = "Permission was successfully created.";
-        redirectAttributes.addFlashAttribute("message", message);
-        return mav;
-    }
-
     @RequestMapping(value = { "/list", "/", "" }, method = RequestMethod.GET)
     public ModelAndView permissionListPage(Model model) {
         ModelAndView mav = new ModelAndView("permission-index");
@@ -63,15 +51,14 @@ public class PermissionController {
         return mav;
     }
 
-    @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    public ModelAndView editPermission(@Valid Permission permission, BindingResult bindingResult, @PathVariable Integer id,
-            final RedirectAttributes redirectAttributes) throws PermissionNotFound {
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public ModelAndView davePermission(@Valid Permission permission, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("permission-edit");
         }
         ModelAndView mav = new ModelAndView("redirect:/permissions/list");
-        String message = "Permission was successfully updated.";
-        permissionService.update(permission);
+        permissionService.save(permission);
+        String message = "Permission was successfully saved.";
         redirectAttributes.addFlashAttribute("message", message);
         return mav;
     }

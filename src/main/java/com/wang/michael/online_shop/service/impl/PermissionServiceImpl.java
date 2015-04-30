@@ -19,14 +19,6 @@ public class PermissionServiceImpl implements PermissionService {
     private PermissionRepository permissionRepository;
 
     @Override
-    @Transactional
-    public Permission create(Permission permission) {
-        Permission createdPermission = permission;
-        createdPermission.setCreatedDateTime(new DateTime());
-        return permissionRepository.save(createdPermission);
-    }
-
-    @Override
     @Transactional(rollbackFor = PermissionNotFound.class)
     public Permission delete(Long id) throws PermissionNotFound {
         Permission deletedPermission = permissionRepository.findOne(id);
@@ -44,19 +36,6 @@ public class PermissionServiceImpl implements PermissionService {
     }
 
     @Override
-    @Transactional(rollbackFor = PermissionNotFound.class)
-    public Permission update(Permission permission) throws PermissionNotFound {
-        Permission updatedPermission = permissionRepository.findOne(permission.getId());
-        if (updatedPermission == null) {
-            throw new PermissionNotFound();
-        }
-        updatedPermission.setName(permission.getName());
-        updatedPermission.setDescription(permission.getDescription());
-        updatedPermission.setUpdatedDateTime(new DateTime());
-        return updatedPermission;
-    }
-
-    @Override
     @Transactional
     public Permission findById(Long id) throws PermissionNotFound {
         Permission result = permissionRepository.findOne(id);
@@ -64,6 +43,18 @@ public class PermissionServiceImpl implements PermissionService {
             throw new PermissionNotFound();
         }
         return result;
+    }
+
+    @Override
+    public Permission save(Permission permission) {
+        if (permission.getId() != null) {
+            Permission oldPermission = permissionRepository.findOne(permission.getId());
+            permission.setCreatedDateTime(oldPermission.getCreatedDateTime());
+            permission.setUpdatedDateTime(new DateTime());
+        } else {
+            permission.setCreatedDateTime(new DateTime());
+        }
+        return permissionRepository.save(permission);
     }
 
 }
