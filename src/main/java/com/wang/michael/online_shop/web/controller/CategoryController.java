@@ -38,14 +38,14 @@ public class CategoryController {
         return mav;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView createNewCategory(@Valid Category category, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public ModelAndView daveCategory(@Valid Category category, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("category-new");
+            return new ModelAndView("category-edit");
         }
         ModelAndView mav = new ModelAndView("redirect:/categories/list");
-        categoryService.create(category);
-        String message = "Category was successfully created.";
+        categoryService.save(category);
+        String message = "Category was successfully saved.";
         redirectAttributes.addFlashAttribute("message", message);
         return mav;
     }
@@ -66,19 +66,6 @@ public class CategoryController {
         category = categoryService.findById(Long.valueOf(id));
         mav.addObject("category", category);
         mav.addObject("pageTitle", "Edit Category " + category.getName());
-        return mav;
-    }
-
-    @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    public ModelAndView editCategory(@Valid Category category, BindingResult bindingResult, @PathVariable Integer id,
-            final RedirectAttributes redirectAttributes) throws CategoryNotFound {
-        if (bindingResult.hasErrors()) {
-            return new ModelAndView("category-edit");
-        }
-        ModelAndView mav = new ModelAndView("redirect:/categories/list");
-        String message = "Category was successfully updated.";
-        categoryService.update(category);
-        redirectAttributes.addFlashAttribute("message", message);
         return mav;
     }
 

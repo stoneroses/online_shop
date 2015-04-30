@@ -19,14 +19,6 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryRepository categoryRepository;
 
     @Override
-    @Transactional
-    public Category create(Category category) {
-        Category createdCategory = category;
-        createdCategory.setCreatedDateTime(new DateTime());
-        return categoryRepository.save(createdCategory);
-    }
-
-    @Override
     @Transactional(rollbackFor = CategoryNotFound.class)
     public Category delete(Long id) throws CategoryNotFound {
         Category deletedCategory = categoryRepository.findOne(id);
@@ -44,19 +36,6 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    @Transactional(rollbackFor = CategoryNotFound.class)
-    public Category update(Category category) throws CategoryNotFound {
-        Category updatedCategory = categoryRepository.findOne(category.getId());
-        if (updatedCategory == null) {
-            throw new CategoryNotFound();
-        }
-        updatedCategory.setName(category.getName());
-        updatedCategory.setDescription(category.getDescription());
-        updatedCategory.setUpdatedDateTime(new DateTime());
-        return updatedCategory;
-    }
-
-    @Override
     @Transactional
     public Category findById(Long id) throws CategoryNotFound {
         Category result = categoryRepository.findOne(id);
@@ -64,6 +43,19 @@ public class CategoryServiceImpl implements CategoryService {
             throw new CategoryNotFound();
         }
         return result;
+    }
+
+    @Override
+    @Transactional
+    public Category save(Category category) {
+        if (category.getId() != null) {
+            Category oldCategory = categoryRepository.findOne(category.getId());
+            category.setCreatedDateTime(oldCategory.getCreatedDateTime());
+            category.setUpdatedDateTime(new DateTime());
+        } else {
+            category.setCreatedDateTime(new DateTime());
+        }
+        return categoryRepository.save(category);
     }
 
 }
