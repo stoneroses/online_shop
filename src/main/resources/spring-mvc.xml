@@ -20,7 +20,6 @@ http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
     <property name="converters">
       <set>
         <bean class="com.wang.michael.online_shop.web.converter.StringToPermissionConverter" />
-        <bean class="com.wang.michael.online_shop.web.converter.StringToCategoryConverter" />
       </set>
     </property>
   </bean>

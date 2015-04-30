@@ -19,14 +19,6 @@ public class NewsServiceImpl implements NewsService {
     private NewsRepository newsRepository;
 
     @Override
-    @Transactional
-    public News create(News news) {
-        News createdNews = news;
-        createdNews.setCreatedDateTime(new DateTime());
-        return newsRepository.save(createdNews);
-    }
-
-    @Override
     @Transactional(rollbackFor = NewsNotFound.class)
     public News delete(Long id) throws NewsNotFound {
         News deletedNews = newsRepository.findOne(id);
@@ -44,19 +36,6 @@ public class NewsServiceImpl implements NewsService {
     }
 
     @Override
-    @Transactional(rollbackFor = NewsNotFound.class)
-    public News update(News news) throws NewsNotFound {
-        News updatedNews = newsRepository.findOne(news.getId());
-        if (updatedNews == null) {
-            throw new NewsNotFound();
-        }
-        updatedNews.setTitle(news.getTitle());
-        updatedNews.setContent(news.getContent());
-        updatedNews.setUpdatedDateTime(new DateTime());
-        return updatedNews;
-    }
-
-    @Override
     @Transactional
     public News findById(Long id) throws NewsNotFound {
         News result = newsRepository.findOne(id);
@@ -64,6 +43,18 @@ public class NewsServiceImpl implements NewsService {
             throw new NewsNotFound();
         }
         return result;
+    }
+
+    @Override
+    public News save(News news) {
+        if (news.getId() != null) {
+            News oldNews = newsRepository.findOne(news.getId());
+            news.setCreatedDateTime(oldNews.getCreatedDateTime());
+            news.setUpdatedDateTime(new DateTime());
+        } else {
+            news.setCreatedDateTime(new DateTime());
+        }
+        return newsRepository.save(news);
     }
 
 }

@@ -3,8 +3,9 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form:form method="POST" modelAttribute="news" action="${formAction}" class="form-horizontal">
+    <form:form method="POST" modelAttribute="news" action="${ctx}/news/save" class="form-horizontal">
       <fieldset>
+        <form:hidden path="id" />
         <legend>${formLegend}</legend>
         <div class="form-group">
           <label for="title" class="col-sm-2 control-label">Name</label>

@@ -34,25 +34,24 @@ public class NewsController {
         return mav;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    @RequiresPermissions("news_save")
-    public ModelAndView createNewNews(@Valid News news, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
-        if (bindingResult.hasErrors()) {
-            return new ModelAndView("news-new");
-        }
-        ModelAndView mav = new ModelAndView("redirect:/news/list");
-        newsService.create(news);
-        String message = "News was successfully created.";
-        redirectAttributes.addFlashAttribute("message", message);
-        return mav;
-    }
-
     @RequestMapping(value = { "/list", "/", "" }, method = RequestMethod.GET)
     public ModelAndView newsListPage(Model model) {
         ModelAndView mav = new ModelAndView("news-index");
         List<News> newsList = newsService.findAll();
         mav.addObject("newsList", newsList);
         mav.addObject("pageTitle", "News List");
+        return mav;
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public ModelAndView daveNews(@Valid News news, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("news-edit");
+        }
+        ModelAndView mav = new ModelAndView("redirect:/news/list");
+        newsService.save(news);
+        String message = "News was successfully saved.";
+        redirectAttributes.addFlashAttribute("message", message);
         return mav;
     }
 
@@ -64,20 +63,6 @@ public class NewsController {
         news = newsService.findById(Long.valueOf(id));
         mav.addObject("news", news);
         mav.addObject("pageTitle", "Edit News " + news.getTitle());
-        return mav;
-    }
-
-    @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    @RequiresPermissions("news_save")
-    public ModelAndView editNews(@Valid News news, BindingResult bindingResult, @PathVariable Integer id, final RedirectAttributes redirectAttributes)
-            throws NewsNotFound {
-        if (bindingResult.hasErrors()) {
-            return new ModelAndView("news-edit");
-        }
-        ModelAndView mav = new ModelAndView("redirect:/news/list");
-        String message = "News was successfully updated.";
-        newsService.update(news);
-        redirectAttributes.addFlashAttribute("message", message);
         return mav;
     }
 
