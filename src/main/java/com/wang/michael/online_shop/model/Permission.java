@@ -16,6 +16,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
+import lombok.ToString;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
@@ -23,6 +24,7 @@ import org.joda.time.DateTime;
 @Entity
 @Table(name = "permissions")
 @Data
+@ToString(exclude = { "roles" })
 public class Permission implements Serializable {
 
     private static final long serialVersionUID = -8792590494605747957L;

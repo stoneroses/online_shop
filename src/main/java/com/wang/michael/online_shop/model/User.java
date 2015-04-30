@@ -15,6 +15,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
+import lombok.ToString;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
@@ -24,6 +25,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "users")
 @Data
+@ToString(exclude = { "roles" })
 public class User {
 
     @Id
