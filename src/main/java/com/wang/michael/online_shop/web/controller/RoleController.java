@@ -36,6 +36,11 @@ public class RoleController {
         return permissionService.findAll();
     }
 
+    @ModelAttribute("pageTitle")
+    public String defaultPageTitle() {
+        return "Role";
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView newRolePage() throws Exception {
         ModelAndView mav = new ModelAndView("role-new", "role", new Role());
