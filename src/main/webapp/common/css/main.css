@@ -8,7 +8,15 @@ body {
 }
 
 .navbar-default {
+  background: #81BF1C;
+  background: -moz-linear-gradient(#81BF1C, #5B8D13);
+  background: -webkit-linear-gradient(#81BF1C, #5B8D13);
+  background: -o-linear-gradient(#81BF1C, #5B8D13);
+  background: -ms-linear-gradient(#81BF1C, #5B8D13); /*For IE10*/
   background: linear-gradient(#81BF1C, #5B8D13);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#81BF1Cfff', endColorstr='#5B8D13000');
+  /*For IE7-8-9*/
+  height: 1%; /*For IE7*/
 }
 
 .navbar-default .navbar-nav>li>a {
@@ -28,8 +36,14 @@ body {
 }
 
 .panel-green>.panel-heading {
+  background: #81BF1C;
+  background: -moz-linear-gradient(#81BF1C, #5B8D13);
+  background: -webkit-linear-gradient(#81BF1C, #5B8D13);
+  background: -o-linear-gradient(#81BF1C, #5B8D13);
+  background: -ms-linear-gradient(#81BF1C, #5B8D13); /*For IE10*/
   background: linear-gradient(#81BF1C, #5B8D13);
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#81BF1Cfff', endColorstr='#5B8D13000');
+  /*For IE7-8-9*/
   color: #fff;
   font: bold 14px arial
 }
-
