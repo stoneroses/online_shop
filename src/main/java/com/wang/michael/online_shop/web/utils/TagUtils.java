@@ -1,10 +1,10 @@
 package com.wang.michael.online_shop.web.utils;
 
-import java.util.List;
+import java.util.Collection;
 
 public class TagUtils {
 
-    public static boolean contains(List<?> list, Object object) {
+    public static boolean contains(Collection<?> list, Object object) {
         if (list == null) {
             return false;
         }
