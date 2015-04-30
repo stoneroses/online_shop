@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 
@@ -32,14 +33,16 @@ public class User {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "name")
+    @Column(length = 256)
+    @Size(min = 2, max = 256)
     private String name;
 
     @Column(name = "password")
     @JsonIgnore
     private String password;
 
-    @Column(name = "description")
+    @Column(length = 1024)
+    @Size(min = 2, max = 1024)
     private String description;
 
     @ManyToMany(cascade = { CascadeType.PERSIST })

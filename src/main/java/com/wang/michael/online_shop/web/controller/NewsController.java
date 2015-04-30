@@ -2,10 +2,12 @@ package com.wang.michael.online_shop.web.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -34,7 +36,10 @@ public class NewsController {
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @RequiresPermissions("news_save")
-    public ModelAndView createNewNews(@ModelAttribute News news, final RedirectAttributes redirectAttributes) {
+    public ModelAndView createNewNews(@Valid News news, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("news-new");
+        }
         ModelAndView mav = new ModelAndView("redirect:/news/list");
         newsService.create(news);
         String message = "News was successfully created.";
@@ -64,8 +69,11 @@ public class NewsController {
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
     @RequiresPermissions("news_save")
-    public ModelAndView editNews(@ModelAttribute News news, @PathVariable Integer id, final RedirectAttributes redirectAttributes)
+    public ModelAndView editNews(@Valid News news, BindingResult bindingResult, @PathVariable Integer id, final RedirectAttributes redirectAttributes)
             throws NewsNotFound {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("news-edit");
+        }
         ModelAndView mav = new ModelAndView("redirect:/news/list");
         String message = "News was successfully updated.";
         newsService.update(news);

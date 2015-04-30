@@ -15,6 +15,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 
@@ -34,9 +35,11 @@ public class Role implements Serializable {
     private Long id;
 
     @Column(length = 256)
+    @Size(min = 2, max = 256)
     private String name;
 
     @Column(length = 1024)
+    @Size(min = 2, max = 1024)
     private String description;
 
     @ManyToMany(mappedBy = "roles")

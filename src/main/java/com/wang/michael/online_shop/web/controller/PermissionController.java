@@ -2,9 +2,11 @@ package com.wang.michael.online_shop.web.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +33,10 @@ public class PermissionController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView createNewPermission(@ModelAttribute Permission permission, final RedirectAttributes redirectAttributes) {
+    public ModelAndView createNewPermission(@Valid Permission permission, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("permission-new");
+        }
         ModelAndView mav = new ModelAndView("redirect:/permissions/list");
         permissionService.create(permission);
         String message = "Permission was successfully created.";
@@ -59,8 +64,11 @@ public class PermissionController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    public ModelAndView editPermission(@ModelAttribute Permission permission, @PathVariable Integer id, final RedirectAttributes redirectAttributes)
-            throws PermissionNotFound {
+    public ModelAndView editPermission(@Valid Permission permission, BindingResult bindingResult, @PathVariable Integer id,
+            final RedirectAttributes redirectAttributes) throws PermissionNotFound {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("permission-edit");
+        }
         ModelAndView mav = new ModelAndView("redirect:/permissions/list");
         String message = "Permission was successfully updated.";
         permissionService.update(permission);

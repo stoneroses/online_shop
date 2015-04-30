@@ -2,9 +2,11 @@ package com.wang.michael.online_shop.web.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,7 +33,10 @@ public class UserController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView createNewUser(@ModelAttribute User user, final RedirectAttributes redirectAttributes) {
+    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("user-new");
+        }
         ModelAndView mav = new ModelAndView("redirect:/users/list");
         userService.create(user);
         String message = "User was successfully created.";
@@ -59,8 +64,11 @@ public class UserController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    public ModelAndView editUser(@ModelAttribute User user, @PathVariable Integer id, final RedirectAttributes redirectAttributes)
+    public ModelAndView editUser(@Valid User user, BindingResult bindingResult, @PathVariable Integer id, final RedirectAttributes redirectAttributes)
             throws UserNotFound {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("user-edit");
+        }
         ModelAndView mav = new ModelAndView("redirect:/users/list");
         String message = "User was successfully updated.";
         userService.update(user);

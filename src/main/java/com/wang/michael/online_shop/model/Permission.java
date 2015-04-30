@@ -12,6 +12,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 
@@ -31,9 +33,12 @@ public class Permission implements Serializable {
     private Long id;
 
     @Column(length = 256)
+    @NotNull
+    @Size(min = 2, max = 256)
     private String name;
 
     @Column(length = 1024)
+    @Size(min = 2, max = 1024)
     private String description;
 
     @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "permissions")

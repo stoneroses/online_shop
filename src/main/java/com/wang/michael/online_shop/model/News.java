@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 
@@ -21,10 +22,12 @@ public class News {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "title")
+    @Column(length = 256)
+    @Size(min = 2, max = 256)
     private String title;
 
-    @Column(name = "content")
+    @Column(length = 1024)
+    @Size(min = 10, max = 1024)
     private String content;
 
     @Column(name = "createdDateTime")

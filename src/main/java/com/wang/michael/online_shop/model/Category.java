@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 
@@ -24,10 +25,12 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "name")
+    @Column(length = 256)
+    @Size(min = 2, max = 256)
     private String name;
 
-    @Column(name = "description")
+    @Column(length = 1024)
+    @Size(min = 2, max = 1024)
     private String description;
 
     @Column(name = "createdDateTime")

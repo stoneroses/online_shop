@@ -2,8 +2,11 @@ package com.wang.michael.online_shop.web.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +26,11 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
+    @ModelAttribute("pageTitle")
+    public String defaultPageTitle() {
+        return "Categories";
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView newCategoryPage() throws Exception {
         ModelAndView mav = new ModelAndView("category-new", "category", new Category());
@@ -31,7 +39,10 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView createNewCategory(@ModelAttribute Category category, final RedirectAttributes redirectAttributes) {
+    public ModelAndView createNewCategory(@Valid Category category, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("category-new");
+        }
         ModelAndView mav = new ModelAndView("redirect:/categories/list");
         categoryService.create(category);
         String message = "Category was successfully created.";
@@ -59,8 +70,11 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    public ModelAndView editCategory(@ModelAttribute Category category, @PathVariable Integer id, final RedirectAttributes redirectAttributes)
-            throws CategoryNotFound {
+    public ModelAndView editCategory(@Valid Category category, BindingResult bindingResult, @PathVariable Integer id,
+            final RedirectAttributes redirectAttributes) throws CategoryNotFound {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("category-edit");
+        }
         ModelAndView mav = new ModelAndView("redirect:/categories/list");
         String message = "Category was successfully updated.";
         categoryService.update(category);

@@ -7,12 +7,12 @@
       <tr>
         <td>Title:</td>
         <td><form:input path="title" /></td>
-        <td><form:errors path="title" cssStyle="color: red;" /></td>
+        <td><form:errors path="title" cssClass="text-danger" /></td>
       </tr>
       <tr>
         <td>Content:</td>
         <td><form:input path="content" /></td>
-        <td><form:errors path="content" cssStyle="color: red;" /></td>
+        <td><form:errors path="content" cssClass="text-danger" /></td>
       </tr>
       <tr>
         <td><input type="submit" value="Create" /></td>

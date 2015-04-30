@@ -11,14 +11,14 @@
           <label for="name" class="col-sm-2 control-label">Name</label>
           <div class="col-sm-10">
             <form:input path="name" class="form-control" />
-            <form:errors path="name" cssStyle="color: red;" />
+            <form:errors path="name" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
           <label for="description" class="col-sm-2 control-label">Description</label>
           <div class="col-sm-10">
             <form:input path="description" class="form-control" />
-            <form:errors path="description" cssStyle="color: red;" />
+            <form:errors path="description" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">

@@ -2,8 +2,11 @@ package com.wang.michael.online_shop.web.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,7 +44,10 @@ public class RoleController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
-    public ModelAndView createNewRole(@ModelAttribute Role role, final RedirectAttributes redirectAttributes) {
+    public ModelAndView createNewRole(@Valid Role role, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("role-new");
+        }
         ModelAndView mav = new ModelAndView("redirect:/roles/list");
         roleService.create(role);
         String message = "Role was successfully created.";
@@ -69,8 +75,11 @@ public class RoleController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    public ModelAndView editRole(@ModelAttribute Role role, @PathVariable Integer id, final RedirectAttributes redirectAttributes)
+    public ModelAndView editRole(@Valid Role role, BindingResult bindingResult, @PathVariable Integer id, final RedirectAttributes redirectAttributes)
             throws RoleNotFound {
+        if (bindingResult.hasErrors()) {
+            return new ModelAndView("role-edit");
+        }
         ModelAndView mav = new ModelAndView("redirect:/roles/list");
         String message = "Role was successfully updated.";
         roleService.update(role);
