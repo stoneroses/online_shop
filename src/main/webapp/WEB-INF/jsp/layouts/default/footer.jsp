@@ -8,5 +8,5 @@
   Hi, <shiro:principal/> <a href="${ctx}/logout" >LOGOUT</a>
 </shiro:user>
 <shiro:guest>
-  <a href="${ctx}/login.jsp" >LOGIN</a>
+  <a href="${ctx}/login" >LOGIN</a>
 </shiro:guest>
