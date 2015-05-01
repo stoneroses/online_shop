@@ -1,1 +1,1 @@
-<p class="bg-info">Unauthorized access!</p>
+<p class="bg-info message">Unauthorized access!</p>

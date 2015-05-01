@@ -1,1 +1,1 @@
-<p class="bg-info">Pigeons Lost!</p>
+<p class="bg-info message">Pigeons Lost!</p>
