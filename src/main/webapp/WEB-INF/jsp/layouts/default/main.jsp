@@ -31,7 +31,12 @@
           <tiles:insertAttribute name="menu" ignore="true" />
         </div>
         <div class="col-lg-8 col-lg-offset-1">
-          <tiles:insertAttribute name="body" />
+          <div class="row">
+            <tiles:insertAttribute name="message" />
+          </div>
+          <div class=row>
+            <tiles:insertAttribute name="body" />
+          </div>
         </div>
       </div>
     </div>
@@ -39,6 +44,6 @@
       <tiles:insertAttribute name="footer" />
     </div>
   </div>
-<script src="${ctx}/common/javascript/main.js"></script>
+  <script src="${ctx}/common/javascript/main.js"></script>
 </body>
 </html>
