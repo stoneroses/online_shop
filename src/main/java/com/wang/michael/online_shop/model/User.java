@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
@@ -32,7 +33,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "email")
+    @Column(name = "email", unique = true)
     private String email;
 
     @Column(length = 256)
@@ -42,6 +43,9 @@ public class User {
     @Column(name = "password")
     @JsonIgnore
     private String password;
+
+    @Transient
+    private String confirmPassword;
 
     @Column(length = 1024)
     @Size(min = 2, max = 1024)

@@ -77,6 +77,8 @@ public class UserServiceImpl implements UserService {
             throw new UserNotFound("No user found.");
         } else if (result.size() > 1) {
             throw new UserNotFound("More than one user found. Please contact admin.");
+        } else if (result.size() == 0) {
+            throw new UserNotFound("No user found.");
         } else {
             return result.get(0);
         }
@@ -84,5 +86,13 @@ public class UserServiceImpl implements UserService {
 
     private String getEncryptPassword(String password, String salt) {
         return new Sha256Hash(password, salt).toString();
+    }
+
+    @Override
+    @Transactional
+    public User savePassword(String email, String password) throws UserNotFound {
+        User user = getByEmail(email);
+        user.setPassword(getEncryptPassword(password, email));
+        return userRepository.save(user);
     }
 }

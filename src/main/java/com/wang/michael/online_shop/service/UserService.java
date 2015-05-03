@@ -18,4 +18,7 @@ public interface UserService {
     public User findById(Long id) throws UserNotFound;
 
     public User getByEmail(String email) throws UserNotFound;
+
+    public User savePassword(String email, String password) throws UserNotFound;
+
 }
