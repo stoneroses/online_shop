@@ -1,5 +1,6 @@
 package com.wang.michael.online_shop.web.controller;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -7,8 +8,6 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.NoHandlerFoundException;
-
-import com.google.common.base.Throwables;
 
 @ControllerAdvice
 public class ExceptionController {
@@ -26,9 +25,8 @@ public class ExceptionController {
     public ModelAndView exception(Exception exception, WebRequest request) {
         ModelAndView modelAndView = new ModelAndView("error/500");
         modelAndView.addObject("pageTitle", "Errors!");
-        modelAndView.addObject("errorMessage",
-                exception.getMessage() + " - " + Throwables.getRootCause(exception) + " - " + Throwables.getRootCause(exception).getMessage());
-        modelAndView.addObject("detailErrorMessage", Throwables.getStackTraceAsString(exception));
+        modelAndView.addObject("errorMessage", ExceptionUtils.getRootCause(exception) + " - " + ExceptionUtils.getRootCauseMessage(exception));
+        modelAndView.addObject("detailErrorMessage", ExceptionUtils.getStackTrace(exception));
         return modelAndView;
     }
 }

@@ -2,6 +2,7 @@ package com.wang.michael.online_shop.service.impl;
 
 import java.util.List;
 
+import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -22,6 +23,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public User create(User user) {
         User createdUser = user;
+        createdUser.setPassword(getEncryptPassword(user.getPassword(), user.getEmail()));
         createdUser.setCreatedDateTime(new DateTime());
         return userRepository.save(createdUser);
     }
@@ -78,5 +80,9 @@ public class UserServiceImpl implements UserService {
         } else {
             return result.get(0);
         }
+    }
+
+    private String getEncryptPassword(String password, String salt) {
+        return new Sha256Hash(password, salt).toString();
     }
 }

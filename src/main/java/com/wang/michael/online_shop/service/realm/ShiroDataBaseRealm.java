@@ -16,6 +16,7 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 
 import com.wang.michael.online_shop.exception.UserNotFound;
 import com.wang.michael.online_shop.model.Permission;
@@ -106,7 +107,8 @@ public class ShiroDataBaseRealm extends AuthorizingRealm {
         try {
             user = userService.getByEmail(token.getUsername());
             // 此处无需比对,比对的逻辑Shiro会做,我们只需返回一个和令牌相关的正确的验证信息
-            return new SimpleAuthenticationInfo(user.getEmail(), user.getPassword(), getName());
+            // return new SimpleAuthenticationInfo(user.getEmail(), user.getPassword(), ByteSource.Util.bytes(user.getEmail()), getName());
+            return new SimpleAuthenticationInfo(user.getEmail(), user.getPassword(), ByteSource.Util.bytes(user.getEmail()), getName());
         } catch (UserNotFound e) {
             // 没有返回登录用户名对应的SimpleAuthenticationInfo对象时,就会在LoginController中抛出UnknownAccountException异常
             return null;
