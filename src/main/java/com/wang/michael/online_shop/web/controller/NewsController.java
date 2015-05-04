@@ -45,7 +45,7 @@ public class NewsController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @RequiresPermissions("news_save")
-    public ModelAndView daveNews(@Valid News news, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
+    public ModelAndView saveNews(@Valid News news, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("news-edit");
         }

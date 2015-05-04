@@ -52,7 +52,7 @@ public class RoleController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @RequiresPermissions("role_save")
-    public ModelAndView daveRole(@Valid Role role, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
+    public ModelAndView saveRole(@Valid Role role, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("role-edit");
         }

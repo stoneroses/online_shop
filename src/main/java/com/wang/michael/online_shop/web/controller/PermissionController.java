@@ -57,7 +57,7 @@ public class PermissionController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @RequiresPermissions("permission_save")
-    public ModelAndView davePermission(@Valid Permission permission, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
+    public ModelAndView savePermission(@Valid Permission permission, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("permission-edit");
         }

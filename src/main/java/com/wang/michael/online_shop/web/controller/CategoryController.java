@@ -42,7 +42,7 @@ public class CategoryController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @RequiresPermissions("category_save")
-    public ModelAndView daveCategory(@Valid Category category, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
+    public ModelAndView saveCategory(@Valid Category category, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("category-edit");
         }
