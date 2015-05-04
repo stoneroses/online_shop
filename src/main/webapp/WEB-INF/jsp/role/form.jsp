@@ -6,7 +6,7 @@
   <div class="panel-body">
     <form:form method="POST" modelAttribute="role" action="${ctx}/roles/save" class="form-horizontal">
       <fieldset>
-        <form:hidden path="id"/>
+        <form:hidden path="id" />
         <legend>${formLegend}</legend>
         <div class="form-group">
           <label for="name" class="col-sm-2 control-label">Name</label>
@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-2 control-label"></div>
+          <label for="name" class="col-sm-2 control-label">Permissions</label>
           <div class="col-sm-10">
             <c:forEach var="permission" items="${allPermissions}" varStatus="row">
               <div class="checkbox">
@@ -33,6 +33,7 @@
               </div>
             </c:forEach>
           </div>
+          <form:errors path="permissions" cssClass="text-danger" />
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
