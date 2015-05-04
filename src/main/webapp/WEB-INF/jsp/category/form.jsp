@@ -30,4 +30,4 @@
     </form:form>
   </div>
 </div>
-<a href="${ctx}/categories">category list</a>
+<a href="${ctx}/categories" class="btn btn-default">Category List</a>
