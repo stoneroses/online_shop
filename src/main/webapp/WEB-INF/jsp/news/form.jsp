@@ -30,4 +30,4 @@
     </form:form>
   </div>
 </div>
-<a href="${ctx}/news">news list</a>
+<a href="${ctx}/news" class="btn btn-default">News List</a>
