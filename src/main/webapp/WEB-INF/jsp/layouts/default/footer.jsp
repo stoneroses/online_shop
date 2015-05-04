@@ -17,20 +17,26 @@
     </button>
     <ul class="dropdown-menu" role="menu">
       <shiro:hasPermission name="news_list">
-        <li><a href="${ctx}/news">News</a></li>
+        <li><a href="${ctx}/news">News Maintenance</a></li>
       </shiro:hasPermission>
       <shiro:hasPermission name="category_list">
-        <li><a href="${ctx}/categories">Category</a></li>
+        <li><a href="${ctx}/categories">Categorys Maintenance</a></li>
+      </shiro:hasPermission>
+      <shiro:hasPermission name="category_list">
+        <li><a href="${ctx}/products">Products Maintenance</a></li>
+      </shiro:hasPermission>
+      <shiro:hasPermission name="image_list">
+        <li><a href="${ctx}/images">Images Maintenance</a></li>
       </shiro:hasPermission>
       <li class="divider"></li>
       <shiro:hasPermission name="permission_list">
-        <li><a href="${ctx}/permissions">Permissions</a></li>
+        <li><a href="${ctx}/permissions">Permissions Maintenance</a></li>
       </shiro:hasPermission>
       <shiro:hasPermission name="role_list">
-        <li><a href="${ctx}/roles">Roles</a></li>
+        <li><a href="${ctx}/roles">Roles Maintenance</a></li>
       </shiro:hasPermission>
       <shiro:hasPermission name="user_list">
-        <li><a href="${ctx}/users">Users</a></li>
+        <li><a href="${ctx}/users">Users Maintenance</a></li>
       </shiro:hasPermission>
       <li class="divider"></li>
       <li><a href="${ctx}/users/profile">Profile</a></li>
