@@ -30,4 +30,4 @@
     </form:form>
   </div>
 </div>
-<a href="${ctx}/permissions">permission list</a>
+<a href="${ctx}/permissions"  class="btn btn-default">Permission List</a>

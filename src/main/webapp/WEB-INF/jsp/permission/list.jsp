@@ -15,14 +15,15 @@
       <tr>
         <td><a href="${ctx}/permissions/${permission.id}">${permission.name}</a></td>
         <td>${permission.description}</td>
-        <td><shiro:hasPermission name="permission:edit">
-            <a href="${ctx}/permissions/${permission.id}/edit">Edit</a>
-          </shiro:hasPermission>
-          <shiro:hasPermission name="permission:delete">
-            <a href="${ctx}/permissions/${permission.id}/delete">Delete</a>
+        <td><shiro:hasPermission name="permission_edit">
+            <a href="${ctx}/permissions/${permission.id}/edit" class="btn btn-default">Edit</a>
+          </shiro:hasPermission> <shiro:hasPermission name="permission_delete">
+            <a href="${ctx}/permissions/${permission.id}/delete" class="btn btn-default">Delete</a>
           </shiro:hasPermission></td>
       </tr>
     </c:forEach>
   </tbody>
 </table>
-<a href="${ctx}/permissions/create">create</a>
+<shiro:hasPermission name="permission_create">
+  <a href="${ctx}/permissions/create" class="btn btn-default">Create</a>
+</shiro:hasPermission>
