@@ -35,3 +35,10 @@ INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDat
 INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('category_view', 'view category', NOW(), NULL);
 INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('category_list', 'list category', NOW(), NULL);
 
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('image_create', 'create image', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('image_save', 'save image', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('image_edit', 'edit image', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('image_delete', 'delete image', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('image_view', 'view image', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('image_list', 'list image', NOW(), NULL);
+
