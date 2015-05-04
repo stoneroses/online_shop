@@ -18,7 +18,8 @@
         <div class="form-group">
           <label for="email" class="col-sm-2 control-label">Email</label>
           <div class="col-sm-10">
-            <input id="email" name="email" class="form-control" type="text" value="${user.email}" <c:if test="${not empty user.id}">readonly</c:if>>
+            <input id="email" name="email" class="form-control" type="text" value="${user.email}"
+              <c:if test="${not empty user.id}">readonly</c:if>>
             <form:errors path="email" cssClass="text-danger" />
           </div>
         </div>
@@ -30,15 +31,16 @@
           </div>
         </div>
         <div class="form-group">
-          <div class="col-sm-2 control-label"></div>
+          <label for="name" class="col-sm-2 control-label">Roles</label>
           <div class="col-sm-10">
-            <c:forEach var="permission" items="${allPermissions}" varStatus="row">
+            <c:forEach var="role" items="${allRoles}" varStatus="row">
               <div class="checkbox">
-                <label> <input name="permissions" type="checkbox" value="${permission.id}"
-                  <c:if test="${ cf:contains(user.permissions, permission)}">checked</c:if> /> ${permission.name}
+                <label> <input name="roles" type="checkbox" value="${role.id}"
+                  <c:if test="${ cf:contains(user.roles, role)}">checked</c:if> /> ${role.name}
                 </label>
               </div>
             </c:forEach>
+            <form:errors path="roles" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">

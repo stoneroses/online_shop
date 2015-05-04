@@ -55,7 +55,7 @@ public class User {
 
     @ManyToMany(cascade = { CascadeType.PERSIST })
     @JsonIgnore
-    @JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id", referencedColumnName = "id") }, inverseJoinColumns = { @JoinColumn(name = "role_id", referencedColumnName = "id") })
+    @JoinTable(name = "user_role", joinColumns = { @JoinColumn(name = "user_id", updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "role_id", updatable = false) })
     private Collection<Role> roles;
 
     @Column(name = "createdDateTime")
