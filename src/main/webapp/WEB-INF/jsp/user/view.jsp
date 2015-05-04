@@ -1,5 +1,5 @@
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
-<h1>View User page</h1>
+<h1>View User</h1>
 <p>${user.name}</p>
 <p>${user.description}</p>
 <shiro:hasPermission name="user_list">

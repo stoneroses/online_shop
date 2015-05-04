@@ -1,6 +1,6 @@
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
 
-<h1>View Category page</h1>
+<h1>View Category</h1>
 <p>${category.name}</p>
 <p>${category.description}</p>
 <a href="${ctx}/categories" class="btn btn-default">Category list</a>

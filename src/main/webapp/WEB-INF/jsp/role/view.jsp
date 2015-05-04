@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
 
-<h1>View Role page</h1>
+<h1>View Role</h1>
 <p>${role.name}</p>
 <p>${role.description}</p>
 <c:forEach var="permission" items="${role.permissions}">

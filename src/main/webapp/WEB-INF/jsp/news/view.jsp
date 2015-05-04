@@ -1,5 +1,5 @@
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
-<h1>View News page</h1>
+<h1>View News</h1>
 <p>${news.title}</p>
 <p>${news.content}</p>
 <a href="${ctx}/news" class="btn btn-default">News list</a>

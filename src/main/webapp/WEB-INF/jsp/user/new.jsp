@@ -1,6 +1,6 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<h1>New User page</h1>
+<h1>New User</h1>
 <form:form method="POST" commandName="user" action="${ctx}/users/create">
   <table>
     <tbody>

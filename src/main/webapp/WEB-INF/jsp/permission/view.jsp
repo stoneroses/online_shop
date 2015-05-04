@@ -1,5 +1,5 @@
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
-<h1>View Permission page</h1>
+<h1>View Permission</h1>
 <p>${permission.name}</p>
 <p>${permission.description}</p>
 <a href="${ctx}/permissions" class="btn btn-default">Permission list</a>
