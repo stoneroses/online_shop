@@ -19,8 +19,9 @@
         <td>${user.description}</td>
         <td><shiro:hasPermission name="user_edit">
             <a href="${ctx}/users/${user.id}/edit" class="btn btn-default">Edit</a>
-          </shiro:hasPermission>
-          <shiro:hasPermission name="user_delete">
+          </shiro:hasPermission> <shiro:hasPermission name="user_save">
+            <a href="${ctx}/users/${user.id}/change_password" class="btn btn-default">Change Password</a>
+          </shiro:hasPermission> <shiro:hasPermission name="user_delete">
             <a href="${ctx}/users/${user.id}/delete" class="btn btn-default">Delete</a>
           </shiro:hasPermission></td>
       </tr>

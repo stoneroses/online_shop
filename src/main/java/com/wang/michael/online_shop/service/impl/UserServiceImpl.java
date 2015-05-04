@@ -95,4 +95,27 @@ public class UserServiceImpl implements UserService {
         user.setPassword(getEncryptPassword(password, email));
         return userRepository.save(user);
     }
+
+    @Override
+    @Transactional(rollbackFor = UserNotFound.class)
+    public User save(User user) {
+        if (user.getId() != null) {
+            User oldUser = userRepository.findOne(user.getId());
+            user.setCreatedDateTime(oldUser.getCreatedDateTime());
+            user.setUpdatedDateTime(new DateTime());
+            user.setPassword(oldUser.getPassword());
+        } else {
+            user.setCreatedDateTime(new DateTime());
+            user.setPassword("password");
+        }
+        return userRepository.save(user);
+    }
+
+    @Override
+    @Transactional
+    public User savePassword(Long id, String password) throws UserNotFound {
+        User user = findById(id);
+        user.setPassword(getEncryptPassword(password, user.getEmail()));
+        return userRepository.save(user);
+    }
 }

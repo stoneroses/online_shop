@@ -42,9 +42,11 @@ public class User {
 
     @Column(name = "password")
     @JsonIgnore
+    @Size(min = 8, max = 256)
     private String password;
 
     @Transient
+    @Size(min = 8, max = 30)
     private String confirmPassword;
 
     @Column(length = 1024)

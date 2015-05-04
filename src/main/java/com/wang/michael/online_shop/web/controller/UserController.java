@@ -36,15 +36,15 @@ public class UserController {
         return mav;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST)
-    @RequiresPermissions("user_create")
-    public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequiresPermissions("user_save")
+    public ModelAndView saveUser(@Valid User user, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
-            return new ModelAndView("user-new");
+            return new ModelAndView("user-edit");
         }
         ModelAndView mav = new ModelAndView("redirect:/users/list");
-        userService.create(user);
-        String message = "User was successfully created.";
+        userService.save(user);
+        String message = "User was successfully saved.";
         redirectAttributes.addFlashAttribute("message", message);
         return mav;
     }
@@ -70,20 +70,6 @@ public class UserController {
         return mav;
     }
 
-    @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
-    @RequiresPermissions("user_save")
-    public ModelAndView editUser(@Valid User user, BindingResult bindingResult, @PathVariable Integer id, final RedirectAttributes redirectAttributes)
-            throws UserNotFound {
-        if (bindingResult.hasErrors()) {
-            return new ModelAndView("user-edit");
-        }
-        ModelAndView mav = new ModelAndView("redirect:/users/list");
-        String message = "User was successfully updated.";
-        userService.update(user);
-        redirectAttributes.addFlashAttribute("message", message);
-        return mav;
-    }
-
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     @RequiresPermissions("user_delete")
     public ModelAndView deleteUser(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws UserNotFound {
@@ -91,6 +77,29 @@ public class UserController {
         userService.delete(Long.valueOf(id));
         String message = "User was successfully deleted.";
         redirectAttributes.addFlashAttribute("message", message);
+        return mav;
+    }
+
+    @RequestMapping(value = "/{id}/change_password", method = RequestMethod.GET)
+    @RequiresPermissions("user_save")
+    public ModelAndView changePasswordByAdmin(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws UserNotFound {
+        ModelAndView mav = new ModelAndView("user-change-password");
+        User user = userService.findById(Long.valueOf(id));
+        mav.addObject("user", user);
+        mav.addObject("pageTitle", "Change Password");
+        return mav;
+    }
+
+    @RequestMapping(value = "/{id}/change_password", method = RequestMethod.POST)
+    @RequiresPermissions("user_save")
+    public ModelAndView savePasswordByAdmin(@RequestParam(value = "id", required = true) Integer id,
+            @RequestParam(value = "password", required = true) String password,
+            @RequestParam(value = "confirmPassword", required = true) String confirmPassword) throws UserNotFound {
+        ModelAndView mav = new ModelAndView("user-view");
+        User user = userService.savePassword(Long.valueOf(id), password);
+        mav.addObject("user", user);
+        mav.addObject("pageTitle", "Change Password");
+        mav.addObject("message", "Password updated successfully.");
         return mav;
     }
 

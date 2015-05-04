@@ -21,4 +21,8 @@ public interface UserService {
 
     public User savePassword(String email, String password) throws UserNotFound;
 
+    public User save(User user);
+
+    public User savePassword(Long id, String password) throws UserNotFound;
+
 }
