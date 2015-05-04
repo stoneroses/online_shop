@@ -14,7 +14,11 @@ http://www.springframework.org/schema/aop
 http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
   <aop:config proxy-target-class="true"></aop:config>
   <mvc:resources mapping="/common/**" location="/common/" />
-
+  <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+    <property name="location">
+      <value>classpath:application.properties</value>
+    </property>
+  </bean>
   <mvc:annotation-driven conversion-service="conversionService" />
   <bean id="conversionService" class="org.springframework.context.support.ConversionServiceFactoryBean">
     <property name="converters">
@@ -52,6 +56,13 @@ http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
       </list>
     </property>
     <property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory" />
+  </bean>
+
+  <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+    <!-- max upload size in bytes -->
+    <property name="maxUploadSize" value="20971520" /> <!-- 20MB -->
+    <!-- max size of file in memory (in bytes) -->
+    <property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
   </bean>
 
   <mvc:interceptors>

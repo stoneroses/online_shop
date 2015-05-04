@@ -55,12 +55,7 @@ public class ImageServiceImpl implements ImageService {
         } else {
             image.setCreatedDateTime(new DateTime());
         }
-        image.setLocation(getImageRealLocation(image));
         return imageRepository.save(image);
-    }
-
-    private String getImageRealLocation(Image image) {
-        return "/common/images/uploaded/";
     }
 
 }

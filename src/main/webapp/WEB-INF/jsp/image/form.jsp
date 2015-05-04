@@ -3,9 +3,10 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form:form method="POST" modelAttribute="image" action="${ctx}/images/save" class="form-horizontal">
+    <form:form method="POST" modelAttribute="image" action="${ctx}/images/save" class="form-horizontal"
+      enctype="multipart/form-data">
       <fieldset>
-        <form:hidden path="id"/>
+        <form:hidden path="id" />
         <legend>${formLegend}</legend>
         <div class="form-group">
           <label for="name" class="col-sm-2 control-label">Name</label>
@@ -19,6 +20,13 @@
           <div class="col-sm-10">
             <form:input path="description" class="form-control" />
             <form:errors path="description" cssClass="text-danger" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="file" class="col-sm-2 control-label">File to Upload</label>
+          <div class="col-sm-10">
+            <input type="file" name="file" />
+            <form:errors path="location" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
