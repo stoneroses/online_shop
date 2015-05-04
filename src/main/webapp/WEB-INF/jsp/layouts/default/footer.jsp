@@ -13,6 +13,13 @@
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
+      <li><a href="${ctx}/news">News</a></li>
+      <li><a href="${ctx}/categories">Category</a></li>
+      <li class="divider"></li>
+      <li><a href="${ctx}/permissions">Permissions</a></li>
+      <li><a href="${ctx}/roles">Roles</a></li>
+      <li><a href="${ctx}/users">Users</a></li>
+      <li class="divider"></li>
       <li><a href="${ctx}/users/profile">Profile</a></li>
       <li><a href="${ctx}/users/change_password">Change Password</a></li>
       <li class="divider"></li>
