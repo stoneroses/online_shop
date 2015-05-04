@@ -5,6 +5,7 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
@@ -36,6 +37,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.POST)
+    @RequiresPermissions("user_create")
     public ModelAndView createNewUser(@Valid User user, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("user-new");
@@ -48,6 +50,7 @@ public class UserController {
     }
 
     @RequestMapping(value = { "/list", "/", "" }, method = RequestMethod.GET)
+    @RequiresPermissions("user_list")
     public ModelAndView userListPage(Model model) {
         ModelAndView mav = new ModelAndView("user-index");
         List<User> userList = userService.findAll();
@@ -57,6 +60,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+    @RequiresPermissions("user_edit")
     public ModelAndView editUserPage(@PathVariable Integer id) throws UserNotFound {
         ModelAndView mav = new ModelAndView("user-edit");
         User user = null;
@@ -67,6 +71,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.POST)
+    @RequiresPermissions("user_save")
     public ModelAndView editUser(@Valid User user, BindingResult bindingResult, @PathVariable Integer id, final RedirectAttributes redirectAttributes)
             throws UserNotFound {
         if (bindingResult.hasErrors()) {
@@ -80,6 +85,7 @@ public class UserController {
     }
 
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
+    @RequiresPermissions("user_delete")
     public ModelAndView deleteUser(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws UserNotFound {
         ModelAndView mav = new ModelAndView("redirect:/users/list");
         userService.delete(Long.valueOf(id));

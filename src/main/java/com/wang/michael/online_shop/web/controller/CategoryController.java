@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,6 +33,7 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @RequiresPermissions("category_create")
     public ModelAndView newCategoryPage() throws Exception {
         ModelAndView mav = new ModelAndView("category-new", "category", new Category());
         mav.addObject("pageTitle", "Create Category");
@@ -39,6 +41,7 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequiresPermissions("category_save")
     public ModelAndView daveCategory(@Valid Category category, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("category-edit");
@@ -51,6 +54,7 @@ public class CategoryController {
     }
 
     @RequestMapping(value = { "/list", "/", "" }, method = RequestMethod.GET)
+    @RequiresPermissions("category_list")
     public ModelAndView categoryListPage(Model model) {
         ModelAndView mav = new ModelAndView("category-index");
         List<Category> categoryList = categoryService.findAll();
@@ -60,6 +64,7 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+    @RequiresPermissions("category_edit")
     public ModelAndView editCategoryPage(@PathVariable Integer id) throws CategoryNotFound {
         ModelAndView mav = new ModelAndView("category-edit");
         Category category = null;
@@ -70,6 +75,7 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
+    @RequiresPermissions("category_delete")
     public ModelAndView deleteCategory(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws CategoryNotFound {
         ModelAndView mav = new ModelAndView("redirect:/categories/list");
         categoryService.delete(Long.valueOf(id));

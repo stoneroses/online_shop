@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -42,6 +43,7 @@ public class RoleController {
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
+    @RequiresPermissions("role_create")
     public ModelAndView newRolePage() throws Exception {
         ModelAndView mav = new ModelAndView("role-new", "role", new Role());
         mav.addObject("pageTitle", "Create Role");
@@ -49,6 +51,7 @@ public class RoleController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
+    @RequiresPermissions("role_save")
     public ModelAndView daveRole(@Valid Role role, BindingResult bindingResult, final RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("role-edit");
@@ -61,6 +64,7 @@ public class RoleController {
     }
 
     @RequestMapping(value = { "/list", "/", "" }, method = RequestMethod.GET)
+    @RequiresPermissions("role_list")
     public ModelAndView roleListPage(Model model) {
         ModelAndView mav = new ModelAndView("role-index");
         List<Role> roleList = roleService.findAll();
@@ -70,6 +74,7 @@ public class RoleController {
     }
 
     @RequestMapping(value = "/{id}/edit", method = RequestMethod.GET)
+    @RequiresPermissions("role_edit")
     public ModelAndView editRolePage(@PathVariable Integer id) throws RoleNotFound {
         ModelAndView mav = new ModelAndView("role-edit");
         Role role = null;
@@ -80,6 +85,7 @@ public class RoleController {
     }
 
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
+    @RequiresPermissions("role_delete")
     public ModelAndView deleteRole(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws RoleNotFound {
         ModelAndView mav = new ModelAndView("redirect:/roles/list");
         roleService.delete(Long.valueOf(id));
