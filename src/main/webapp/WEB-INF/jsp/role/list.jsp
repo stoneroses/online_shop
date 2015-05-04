@@ -18,14 +18,14 @@
             <span class="label label-default">${permission.name}</span>
           </c:forEach></td>
         <td><shiro:hasPermission name="role_edit">
-            <a href="${ctx}/roles/${role.id}/edit">Edit</a>
+            <a href="${ctx}/roles/${role.id}/edit" class="btn btn-default">Edit</a>
           </shiro:hasPermission> <shiro:hasPermission name="role_delete">
-            <a href="${ctx}/roles/${role.id}/delete">Delete</a>
+            <a href="${ctx}/roles/${role.id}/delete" class="btn btn-default">Delete</a>
           </shiro:hasPermission></td>
       </tr>
     </c:forEach>
   </tbody>
 </table>
 <shiro:hasPermission name="role_create">
-  <a href="${ctx}/roles/create">create</a>
+  <a href="${ctx}/roles/create" class="btn btn-default">Create</a>
 </shiro:hasPermission>
