@@ -7,7 +7,7 @@ import com.wang.michael.online_shop.model.Image;
 
 public interface ImageService {
 
-    public Image delete(Long id) throws ImageNotFound;
+    public Image delete(Long id) throws Exception;
 
     public List<Image> findAll();
 

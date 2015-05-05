@@ -4,3 +4,4 @@
 .jsdtscope
 /.settings/*
 /.tern-project
+/src/main/webapp/common/upload/

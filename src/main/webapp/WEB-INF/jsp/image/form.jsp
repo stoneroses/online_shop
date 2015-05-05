@@ -25,7 +25,7 @@
         <div class="form-group">
           <label for="file" class="col-sm-2 control-label">File to Upload</label>
           <div class="col-sm-10">
-            <input type="file" name="file" />
+            <input type="file" name="file" <c:if test="${not empty image.location}">disabled</c:if>/>
             <form:errors path="location" cssClass="text-danger" />
           </div>
         </div>
@@ -34,6 +34,15 @@
             <button type="submit" class="btn btn-default">Save Image</button>
           </div>
         </div>
+        <c:if test="${not empty image.location}">
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <a href="${ctx}${fileURIRoot}${image.location}" target="_blank"> <img
+                src="${ctx}${fileURIRoot}${image.location}" class="img-thumbnail" />
+              </a>
+            </div>
+          </div>
+        </c:if>
       </fieldset>
     </form:form>
   </div>

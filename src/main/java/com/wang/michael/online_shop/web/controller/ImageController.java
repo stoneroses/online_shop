@@ -61,31 +61,33 @@ public class ImageController extends BaseController {
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     @RequiresPermissions("image_save")
-    public ModelAndView saveImage(@Valid Image image, BindingResult bindingResult, @RequestParam("file") MultipartFile file,
-            final RedirectAttributes redirectAttributes) throws ImageUploadException {
+    public ModelAndView saveImage(@Valid Image image, BindingResult bindingResult,
+            @RequestParam(value = "file", required = false) MultipartFile file, final RedirectAttributes redirectAttributes)
+            throws ImageUploadException {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("image-edit");
         }
-
-        String storedFileName = generateStoredFileName(file.getOriginalFilename());
-        String realFilePath = generateRealFilePath(storedFileName);
         String message = null;
-        if (!file.isEmpty()) {
-            try {
-                byte[] bytes = file.getBytes();
-                File fileObject = new File(realFilePath);
-                fileObject.getParentFile().mkdirs();
-                BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fileObject));
-                stream.write(bytes);
-                stream.close();
-                message = "You successfully uploaded " + storedFileName + "!";
-            } catch (Exception e) {
-                throw new ImageUploadException("You failed to upload " + storedFileName + " => " + e.getMessage(), e);
+        String storedFileName = "/common/upload/";
+        if (file != null) {
+            storedFileName = generateStoredFileName(file.getOriginalFilename());
+            String realFilePath = generateRealFilePath(storedFileName);
+            if (!file.isEmpty()) {
+                try {
+                    byte[] bytes = file.getBytes();
+                    File fileObject = new File(realFilePath);
+                    fileObject.getParentFile().mkdirs();
+                    BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fileObject));
+                    stream.write(bytes);
+                    stream.close();
+                    message = "You successfully uploaded " + storedFileName + "!";
+                } catch (Exception e) {
+                    throw new ImageUploadException("You failed to upload " + storedFileName + " => " + e.getMessage(), e);
+                }
+            } else {
+                throw new ImageUploadException("You failed to upload " + storedFileName + " because the file was empty.");
             }
-        } else {
-            throw new ImageUploadException("You failed to upload " + storedFileName + " because the file was empty.");
         }
-
         ModelAndView mav = new ModelAndView("redirect:/images/list");
         image.setLocation(storedFileName);
         imageService.save(image);
@@ -142,7 +144,7 @@ public class ImageController extends BaseController {
 
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     @RequiresPermissions("image_delete")
-    public ModelAndView deleteImage(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws ImageNotFound {
+    public ModelAndView deleteImage(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws Exception {
         ModelAndView mav = new ModelAndView("redirect:/images/list");
         imageService.delete(Long.valueOf(id));
         String message = "Image was successfully deleted.";

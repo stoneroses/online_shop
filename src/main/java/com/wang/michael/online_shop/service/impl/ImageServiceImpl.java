@@ -1,9 +1,11 @@
 package com.wang.michael.online_shop.service.impl;
 
+import java.io.File;
 import java.util.List;
 
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,14 +20,25 @@ public class ImageServiceImpl implements ImageService {
     @Autowired
     private ImageRepository imageRepository;
 
+    @Value("${file.upload.root}")
+    private String fileUploadRoot;
+
     @Override
-    @Transactional(rollbackFor = ImageNotFound.class)
-    public Image delete(Long id) throws ImageNotFound {
+    @Transactional(rollbackFor = Exception.class)
+    public Image delete(Long id) throws Exception {
         Image deletedImage = imageRepository.findOne(id);
         if (deletedImage == null) {
             throw new ImageNotFound();
         }
         imageRepository.delete(deletedImage);
+        File imageFile = new File(this.fileUploadRoot + deletedImage.getLocation());
+        try {
+            if (!imageFile.delete()) {
+                throw new Exception("Failed to delete image file: " + deletedImage.getLocation());
+            }
+        } catch (Exception e) {
+            throw e;
+        }
         return deletedImage;
     }
 
@@ -52,6 +65,7 @@ public class ImageServiceImpl implements ImageService {
             Image oldImage = imageRepository.findOne(image.getId());
             image.setCreatedDateTime(oldImage.getCreatedDateTime());
             image.setUpdatedDateTime(new DateTime());
+            image.setLocation(oldImage.getLocation());
         } else {
             image.setCreatedDateTime(new DateTime());
         }

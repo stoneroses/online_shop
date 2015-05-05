@@ -3,7 +3,9 @@
 <h1>View Image</h1>
 <p>${image.name}</p>
 <p>${image.description}</p>
-<img src="${ctx}${fileURIRoot}${image.location}"/>
+<a href="${ctx}${fileURIRoot}${image.location}" target="_blank"> <img src="${ctx}${fileURIRoot}${image.location}"
+  class="img-thumbnail" />
+</a>
 <a href="${ctx}/images" class="btn btn-default">Image list</a>
 <shiro:hasPermission name="image_edit">
   <a href="${ctx}/images/${image.id}/edit" class="btn btn-default">Edit</a>
