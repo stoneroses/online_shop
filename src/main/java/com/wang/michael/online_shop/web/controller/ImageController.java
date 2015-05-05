@@ -68,9 +68,8 @@ public class ImageController extends BaseController {
             return new ModelAndView("image-edit");
         }
         String message = null;
-        String storedFileName = "/common/upload/";
         if (file != null) {
-            storedFileName = generateStoredFileName(file.getOriginalFilename());
+            String storedFileName = generateStoredFileName(file.getOriginalFilename());
             String realFilePath = generateRealFilePath(storedFileName);
             if (!file.isEmpty()) {
                 try {
@@ -81,6 +80,7 @@ public class ImageController extends BaseController {
                     stream.write(bytes);
                     stream.close();
                     message = "You successfully uploaded " + storedFileName + "!";
+                    image.setLocation(storedFileName);
                 } catch (Exception e) {
                     throw new ImageUploadException("You failed to upload " + storedFileName + " => " + e.getMessage(), e);
                 }
@@ -89,7 +89,6 @@ public class ImageController extends BaseController {
             }
         }
         ModelAndView mav = new ModelAndView("redirect:/images/list");
-        image.setLocation(storedFileName);
         imageService.save(image);
         redirectAttributes.addFlashAttribute("message", message);
         return mav;

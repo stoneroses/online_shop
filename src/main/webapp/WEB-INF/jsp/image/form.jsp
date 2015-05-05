@@ -40,6 +40,7 @@
               <a href="${ctx}${fileURIRoot}${image.location}" target="_blank"> <img
                 src="${ctx}${fileURIRoot}${image.location}" class="img-thumbnail" />
               </a>
+              <form:hidden path="location"/>
             </div>
           </div>
         </c:if>
