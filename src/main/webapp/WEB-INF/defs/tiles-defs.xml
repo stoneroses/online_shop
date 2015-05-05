@@ -138,4 +138,20 @@
     <put-attribute name="body" value="/WEB-INF/jsp/image/view.jsp" />
   </definition>
 
+  <definition name="link-index" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/link/list.jsp" />
+  </definition>
+
+  <definition name="link-new" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/link/new.jsp" />
+  </definition>
+
+  <definition name="link-edit" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/link/edit.jsp" />
+  </definition>
+
+  <definition name="link-view" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/link/view.jsp" />
+  </definition>
+
 </tiles-definitions>

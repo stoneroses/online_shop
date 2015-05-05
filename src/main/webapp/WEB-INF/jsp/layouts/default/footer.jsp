@@ -28,6 +28,9 @@
       <shiro:hasPermission name="image_list">
         <li><a href="${ctx}/images">Images Maintenance</a></li>
       </shiro:hasPermission>
+      <shiro:hasPermission name="link_list">
+        <li><a href="${ctx}/links">Link Maintenance</a></li>
+      </shiro:hasPermission>
       <li class="divider"></li>
       <shiro:hasPermission name="permission_list">
         <li><a href="${ctx}/permissions">Permissions Maintenance</a></li>
