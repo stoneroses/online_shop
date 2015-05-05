@@ -14,33 +14,34 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import com.wang.michael.online_shop.model.ProductDetails;
 
 @Controller
-public class ProductController {
-  @Autowired
-  ProductDetails productDetails;
+public class ProductController extends BaseController {
 
-  @RequestMapping(value = "/products", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
-  @ResponseStatus(HttpStatus.OK)
-  public @ResponseBody List<ProductDetails> getProducts() {
-    List<ProductDetails> productsList = new ArrayList<ProductDetails>();
-    ProductDetails productDetails1 = new ProductDetails();
-    productDetails1.setProductName("test product name 1");
-    productDetails1.setId(1);
-    ProductDetails productDetails2 = new ProductDetails();
-    productDetails2.setProductName("test product name 2");
-    productDetails2.setId(2);
+    @Autowired
+    ProductDetails productDetails;
 
-    productsList.add(productDetails1);
-    productsList.add(productDetails2);
-    return productsList;
-  }
+    @RequestMapping(value = "/products", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody List<ProductDetails> getProducts() {
+        List<ProductDetails> productsList = new ArrayList<ProductDetails>();
+        ProductDetails productDetails1 = new ProductDetails();
+        productDetails1.setProductName("test product name 1");
+        productDetails1.setId(1);
+        ProductDetails productDetails2 = new ProductDetails();
+        productDetails2.setProductName("test product name 2");
+        productDetails2.setId(2);
 
-  @RequestMapping(value = "/products/1", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
-  @ResponseStatus(HttpStatus.OK)
-  public @ResponseBody ProductDetails getProduct() {
-    ProductDetails productDetails1 = new ProductDetails();
-    productDetails1.setProductName("test product name 1");
-    productDetails1.setId(1);
+        productsList.add(productDetails1);
+        productsList.add(productDetails2);
+        return productsList;
+    }
 
-    return productDetails1;
-  }
+    @RequestMapping(value = "/products/1", method = RequestMethod.GET, produces = { "application/xml", "application/json" })
+    @ResponseStatus(HttpStatus.OK)
+    public @ResponseBody ProductDetails getProduct() {
+        ProductDetails productDetails1 = new ProductDetails();
+        productDetails1.setProductName("test product name 1");
+        productDetails1.setId(1);
+
+        return productDetails1;
+    }
 }

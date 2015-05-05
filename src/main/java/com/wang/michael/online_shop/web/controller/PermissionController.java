@@ -21,7 +21,7 @@ import com.wang.michael.online_shop.service.PermissionService;
 
 @RestController
 @RequestMapping(value = "/permissions")
-public class PermissionController {
+public class PermissionController extends BaseController {
 
     @Autowired
     private PermissionService permissionService;

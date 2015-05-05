@@ -30,7 +30,7 @@ import com.wang.michael.online_shop.service.ImageService;
 
 @RestController
 @RequestMapping(value = "/images")
-public class ImageController {
+public class ImageController extends BaseController {
 
     @Autowired
     private ImageService imageService;

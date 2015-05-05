@@ -22,7 +22,7 @@ import com.wang.michael.online_shop.service.CategoryService;
 
 @RestController
 @RequestMapping(value = "/categories")
-public class CategoryController {
+public class CategoryController extends BaseController {
 
     @Autowired
     private CategoryService categoryService;

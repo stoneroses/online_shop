@@ -21,7 +21,7 @@ import com.wang.michael.online_shop.service.NewsService;
 
 @RestController
 @RequestMapping(value = "/news")
-public class NewsController {
+public class NewsController extends BaseController {
 
     @Autowired
     private NewsService newsService;

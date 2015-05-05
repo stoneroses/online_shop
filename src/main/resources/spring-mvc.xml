@@ -65,7 +65,4 @@ http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
     <property name="maxInMemorySize" value="1048576" /> <!-- 1MB -->
   </bean>
 
-  <mvc:interceptors>
-    <bean id="categoryListLoader" class="com.wang.michael.online_shop.web.interceptor.CategoryListLoaderInterceptor" />
-  </mvc:interceptors>
 </beans>

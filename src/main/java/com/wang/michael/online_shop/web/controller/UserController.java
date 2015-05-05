@@ -27,7 +27,7 @@ import com.wang.michael.online_shop.service.UserService;
 
 @RestController
 @RequestMapping(value = "/users")
-public class UserController {
+public class UserController extends BaseController {
 
     @Autowired
     private UserService userService;

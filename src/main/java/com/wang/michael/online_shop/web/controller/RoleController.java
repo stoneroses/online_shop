@@ -24,7 +24,7 @@ import com.wang.michael.online_shop.service.RoleService;
 
 @RestController
 @RequestMapping(value = "/roles")
-public class RoleController {
+public class RoleController extends BaseController {
 
     @Autowired
     private RoleService roleService;

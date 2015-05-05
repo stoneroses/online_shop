@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.wang.michael.online_shop.model.User;
 
 @Controller
-public class LoginController {
+public class LoginController extends BaseController {
 
     @ModelAttribute("pageTitle")
     public String defaultPageTitle() {
