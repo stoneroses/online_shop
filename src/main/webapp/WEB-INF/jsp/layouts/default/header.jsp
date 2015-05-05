@@ -1,3 +1,5 @@
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
@@ -22,13 +24,9 @@
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
           aria-expanded="false">Links<span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Action</a></li>
-            <li><a href="#">Another action</a></li>
-            <li><a href="#">Something else here</a></li>
-            <li class="divider"></li>
-            <li class="dropdown-header">Nav header</li>
-            <li><a href="#">Separated link</a></li>
-            <li><a href="#">One more separated link</a></li>
+            <c:forEach var="link" items="${linkList}">
+              <li><a href="${link.url}" class="list-group-item" <c:if test="${link.newWindow}"> target="_blank" </c:if> >${link.name}</a></li>
+            </c:forEach>
           </ul></li>
       </ul>
     </div>
