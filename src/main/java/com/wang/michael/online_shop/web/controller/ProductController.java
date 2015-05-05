@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,6 +27,14 @@ public class ProductController extends BaseController {
 
     @Autowired
     private ProductService productService;
+
+    @Value("${file.uri.root}")
+    private String fileURIRoot;
+
+    @ModelAttribute("fileURIRoot")
+    public String defaultFileURIRoot() {
+        return fileURIRoot;
+    }
 
     @ModelAttribute("pageTitle")
     public String defaultPageTitle() {

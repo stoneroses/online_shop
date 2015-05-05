@@ -1,3 +1,13 @@
+<script>
+  $(function() {
+    $("#imagesThumbnail").sortable();
+    $("#imagesThumbnail").disableSelection();
+    $("span[id*=removeImageButton]").click(function() {
+      $(this).parent().remove();
+    });
+  });
+</script>
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
@@ -5,7 +15,7 @@
   <div class="panel-body">
     <form:form method="POST" modelAttribute="product" action="${ctx}/products/save" class="form-horizontal">
       <fieldset>
-        <form:hidden path="id"/>
+        <form:hidden path="id" />
         <legend>${formLegend}</legend>
         <div class="form-group">
           <label for="name" class="col-sm-2 control-label">Name</label>
@@ -54,6 +64,33 @@
           <div class="col-sm-10">
             <form:textarea path="description" class="form-control" />
             <form:errors path="description" cssClass="text-danger" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="images" class="col-sm-2 control-label">Images Selector</label>
+          <div class="col-sm-10">
+            <input name="imagesInput" class="form-control" placeholder="Enter image name"/>
+            <form:errors path="images" cssClass="text-danger" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="imagesThumbnail" class="col-sm-12">Images Thumbnail</label>
+          <div class="col-sm-12">
+            <div id="imagesThumbnail" class="row">
+
+              <c:forEach var="image" items="${product.images}" varStatus="row">
+
+                <div class="col-xs-6 col-md-3">
+                  <span id="removeImageButton-${image.id}" class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> <input
+                    type="hidden" name="images" value="${image.id}" /> <a href="${ctx}${fileURIRoot}${image.location}"
+                    target="_blank" class="thumbnail"> <img src="${ctx}${fileURIRoot}${image.location}"
+                    alt="${image.name}">
+                  </a>
+                </div>
+
+              </c:forEach>
+
+            </div>
           </div>
         </div>
         <div class="form-group">

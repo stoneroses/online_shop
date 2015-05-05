@@ -1,10 +1,17 @@
 package com.wang.michael.online_shop.model;
 
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
@@ -45,6 +52,10 @@ public class Product {
     @Column(length = 1024)
     @Size(min = 2, max = 1024)
     private String description;
+
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE }, fetch = FetchType.LAZY)
+    @JoinTable(name = "product_image", joinColumns = { @JoinColumn(name = "product_id", updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "image_id", updatable = false) })
+    private Collection<Image> images;
 
     @Column(name = "createdDateTime")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")

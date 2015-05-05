@@ -28,6 +28,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
       <set>
         <bean class="com.wang.michael.online_shop.web.converter.StringToPermissionConverter" />
         <bean class="com.wang.michael.online_shop.web.converter.StringToRoleConverter" />
+        <bean class="com.wang.michael.online_shop.web.converter.StringToImageConverter" />
       </set>
     </property>
   </bean>
