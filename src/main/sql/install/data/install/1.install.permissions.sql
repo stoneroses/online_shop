@@ -42,3 +42,9 @@ INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDat
 INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('image_view', 'view image', NOW(), NULL);
 INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('image_list', 'list image', NOW(), NULL);
 
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('link_create', 'create link', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('link_save', 'save link', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('link_edit', 'edit link', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('link_delete', 'delete link', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('link_view', 'view link', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('link_list', 'list link', NOW(), NULL);
