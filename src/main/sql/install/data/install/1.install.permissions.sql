@@ -48,3 +48,10 @@ INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDat
 INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('link_delete', 'delete link', NOW(), NULL);
 INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('link_view', 'view link', NOW(), NULL);
 INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('link_list', 'list link', NOW(), NULL);
+
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('product_create', 'create product', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('product_save', 'save product', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('product_edit', 'edit product', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('product_delete', 'delete product', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('product_view', 'view product', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('product_list', 'list product', NOW(), NULL);

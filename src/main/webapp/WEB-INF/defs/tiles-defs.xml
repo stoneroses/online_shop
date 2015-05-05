@@ -154,4 +154,20 @@
     <put-attribute name="body" value="/WEB-INF/jsp/link/view.jsp" />
   </definition>
 
+  <definition name="product-index" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/product/list.jsp" />
+  </definition>
+
+  <definition name="product-new" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/product/new.jsp" />
+  </definition>
+
+  <definition name="product-edit" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/product/edit.jsp" />
+  </definition>
+
+  <definition name="product-view" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/product/view.jsp" />
+  </definition>
+
 </tiles-definitions>
