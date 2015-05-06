@@ -26,6 +26,10 @@
         <li><a href="${ctx}/categories">Categories Maintenance</a></li>
       </shiro:hasPermission>
       <li class="divider"></li>
+      <shiro:hasPermission name="setting_list">
+        <li><a href="${ctx}/settings">Settings Maintenance</a></li>
+      </shiro:hasPermission>
+      <li class="divider"></li>
       <shiro:hasPermission name="news_list">
         <li><a href="${ctx}/news">News Maintenance</a></li>
       </shiro:hasPermission>

@@ -170,4 +170,20 @@
     <put-attribute name="body" value="/WEB-INF/jsp/product/view.jsp" />
   </definition>
 
+  <definition name="setting-index" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/setting/list.jsp" />
+  </definition>
+
+  <definition name="setting-new" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/setting/new.jsp" />
+  </definition>
+
+  <definition name="setting-edit" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/setting/edit.jsp" />
+  </definition>
+
+  <definition name="setting-view" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/setting/view.jsp" />
+  </definition>
+
 </tiles-definitions>
