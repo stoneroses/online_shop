@@ -43,7 +43,7 @@ public class Permission implements Serializable {
     @Size(min = 2, max = 1024)
     private String description;
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "permissions")
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE }, fetch = FetchType.LAZY, mappedBy = "permissions")
     private Collection<Role> roles;
 
     @Column(name = "createdDateTime")
