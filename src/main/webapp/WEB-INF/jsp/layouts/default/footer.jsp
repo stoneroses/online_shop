@@ -16,17 +16,18 @@
       <span class="caret"></span>
     </button>
     <ul class="dropdown-menu" role="menu">
-      <shiro:hasPermission name="news_list">
-        <li><a href="${ctx}/news">News Maintenance</a></li>
-      </shiro:hasPermission>
-      <shiro:hasPermission name="category_list">
-        <li><a href="${ctx}/categories">Categorys Maintenance</a></li>
-      </shiro:hasPermission>
-      <shiro:hasPermission name="category_list">
-        <li><a href="${ctx}/products">Products Maintenance</a></li>
-      </shiro:hasPermission>
       <shiro:hasPermission name="image_list">
         <li><a href="${ctx}/images">Images Maintenance</a></li>
+      </shiro:hasPermission>
+      <shiro:hasPermission name="product_list">
+        <li><a href="${ctx}/products">Products Maintenance</a></li>
+      </shiro:hasPermission>
+      <shiro:hasPermission name="category_list">
+        <li><a href="${ctx}/categories">Categories Maintenance</a></li>
+      </shiro:hasPermission>
+      <li class="divider"></li>
+      <shiro:hasPermission name="news_list">
+        <li><a href="${ctx}/news">News Maintenance</a></li>
       </shiro:hasPermission>
       <shiro:hasPermission name="link_list">
         <li><a href="${ctx}/links">Link Maintenance</a></li>
