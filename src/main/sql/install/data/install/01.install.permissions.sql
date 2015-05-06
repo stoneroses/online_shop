@@ -56,9 +56,9 @@ INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDat
 INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('product_view', 'view product', NOW(), NULL);
 INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('product_list', 'list product', NOW(), NULL);
 
-INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('setting_create', 'create setting', NOW(), NULL);
-INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('setting_save', 'save setting', NOW(), NULL);
-INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('setting_edit', 'edit setting', NOW(), NULL);
-INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('setting_delete', 'delete setting', NOW(), NULL);
-INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('setting_view', 'view setting', NOW(), NULL);
-INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('setting_list', 'list setting', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('contact_us_message_create', 'create contact_us_message', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('contact_us_message_save', 'save contact_us_message', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('contact_us_message_edit', 'edit contact_us_message', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('contact_us_message_delete', 'delete contact_us_message', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('contact_us_message_view', 'view contact_us_message', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('contact_us_message_list', 'list contact_us_message', NOW(), NULL);

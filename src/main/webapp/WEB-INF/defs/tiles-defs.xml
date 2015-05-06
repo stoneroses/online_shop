@@ -186,4 +186,19 @@
     <put-attribute name="body" value="/WEB-INF/jsp/setting/view.jsp" />
   </definition>
 
+  <definition name="contact_us_message-index" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/contact_us_message/list.jsp" />
+  </definition>
+
+  <definition name="contact_us_message-new" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/contact_us_message/new.jsp" />
+  </definition>
+
+  <definition name="contact_us_message-edit" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/contact_us_message/edit.jsp" />
+  </definition>
+
+  <definition name="contact_us_message-view" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/contact_us_message/view.jsp" />
+  </definition>
 </tiles-definitions>
