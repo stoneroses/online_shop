@@ -20,7 +20,7 @@ public class BaseController {
 
     @ModelAttribute("categoryList")
     public List<Category> getCategoryList() {
-        return this.categoryService.findAll();
+        return this.categoryService.findAllTopCategory();
     }
 
     @ModelAttribute("linkList")
