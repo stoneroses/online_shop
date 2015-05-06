@@ -1,10 +1,42 @@
 <script>
   $(function() {
+
     $("#imagesThumbnail").sortable();
+
     $("#imagesThumbnail").disableSelection();
+
     $("span[id*=removeImageButton]").click(function() {
       $(this).parent().remove();
     });
+
+    $("#imagesInput").autocomplete({
+      source : "${ctx}/images/search",
+      paramName : "imageName",
+      minLength : 2,
+      select : function(event, ui) {
+        $("#imagesThumbnail").append(createImageThumbnailDiv(ui.item))
+      }
+    }).autocomplete("instance")._renderItem = function(ul, item) {
+      return $("<li>").append("<a>" + item.name + "<br>" + item.location + "</a>").appendTo(ul);
+    };
+
+    function createImageThumbnailDiv(item) {
+      d = document.createElement('div');
+      $(d).addClass("col-xs-6 col-md-3");
+      s1 = document.createElement('span');
+      $(s1).append(item.name).appendTo($(d));
+      s2 = document.createElement('span');
+      $(s2).prop("id", "removeImageButton-" + item.id).addClass("glyphicon glyphicon-remove-circle").prop("aria-hidden",
+          "true").appendTo($(d));
+      i = document.createElement('input');
+      $(i).prop("type", "hidden").prop("name", "images").prop("value", item.id).appendTo($(d));
+      a = document.createElement('a');
+      $(a).prop("href", "${ctx}${fileURIRoot}" + item.location).prop("target", "_blank").addClass("thumbnail")
+          .appendTo($(d));
+      image = document.createElement('img');
+      $(image).prop("src", "${ctx}${fileURIRoot}" + item.location).prop("alt", item.name).appendTo($(a));
+      return d;
+    }
   });
 </script>
 
@@ -69,7 +101,7 @@
         <div class="form-group">
           <label for="images" class="col-sm-2 control-label">Images Selector</label>
           <div class="col-sm-10">
-            <input name="imagesInput" class="form-control" placeholder="Enter image name"/>
+            <input id="imagesInput" name="imagesInput" class="form-control" placeholder="Enter image name" />
             <form:errors path="images" cssClass="text-danger" />
           </div>
         </div>
@@ -81,10 +113,10 @@
               <c:forEach var="image" items="${product.images}" varStatus="row">
 
                 <div class="col-xs-6 col-md-3">
-                  <span id="removeImageButton-${image.id}" class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> <input
-                    type="hidden" name="images" value="${image.id}" /> <a href="${ctx}${fileURIRoot}${image.location}"
-                    target="_blank" class="thumbnail"> <img src="${ctx}${fileURIRoot}${image.location}"
-                    alt="${image.name}">
+                  <span>${image.name}</span><span id="removeImageButton-${image.id}" class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                  <input type="hidden" name="images" value="${image.id}" /> <a
+                    href="${ctx}${fileURIRoot}${image.location}" target="_blank" class="thumbnail"> <img
+                    src="${ctx}${fileURIRoot}${image.location}" alt="${image.name}">
                   </a>
                 </div>
 

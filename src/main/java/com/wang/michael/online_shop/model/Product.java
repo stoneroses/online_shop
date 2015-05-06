@@ -16,13 +16,17 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
+import lombok.ToString;
 
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "products")
 @Data
+@ToString(exclude = { "images" })
 public class Product {
 
     @Id
@@ -53,14 +57,17 @@ public class Product {
     @Size(min = 2, max = 1024)
     private String description;
 
+    @JsonIgnore
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE }, fetch = FetchType.LAZY)
     @JoinTable(name = "product_image", joinColumns = { @JoinColumn(name = "product_id", updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "image_id", updatable = false) })
     private Collection<Image> images;
 
+    @JsonIgnore
     @Column(name = "createdDateTime")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime createdDateTime;
 
+    @JsonIgnore
     @Column(name = "updatedDateTime")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime updatedDateTime;

@@ -14,4 +14,6 @@ public interface ImageService {
     public Image findById(Long id) throws ImageNotFound;
 
     public Image save(Image image);
+
+    public List<Image> findByName(String imageName);
 }

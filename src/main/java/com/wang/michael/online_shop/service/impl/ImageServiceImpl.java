@@ -72,4 +72,9 @@ public class ImageServiceImpl implements ImageService {
         return imageRepository.save(image);
     }
 
+    @Override
+    public List<Image> findByName(String imageName) {
+        return imageRepository.findByName(imageName.toLowerCase());
+    }
+
 }
