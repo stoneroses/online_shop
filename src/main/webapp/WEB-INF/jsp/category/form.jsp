@@ -66,7 +66,7 @@
     <form:form method="POST" modelAttribute="category" action="${ctx}/categories/save" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
-        <legend>${formLegend}</legend>
+        <legend><spring:message code="${formLegend}" /></legend>
         <div class="form-group">
           <label for="name" class="col-sm-2 control-label"><spring:message code="category.name" /></label>
           <div class="col-sm-10">
@@ -96,7 +96,7 @@
                   <tr>
                     <th><spring:message code="category.name" /></th>
                     <th><spring:message code="category.description" /></th>
-                    <th><spring:message code="page.list.table.head.actions" /></th>
+                    <th><spring:message code="admin.page.list.actions" /></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -114,7 +114,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="products" class="col-sm-2 control-label">Products Selector</label>
+          <label for="products" class="col-sm-2 control-label"><spring:message code="product.selector" /></label>
           <div class="col-sm-10">
             <input id="productsInput" name="productsInput" class="form-control" placeholder="Enter product name" />
             <form:errors path="products" cssClass="text-danger" />
@@ -128,7 +128,7 @@
                   <tr>
                     <th><spring:message code="product.name" /></th>
                     <th><spring:message code="product.description" /></th>
-                    <th><spring:message code="page.list.table.head.actions" /></th>
+                    <th><spring:message code="admin.page.list.actions" /></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -148,7 +148,7 @@
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
             <button type="submit" class="btn btn-default">
-              <spring:message code="actions.save" />
+              <spring:message code="admin.actions.save" />
             </button>
           </div>
         </div>
