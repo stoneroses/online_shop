@@ -5,10 +5,10 @@
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
-      <th width="150px">Name</th>
-      <th width="25px">Email</th>
-      <th width="25px">Description</th>
-      <th width="50px">Actions</th>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Description</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>

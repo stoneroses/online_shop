@@ -5,9 +5,9 @@
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
-      <th width="150px">Name</th>
-      <th width="150px">Permission</th>
-      <th width="50px">Actions</th>
+      <th>Name</th>
+      <th>Permission</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>

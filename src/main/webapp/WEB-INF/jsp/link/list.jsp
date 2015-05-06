@@ -5,10 +5,10 @@
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
-      <th width="150px">Name</th>
-      <th width="25px">URL</th>
-      <th width="25px">Open In New Window</th>
-      <th width="50px">Actions</th>
+      <th>Name</th>
+      <th>URL</th>
+      <th>Open In New Window</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>

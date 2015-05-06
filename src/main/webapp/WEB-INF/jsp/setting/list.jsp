@@ -5,9 +5,9 @@
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
-      <th width="150px">Key</th>
-      <th width="25px">Value</th>
-      <th width="50px">Actions</th>
+      <th>Key</th>
+      <th>Value</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
