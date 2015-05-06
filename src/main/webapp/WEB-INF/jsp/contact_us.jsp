@@ -1,1 +1,1 @@
-<p>contact us page</p>
+<p>${contactUs}</p>
