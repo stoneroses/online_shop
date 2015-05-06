@@ -1,9 +1,10 @@
+<%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form:form method="POST" modelAttribute="contactUsMessage" action="${ctx}/contact_us_messages/save" class="form-horizontal">
+    <form:form method="POST" modelAttribute="contactUsMessage" action="${formAction}" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
         <legend>${formLegend}</legend>
@@ -30,4 +31,6 @@
     </form:form>
   </div>
 </div>
+<shiro:hasPermission name="contact_us_message_list">
 <a href="${ctx}/contact_us_messages" class="btn btn-default">Contact Us Message List</a>
+</shiro:hasPermission>

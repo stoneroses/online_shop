@@ -41,7 +41,7 @@ public class ContactUsMessageController extends BaseController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    @RequiresPermissions("contact_us_message_save")
+    // @RequiresPermissions("contact_us_message_save")
     public ModelAndView saveContactUsMessage(@Valid ContactUsMessage contactUsMessage, BindingResult bindingResult,
             final RedirectAttributes redirectAttributes) {
         if (bindingResult.hasErrors()) {
