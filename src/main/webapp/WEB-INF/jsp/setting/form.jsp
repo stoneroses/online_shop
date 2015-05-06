@@ -17,7 +17,7 @@
         <div class="form-group">
           <label for="value" class="col-sm-2 control-label">Value</label>
           <div class="col-sm-10">
-            <form:input path="value" class="form-control" />
+            <form:textarea path="value" class="form-control" />
             <form:errors path="value" cssClass="text-danger" />
           </div>
         </div>
