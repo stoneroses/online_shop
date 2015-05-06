@@ -14,4 +14,6 @@ public interface ProductService {
     public Product findById(Long id) throws ProductNotFound;
 
     public Product save(Product product);
+
+    public List<Product> findByName(String productName);
 }

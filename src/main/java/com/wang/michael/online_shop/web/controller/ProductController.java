@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -101,6 +103,12 @@ public class ProductController extends BaseController {
         mav.addObject("product", product);
         mav.addObject("pageTitle", "View Product " + product.getName());
         return mav;
+    }
+
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    @RequiresPermissions("product_list")
+    public @ResponseBody List<Product> searchByName(@RequestParam("term") String term) {
+        return productService.findByName(term);
     }
 
 }

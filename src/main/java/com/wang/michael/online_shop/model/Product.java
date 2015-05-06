@@ -26,7 +26,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "products")
 @Data
-@ToString(exclude = { "images" })
+@ToString(exclude = { "images", "categories" })
 public class Product {
 
     @Id
@@ -61,6 +61,10 @@ public class Product {
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE }, fetch = FetchType.LAZY)
     @JoinTable(name = "product_image", joinColumns = { @JoinColumn(name = "product_id", updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "image_id", updatable = false) })
     private Collection<Image> images;
+
+    @JsonIgnore
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE }, fetch = FetchType.LAZY, mappedBy = "products")
+    private Collection<Category> categories;
 
     @JsonIgnore
     @Column(name = "createdDateTime")
