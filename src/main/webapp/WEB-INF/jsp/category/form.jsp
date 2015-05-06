@@ -59,6 +59,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <div class="panel panel-default">
   <div class="panel-body">
@@ -67,21 +68,21 @@
         <form:hidden path="id" />
         <legend>${formLegend}</legend>
         <div class="form-group">
-          <label for="name" class="col-sm-2 control-label">Name</label>
+          <label for="name" class="col-sm-2 control-label"><spring:message code="category.name" /></label>
           <div class="col-sm-10">
             <form:input path="name" class="form-control" />
             <form:errors path="name" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
-          <label for="description" class="col-sm-2 control-label">Description</label>
+          <label for="description" class="col-sm-2 control-label"><spring:message code="category.description" /></label>
           <div class="col-sm-10">
             <form:input path="description" class="form-control" />
             <form:errors path="description" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
-          <label for="categories" class="col-sm-2 control-label">Categories Selector</label>
+          <label for="categories" class="col-sm-2 control-label"><spring:message code="category.selector" /></label>
           <div class="col-sm-10">
             <input id="categoriesInput" name="categoriesInput" class="form-control" placeholder="Enter category name" />
             <form:errors path="children" cssClass="text-danger" />
@@ -93,9 +94,9 @@
               <table id="categoriesTable" class="table table-striped table-hover ">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Actions</th>
+                    <th><spring:message code="category.name" /></th>
+                    <th><spring:message code="category.description" /></th>
+                    <th><spring:message code="page.list.table.head.actions" /></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -125,9 +126,9 @@
               <table id="productsTable" class="table table-striped table-hover ">
                 <thead>
                   <tr>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Actions</th>
+                    <th><spring:message code="product.name" /></th>
+                    <th><spring:message code="product.description" /></th>
+                    <th><spring:message code="page.list.table.head.actions" /></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -146,11 +147,13 @@
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Save Category</button>
+            <button type="submit" class="btn btn-default">
+              <spring:message code="actions.save" />
+            </button>
           </div>
         </div>
       </fieldset>
     </form:form>
   </div>
 </div>
-<a href="${ctx}/categories" class="btn btn-default">Category List</a>
+<a href="${ctx}/categories" class="btn btn-default"><spring:message code="category.list" /></a>

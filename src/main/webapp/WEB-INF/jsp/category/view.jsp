@@ -1,15 +1,18 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <h1>View Category</h1>
-<p>Parent Category: <a href="${ctx}/categories/${category.parent.id}">${category.parent.name}</a></p>
+<p>
+  Parent Category: <a href="${ctx}/categories/${category.parent.id}">${category.parent.name}</a>
+</p>
 <p>${category.name}</p>
 <table id="categoriesTable" class="table table-striped table-hover ">
   <thead>
     <tr>
-      <th>Category Name</th>
-      <th>Description</th>
-      <th>Actions</th>
+      <th><spring:message code="category" /> <spring:message code="category.name" /></th>
+      <th><spring:message code="category.description" /></th>
+      <th><spring:message code="page.list.table.head.actions" /></th>
     </tr>
   </thead>
   <tbody>
@@ -18,9 +21,11 @@
         <td><a href="${ctx}/categories/${categoryChild.id}">${categoryChild.name}</a></td>
         <td>${categoryChild.description}</td>
         <td><shiro:hasPermission name="category_edit">
-            <a href="${ctx}/categories/${categoryChild.id}/edit" class="btn btn-default">Edit</a>
+            <a href="${ctx}/categories/${categoryChild.id}/edit" class="btn btn-default"><spring:message
+                code="actions.edit" /></a>
           </shiro:hasPermission> <shiro:hasPermission name="category_delete">
-            <a href="${ctx}/categories/${categoryChild.id}/delete" class="btn btn-default">Delete</a>
+            <a href="${ctx}/categories/${categoryChild.id}/delete" class="btn btn-default"><spring:message
+                code="actions.delete" /></a>
           </shiro:hasPermission></td>
       </tr>
     </c:forEach>
@@ -29,8 +34,8 @@
 <table id="productsTable" class="table table-striped table-hover ">
   <thead>
     <tr>
-      <th>Product Name</th>
-      <th>Description</th>
+      <th><spring:message code="product" /> <spring:message code="product.name" /></th>
+      <th><spring:message code="product.description" /></th>
     </tr>
   </thead>
   <tbody>
@@ -43,10 +48,10 @@
   </tbody>
 </table>
 <p>${category.description}</p>
-<a href="${ctx}/categories" class="btn btn-default">Category list</a>
+<a href="${ctx}/categories" class="btn btn-default"><spring:message code="category.list" /></a>
 <shiro:hasPermission name="category_edit">
-  <a href="${ctx}/categories/${category.id}/edit" class="btn btn-default">Edit</a>
+  <a href="${ctx}/categories/${category.id}/edit" class="btn btn-default"><spring:message code="actions.edit" /></a>
 </shiro:hasPermission>
 <shiro:hasPermission name="category_delete">
-  <a href="${ctx}/categories/${category.id}/delete" class="btn btn-default">Delete</a>
+  <a href="${ctx}/categories/${category.id}/delete" class="btn btn-default"><spring:message code="actions.delete" /></a>
 </shiro:hasPermission>
