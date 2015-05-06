@@ -14,4 +14,8 @@ public interface CategoryService {
     public Category findById(Long id) throws CategoryNotFound;
 
     public Category save(Category category);
+
+    public List<Category> findByName(String categoryName);
+
+    public List<Category> findAllTopCategory();
 }

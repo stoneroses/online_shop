@@ -2,11 +2,34 @@
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
 
 <h1>View Category</h1>
+<p>Parent Category: <a href="${ctx}/categories/${category.parent.id}">${category.parent.name}</a></p>
 <p>${category.name}</p>
+<table id="categoriesTable" class="table table-striped table-hover ">
+  <thead>
+    <tr>
+      <th>Category Name</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <c:forEach var="categoryChild" items="${category.children}" varStatus="row">
+      <tr>
+        <td><a href="${ctx}/categories/${categoryChild.id}">${categoryChild.name}</a></td>
+        <td>${categoryChild.description}</td>
+        <td><shiro:hasPermission name="category_edit">
+            <a href="${ctx}/categories/${categoryChild.id}/edit" class="btn btn-default">Edit</a>
+          </shiro:hasPermission> <shiro:hasPermission name="category_delete">
+            <a href="${ctx}/categories/${categoryChild.id}/delete" class="btn btn-default">Delete</a>
+          </shiro:hasPermission></td>
+      </tr>
+    </c:forEach>
+  </tbody>
+</table>
 <table id="productsTable" class="table table-striped table-hover ">
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Product Name</th>
       <th>Description</th>
     </tr>
   </thead>

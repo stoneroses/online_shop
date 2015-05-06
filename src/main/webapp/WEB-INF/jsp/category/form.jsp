@@ -1,13 +1,13 @@
 <script>
   $(function() {
 
+    $("span[id*=removeButton]").click(function() {
+      $(this).parents("tr").remove();
+    });
+
     $("#productsTable > tbody").sortable();
 
     $("#productsTable > tbody").disableSelection();
-
-    $("span[id*=removeProductButton]").click(function() {
-      $(this).parents("tr").remove();
-    });
 
     $("#productsInput").autocomplete({
       source : "${ctx}/products/search",
@@ -26,7 +26,32 @@
           .append("<td><input type='hidden' name='products' value='" + item.id + "'>" + item.name + "</td>")
           .append("<td>" + item.description + "</td>")
           .append(
-              "<td><span id='removeProductButton-" + item.id +"' class='glyphicon glyphicon-remove-circle' aria-hidden='true'></span></td>");
+              "<td><span id='removeButton-" + item.id +"' class='glyphicon glyphicon-remove-circle' aria-hidden='true'></span></td>");
+      return tr;
+    }
+
+    $("#categoriesTable > tbody").sortable();
+
+    $("#categoriesTable > tbody").disableSelection();
+
+    $("#categoriesInput").autocomplete({
+      source : "${ctx}/categories/search",
+      paramName : "categoryName",
+      minLength : 2,
+      select : function(event, ui) {
+        $("#categoriesTable > tbody").append(createCategoryTr(ui.item))
+      }
+    }).autocomplete("instance")._renderItem = function(ul, item) {
+      return $("<li>").append("<a>" + item.name + "<br>" + item.description + "</a>").appendTo(ul);
+    };
+
+    function createCategoryTr(item) {
+      tr = document.createElement('tr');
+      $(tr)
+          .append("<td><input type='hidden' name='children' value='" + item.id + "'>" + item.name + "</td>")
+          .append("<td>" + item.description + "</td>")
+          .append(
+              "<td><span id='removeButton-" + item.id +"' class='glyphicon glyphicon-remove-circle' aria-hidden='true'></span></td>");
       return tr;
     }
   });
@@ -56,6 +81,38 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="categories" class="col-sm-2 control-label">Categories Selector</label>
+          <div class="col-sm-10">
+            <input id="categoriesInput" name="categoriesInput" class="form-control" placeholder="Enter category name" />
+            <form:errors path="children" cssClass="text-danger" />
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <div class="row">
+              <table id="categoriesTable" class="table table-striped table-hover ">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <c:forEach var="category" items="${category.children}" varStatus="row">
+                    <tr>
+                      <td><input type="hidden" name="children" value="${category.id}">${category.name}</td>
+                      <td>${category.description}</td>
+                      <td><span id="removeButton-category-${category.id}" class="glyphicon glyphicon-remove-circle"
+                        aria-hidden="true"></span></td>
+                    </tr>
+                  </c:forEach>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
           <label for="products" class="col-sm-2 control-label">Products Selector</label>
           <div class="col-sm-10">
             <input id="productsInput" name="productsInput" class="form-control" placeholder="Enter product name" />
@@ -78,7 +135,7 @@
                     <tr>
                       <td><input type="hidden" name="products" value="${product.id}">${product.name}</td>
                       <td>${product.description}</td>
-                      <td><span id="removeProductButton-${product.id}" class="glyphicon glyphicon-remove-circle"
+                      <td><span id="removeButton-product-${product.id}" class="glyphicon glyphicon-remove-circle"
                         aria-hidden="true"></span></td>
                     </tr>
                   </c:forEach>

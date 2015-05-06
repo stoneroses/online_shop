@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -57,7 +59,7 @@ public class CategoryController extends BaseController {
     @RequiresPermissions("category_list")
     public ModelAndView categoryListPage(Model model) {
         ModelAndView mav = new ModelAndView("category-index");
-        List<Category> categoryList = categoryService.findAll();
+        List<Category> categoryList = categoryService.findAllTopCategory();
         mav.addObject("categoryList", categoryList);
         mav.addObject("pageTitle", "Category List");
         return mav;
@@ -94,4 +96,9 @@ public class CategoryController extends BaseController {
         return mav;
     }
 
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    @RequiresPermissions("category_list")
+    public @ResponseBody List<Category> searchByName(@RequestParam("term") String term) {
+        return categoryService.findByName(term);
+    }
 }

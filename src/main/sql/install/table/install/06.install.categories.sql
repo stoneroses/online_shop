@@ -4,8 +4,10 @@ CREATE TABLE `categories` (
   `description` VARCHAR(1024) NOT NULL DEFAULT '' COLLATE 'utf8_bin',
   `createdDateTime` DATETIME NOT NULL,
   `updatedDateTime` DATETIME NULL DEFAULT NULL,
+  `parent_id` INT(11) NULL DEFAULT NULL,
   INDEX `id` (`id`)
 )
 COLLATE='utf8_bin'
 ENGINE=InnoDB
+AUTO_INCREMENT=12
 ;

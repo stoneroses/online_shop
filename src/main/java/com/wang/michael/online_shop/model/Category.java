@@ -1,7 +1,6 @@
 package com.wang.michael.online_shop.model;
 
 import java.util.Collection;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,11 +12,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Transient;
 import javax.validation.constraints.Size;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import org.hibernate.annotations.Type;
@@ -28,7 +29,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 @Table(name = "categories")
 @Data
-@ToString(exclude = { "products" })
+@ToString(exclude = { "products", "parent", "children" })
+@EqualsAndHashCode(exclude = { "products", "parent", "children" })
 public class Category {
 
     @Id
@@ -48,15 +50,22 @@ public class Category {
     @JoinTable(name = "category_product", joinColumns = { @JoinColumn(name = "category_id", updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "product_id", updatable = false) })
     private Collection<Product> products;
 
+    @JsonIgnore
+    @ManyToOne
+    private Category parent;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "parent")
+    private Collection<Category> children;
+
+    @JsonIgnore
     @Column(name = "createdDateTime")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime createdDateTime;
 
+    @JsonIgnore
     @Column(name = "updatedDateTime")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime updatedDateTime;
-
-    @Transient
-    private List<ProductDetails> productList;
 
 }

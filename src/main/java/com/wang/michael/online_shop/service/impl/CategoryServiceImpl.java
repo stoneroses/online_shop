@@ -2,6 +2,7 @@ package com.wang.michael.online_shop.service.impl;
 
 import java.util.List;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -50,12 +51,35 @@ public class CategoryServiceImpl implements CategoryService {
     public Category save(Category category) {
         if (category.getId() != null) {
             Category oldCategory = categoryRepository.findOne(category.getId());
+            if (CollectionUtils.isNotEmpty(oldCategory.getChildren())) {
+                for (Category oldCategoryChild : oldCategory.getChildren()) {
+                    oldCategoryChild.setParent(null);
+                    this.categoryRepository.save(oldCategoryChild);
+                }
+            }
             category.setCreatedDateTime(oldCategory.getCreatedDateTime());
             category.setUpdatedDateTime(new DateTime());
+            category.setParent(oldCategory.getParent());
         } else {
             category.setCreatedDateTime(new DateTime());
         }
+        if (CollectionUtils.isNotEmpty(category.getChildren())) {
+            for (Category categoryChild : category.getChildren()) {
+                categoryChild.setParent(category);
+                this.categoryRepository.save(categoryChild);
+            }
+        }
         return categoryRepository.save(category);
+    }
+
+    @Override
+    public List<Category> findByName(String categoryName) {
+        return categoryRepository.findByName(categoryName);
+    }
+
+    @Override
+    public List<Category> findAllTopCategory() {
+        return categoryRepository.findAllTopCategory();
     }
 
 }

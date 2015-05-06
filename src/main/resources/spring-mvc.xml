@@ -30,6 +30,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
         <bean class="com.wang.michael.online_shop.web.converter.StringToRoleConverter" />
         <bean class="com.wang.michael.online_shop.web.converter.StringToImageConverter" />
         <bean class="com.wang.michael.online_shop.web.converter.StringToProductConverter" />
+        <bean class="com.wang.michael.online_shop.web.converter.StringToCategoryConverter" />
       </set>
     </property>
   </bean>
