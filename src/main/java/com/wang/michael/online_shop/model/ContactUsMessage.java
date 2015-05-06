@@ -22,6 +22,14 @@ public class ContactUsMessage {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Column(length = 128)
+    @Size(min = 2, max = 128)
+    private String name;
+
+    @Column(length = 128)
+    @Size(min = 2, max = 128)
+    private String phone;
+
     @Column(length = 256)
     @Size(min = 2, max = 256)
     private String subject;

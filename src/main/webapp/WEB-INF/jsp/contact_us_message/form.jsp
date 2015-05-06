@@ -9,6 +9,20 @@
         <form:hidden path="id" />
         <legend>${formLegend}</legend>
         <div class="form-group">
+          <label for="name" class="col-sm-2 control-label">Name</label>
+          <div class="col-sm-10">
+            <form:input path="name" class="form-control" />
+            <form:errors path="name" cssClass="text-danger" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone" class="col-sm-2 control-label">Phone</label>
+          <div class="col-sm-10">
+            <form:input path="phone" class="form-control" />
+            <form:errors path="phone" cssClass="text-danger" />
+          </div>
+        </div>
+        <div class="form-group">
           <label for="subject" class="col-sm-2 control-label">Subject</label>
           <div class="col-sm-10">
             <form:input path="subject" class="form-control" />

@@ -72,7 +72,7 @@ public class RootController extends BaseController {
         }
         ModelAndView mav = new ModelAndView("redirect:/contact_us");
         contactUsMessageService.save(contactUsMessage);
-        String message = "ContactUsMessage was successfully saved.";
+        String message = "Thanks for contacting us. We will get back to you as soon as possible.";
         redirectAttributes.addFlashAttribute("message", message);
         return mav;
     }

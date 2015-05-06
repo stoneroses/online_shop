@@ -5,6 +5,8 @@
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
+      <th>Name</th>
+      <th>Phone</th>
       <th>Subject</th>
       <th>Content</th>
       <th>Actions</th>
@@ -13,6 +15,8 @@
   <tbody>
     <c:forEach var="contactUsMessage" items="${contactUsMessageList}">
       <tr>
+        <td>${contactUsMessage.name}</td>
+        <td>${contactUsMessage.phone}</td>
         <td><a href="${ctx}/contact_us_messages/${contactUsMessage.id}">${contactUsMessage.subject}</a></td>
         <td>${contactUsMessage.content}</td>
         <td><shiro:hasPermission name="contact_us_message_edit">

@@ -1,6 +1,8 @@
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
 
 <h1>View Contact Us Message</h1>
+<p>${contactUsMessage.name}</p>
+<p>${contactUsMessage.phone}</p>
 <p>${contactUsMessage.subject}</p>
 <p>${contactUsMessage.content}</p>
 <a href="${ctx}/contact_us_messages" class="btn btn-default">Contact Us Message list</a>
