@@ -2,7 +2,7 @@
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<h1>Link List</h1>
+<h1><spring:message code="link.list" /></h1>
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
