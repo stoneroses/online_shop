@@ -1,5 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<c:set var="formLegend" value="Edit News" />
+<c:set var="formLegend" value="news.page.title.edit" />
 
 <%@ include file="form.jsp"%>
