@@ -1,14 +1,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <h1>Link List</h1>
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>URL</th>
-      <th>Open In New Window</th>
-      <th>Actions</th>
+      <th><spring:message code="link.name" /></th>
+      <th><spring:message code="link.url" /></th>
+      <th><spring:message code="link.new.window" /></th>
+      <th><spring:message code="admin.page.list.actions" /></th>
     </tr>
   </thead>
   <tbody>
@@ -18,14 +19,14 @@
         <td>${link.url}</td>
         <td>${link.newWindow}</td>
         <td><shiro:hasPermission name="link_edit">
-            <a href="${ctx}/links/${link.id}/edit" class="btn btn-default">Edit</a>
+            <a href="${ctx}/links/${link.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
           </shiro:hasPermission> <shiro:hasPermission name="link_delete">
-            <a href="${ctx}/links/${link.id}/delete" class="btn btn-default">Delete</a>
+            <a href="${ctx}/links/${link.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
           </shiro:hasPermission></td>
       </tr>
     </c:forEach>
   </tbody>
 </table>
 <shiro:hasPermission name="link_create">
-  <a href="${ctx}/links/create" class="btn btn-default">Create</a>
+  <a href="${ctx}/links/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>
