@@ -41,7 +41,7 @@
   <tbody>
     <c:forEach var="product" items="${category.products}" varStatus="row">
       <tr>
-        <td><input type="hidden" name="products" value="${product.id}">${product.name}</td>
+        <td><input type="hidden" name="products" value="${product.id}"><a href="${ctx}/products/${product.id}">${product.name}</a></td>
         <td>${product.description}</td>
       </tr>
     </c:forEach>
