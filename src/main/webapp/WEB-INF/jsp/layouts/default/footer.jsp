@@ -26,18 +26,18 @@
         <li><a href="${ctx}/categories">Categories Maintenance</a></li>
       </shiro:hasPermission>
       <li class="divider"></li>
-      <shiro:hasPermission name="setting_list">
-        <li><a href="${ctx}/settings">Settings Maintenance</a></li>
-      </shiro:hasPermission>
-      <shiro:hasPermission name="contact_us_message_list">
-        <li><a href="${ctx}/contact_us_messages">Contact Us Message Maintenance</a></li>
-      </shiro:hasPermission>
-      <li class="divider"></li>
       <shiro:hasPermission name="news_list">
         <li><a href="${ctx}/news">News Maintenance</a></li>
       </shiro:hasPermission>
       <shiro:hasPermission name="link_list">
         <li><a href="${ctx}/links">Link Maintenance</a></li>
+      </shiro:hasPermission>
+      <li class="divider"></li>
+      <shiro:hasPermission name="contact_us_message_list">
+        <li><a href="${ctx}/contact_us_messages">Contact Us Message Maintenance</a></li>
+      </shiro:hasPermission>
+      <shiro:hasPermission name="setting_list">
+        <li><a href="${ctx}/settings">Settings Maintenance</a></li>
       </shiro:hasPermission>
       <li class="divider"></li>
       <shiro:hasPermission name="permission_list">
