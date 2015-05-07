@@ -1,16 +1,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<h1>View Product</h1>
+<h1><spring:message code="product.page.title.view" /></h1>
 <p>${product.name}</p>
 <p>${product.reference}</p>
-<p>${product.weight}kg</p>
-<p>$${product.price}</p>
+<p>${product.weight} <spring:message code="unit.of.measure.weight" /></p>
+<p><spring:message code="unit.of.measure.money" /> ${product.price}</p>
 <p>${product.discount}</p>
-<p>Now: $${product.nowPrice}</p>
+<p><spring:message code="product.price.after.discount" />: <spring:message code="unit.of.measure.money" /> ${product.nowPrice}</p>
 <p>${product.description}</p>
 <div class="form-group">
-  <label for="imagesThumbnail" class="col-sm-12">Images Thumbnail</label>
+  <label for="imagesThumbnail" class="col-sm-12"><spring:message code="image.thumbnail" /></label>
   <div class="col-sm-12">
     <div id="imagesThumbnail" class="row">
 
@@ -28,10 +29,10 @@
   </div>
 </div>
 
-<a href="${ctx}/products" class="btn btn-default">Product list</a>
+<a href="${ctx}/products" class="btn btn-default"><spring:message code="product.list" /></a>
 <shiro:hasPermission name="product_edit">
-  <a href="${ctx}/products/${product.id}/edit" class="btn btn-default">Edit</a>
+  <a href="${ctx}/products/${product.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
 </shiro:hasPermission>
 <shiro:hasPermission name="product_delete">
-  <a href="${ctx}/products/${product.id}/delete" class="btn btn-default">Delete</a>
+  <a href="${ctx}/products/${product.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
 </shiro:hasPermission>

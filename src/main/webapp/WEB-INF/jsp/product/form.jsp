@@ -1,3 +1,7 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 <script>
   $(function() {
 
@@ -26,8 +30,8 @@
       s1 = document.createElement('span');
       $(s1).append(item.name).appendTo($(d));
       s2 = document.createElement('span');
-      $(s2).prop("id", "removeImageButton-" + item.id).addClass("glyphicon glyphicon-remove-circle").prop("aria-hidden",
-          "true").appendTo($(d));
+      $(s2).prop("id", "removeImageButton-" + item.id).addClass("glyphicon glyphicon-remove-circle").prop(
+          "aria-hidden", "true").appendTo($(d));
       i = document.createElement('input');
       $(i).prop("type", "hidden").prop("name", "images").prop("value", item.id).appendTo($(d));
       a = document.createElement('a');
@@ -40,83 +44,83 @@
   });
 </script>
 
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-
 <div class="panel panel-default">
   <div class="panel-body">
     <form:form method="POST" modelAttribute="product" action="${ctx}/products/save" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
-        <legend>${formLegend}</legend>
+        <legend>
+          <spring:message code="${formLegend}" />
+        </legend>
         <div class="form-group">
-          <label for="name" class="col-sm-2 control-label">Name</label>
+          <label for="name" class="col-sm-2 control-label"><spring:message code="product.name" /></label>
           <div class="col-sm-10">
             <form:input path="name" class="form-control" />
             <form:errors path="name" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
-          <label for="reference" class="col-sm-2 control-label">Reference</label>
+          <label for="reference" class="col-sm-2 control-label"><spring:message code="product.reference" /></label>
           <div class="col-sm-10">
             <form:input path="reference" class="form-control" />
             <form:errors path="reference" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
-          <label for="weight" class="col-sm-2 control-label">Weight</label>
+          <label for="weight" class="col-sm-2 control-label"><spring:message code="product.weight" /></label>
           <div class="col-sm-10">
             <form:input path="weight" class="form-control" />
             <form:errors path="weight" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
-          <label for="stock" class="col-sm-2 control-label">Stock</label>
+          <label for="stock" class="col-sm-2 control-label"><spring:message code="product.stock" /></label>
           <div class="col-sm-10">
             <form:input path="stock" class="form-control" />
             <form:errors path="stock" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
-          <label for="price" class="col-sm-2 control-label">Price</label>
+          <label for="price" class="col-sm-2 control-label"><spring:message code="product.price" /></label>
           <div class="col-sm-10">
             <form:input path="price" class="form-control" />
             <form:errors path="price" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
-          <label for="discount" class="col-sm-2 control-label">Discount</label>
+          <label for="discount" class="col-sm-2 control-label"><spring:message code="product.discount" /></label>
           <div class="col-sm-10">
             <form:input path="discount" class="form-control" />
             <form:errors path="discount" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
-          <label for="description" class="col-sm-2 control-label">Description</label>
+          <label for="description" class="col-sm-2 control-label"><spring:message code="product.description" /></label>
           <div class="col-sm-10">
             <form:textarea path="description" class="form-control" />
             <form:errors path="description" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
-          <label for="images" class="col-sm-2 control-label">Images Selector</label>
+          <label for="images" class="col-sm-2 control-label"><spring:message code="image.selector" /></label>
           <div class="col-sm-10">
             <input id="imagesInput" name="imagesInput" class="form-control" placeholder="Enter image name" />
             <form:errors path="images" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
-          <label for="imagesThumbnail" class="col-sm-12">Images Thumbnail</label>
+          <label for="imagesThumbnail" class="col-sm-12"><spring:message code="image.thumbnail" /></label>
           <div class="col-sm-12">
             <div id="imagesThumbnail" class="row">
 
               <c:forEach var="image" items="${product.images}" varStatus="row">
 
                 <div class="col-xs-6 col-md-3">
-                  <span>${image.name}</span><span id="removeImageButton-${image.id}" class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
-                  <input type="hidden" name="images" value="${image.id}" /> <a
-                    href="${ctx}${fileURIRoot}${image.location}" target="_blank" class="thumbnail"> <img
-                    src="${ctx}${fileURIRoot}${image.location}" alt="${image.name}">
+                  <span>${image.name}</span><span id="removeImageButton-${image.id}"
+                    class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> <input type="hidden"
+                    name="images" value="${image.id}" /> <a href="${ctx}${fileURIRoot}${image.location}"
+                    target="_blank" class="thumbnail"> <img src="${ctx}${fileURIRoot}${image.location}"
+                    alt="${image.name}">
                   </a>
                 </div>
 
@@ -127,11 +131,13 @@
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Save Product</button>
+            <button type="submit" class="btn btn-default">
+              <spring:message code="admin.actions.save" />
+            </button>
           </div>
         </div>
       </fieldset>
     </form:form>
   </div>
 </div>
-<a href="${ctx}/products" class="btn btn-default">Product List</a>
+<a href="${ctx}/products" class="btn btn-default"><spring:message code="product.list" /></a>
