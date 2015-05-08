@@ -1,22 +1,25 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="/WEB-INF/custom-functions.tld" prefix="cf"%>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <div class="panel panel-default">
   <div class="panel-body">
     <form:form method="POST" modelAttribute="user" action="${ctx}/users/save" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
-        <legend>${formLegend}</legend>
+        <legend>
+          <spring:message code="${formLegend}" />
+        </legend>
         <div class="form-group">
-          <label for="name" class="col-sm-2 control-label">Name</label>
+          <label for="name" class="col-sm-2 control-label"><spring:message code="user.name" /></label>
           <div class="col-sm-10">
             <form:input path="name" class="form-control" />
             <form:errors path="name" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
-          <label for="email" class="col-sm-2 control-label">Email</label>
+          <label for="email" class="col-sm-2 control-label"><spring:message code="user.email" /></label>
           <div class="col-sm-10">
             <input id="email" name="email" class="form-control" type="text" value="${user.email}"
               <c:if test="${not empty user.id}">readonly</c:if>>
@@ -24,14 +27,14 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="description" class="col-sm-2 control-label">Description</label>
+          <label for="description" class="col-sm-2 control-label"><spring:message code="user.description" /></label>
           <div class="col-sm-10">
             <form:textarea path="description" class="form-control" />
             <form:errors path="description" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
-          <label for="name" class="col-sm-2 control-label">Roles</label>
+          <label for="name" class="col-sm-2 control-label"><spring:message code="role" /></label>
           <div class="col-sm-10">
             <c:forEach var="role" items="${allRoles}" varStatus="row">
               <div class="checkbox">
@@ -45,11 +48,13 @@
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-default">Save User</button>
+            <button type="submit" class="btn btn-default">
+              <spring:message code="admin.actions.save" />
+            </button>
           </div>
         </div>
       </fieldset>
     </form:form>
   </div>
 </div>
-<a href="${ctx}/users" class="btn btn-default">User List</a>
+<a href="${ctx}/users" class="btn btn-default"><spring:message code="user.list" /></a>
