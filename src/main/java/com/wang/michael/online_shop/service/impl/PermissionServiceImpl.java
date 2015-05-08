@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -55,6 +58,12 @@ public class PermissionServiceImpl implements PermissionService {
             permission.setCreatedDateTime(new DateTime());
         }
         return permissionRepository.save(permission);
+    }
+
+    @Override
+    public Page<Permission> getPermissions(int page, int size) {
+        Pageable pageable = new PageRequest(page, size);
+        return permissionRepository.findAll(pageable);
     }
 
 }

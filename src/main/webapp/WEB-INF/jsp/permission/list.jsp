@@ -14,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    <c:forEach var="permission" items="${permissionList}">
+    <c:forEach var="permission" items="${permissionPage.content}">
       <tr>
         <td><a href="${ctx}/permissions/${permission.id}">${permission.name}</a></td>
         <td>${permission.description}</td>
@@ -29,6 +29,10 @@
     </c:forEach>
   </tbody>
 </table>
+
+<c:set var="pageObject" value="${permissionPage}" />
+<%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
+
 <shiro:hasPermission name="permission_create">
   <a href="${ctx}/permissions/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>
