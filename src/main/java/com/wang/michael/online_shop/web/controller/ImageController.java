@@ -11,6 +11,7 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -123,10 +124,15 @@ public class ImageController extends BaseController {
 
     @RequestMapping(value = { "/list", "/", "" }, method = RequestMethod.GET)
     @RequiresPermissions("image_list")
-    public ModelAndView imageListPage(Model model) {
+    public ModelAndView imageListPage(Model model, @RequestParam(value = "page", required = true, defaultValue = "1") int page,
+            @RequestParam(value = "size", required = true, defaultValue = "10") int size) {
         ModelAndView mav = new ModelAndView("image-index");
-        List<Image> imageList = imageService.findAll();
-        mav.addObject("imageList", imageList);
+        Page<Image> imagePage = imageService.getImages(page - 1, size);
+        mav.addObject("imagePage", imagePage);
+        mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
+        mav.addObject("currentPage", page);
+        mav.addObject("nextPage", page + 1 < imagePage.getTotalPages() ? page + 1 : imagePage.getTotalPages());
+        mav.addObject("pageSize", 10);
         mav.addObject("pageTitle", "Image List");
         return mav;
     }

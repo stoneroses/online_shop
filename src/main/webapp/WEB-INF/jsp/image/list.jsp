@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <c:forEach var="image" items="${imageList}">
+    <c:forEach var="image" items="${imagePage.content}">
       <tr>
         <td><a href="${ctx}/images/${image.id}">${image.name}</a></td>
         <td>${image.description}</td>
@@ -25,6 +25,10 @@
     </c:forEach>
   </tbody>
 </table>
+
+<c:set var="pageObject" value="${imagePage}" />
+<%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
+
 <shiro:hasPermission name="image_create">
   <a href="${ctx}/images/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>
