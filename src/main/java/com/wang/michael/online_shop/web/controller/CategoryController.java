@@ -6,6 +6,7 @@ import javax.validation.Valid;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -57,10 +58,15 @@ public class CategoryController extends BaseController {
 
     @RequestMapping(value = { "/list", "/", "" }, method = RequestMethod.GET)
     @RequiresPermissions("category_list")
-    public ModelAndView categoryListPage(Model model) {
+    public ModelAndView categoryListPage(Model model, @RequestParam(value = "page", required = true, defaultValue = "1") int page,
+            @RequestParam(value = "size", required = true, defaultValue = "10") int size) {
         ModelAndView mav = new ModelAndView("category-index");
-        List<Category> categoryList = categoryService.findAllTopCategory();
-        mav.addObject("categoryList", categoryList);
+        Page<Category> categoryPage = categoryService.getTopCategory(page - 1, size);
+        mav.addObject("categoryPage", categoryPage);
+        mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
+        mav.addObject("currentPage", page);
+        mav.addObject("nextPage", page + 1 < categoryPage.getTotalPages() ? page + 1 : categoryPage.getTotalPages());
+        mav.addObject("pageSize", 10);
         mav.addObject("pageTitle", "Category List");
         return mav;
     }

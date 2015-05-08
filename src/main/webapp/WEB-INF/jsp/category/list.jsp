@@ -14,7 +14,7 @@
     </tr>
   </thead>
   <tbody>
-    <c:forEach var="category" items="${categoryList}">
+    <c:forEach var="category" items="${categoryPage.content}">
       <tr>
         <td><a href="${ctx}/categories/${category.id}">${category.name}</a></td>
         <td>${category.description}</td>
@@ -29,6 +29,10 @@
     </c:forEach>
   </tbody>
 </table>
+
+<c:set var="pageObject" value="${categoryPage}" />
+<%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
+
 <shiro:hasPermission name="category_create">
   <a href="${ctx}/categories/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>

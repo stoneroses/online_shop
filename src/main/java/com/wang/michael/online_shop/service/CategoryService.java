@@ -2,6 +2,8 @@ package com.wang.michael.online_shop.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.wang.michael.online_shop.exception.CategoryNotFound;
 import com.wang.michael.online_shop.model.Category;
 
@@ -18,4 +20,6 @@ public interface CategoryService {
     public List<Category> findByName(String categoryName);
 
     public List<Category> findAllTopCategory();
+
+    public Page<Category> getTopCategory(int page, int size);
 }
