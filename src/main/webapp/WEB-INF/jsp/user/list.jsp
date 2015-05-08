@@ -15,7 +15,7 @@
     </tr>
   </thead>
   <tbody>
-    <c:forEach var="user" items="${userList}">
+    <c:forEach var="user" items="${userPage.content}">
       <tr>
         <td><a href="${ctx}/users/${user.id}">${user.name}</a></td>
         <td>${user.email}</td>
@@ -35,6 +35,10 @@
     </c:forEach>
   </tbody>
 </table>
+
+<c:set var="pageObject" value="${userPage}" />
+<%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
+
 <shiro:hasPermission name="user_create">
   <a href="${ctx}/users/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>

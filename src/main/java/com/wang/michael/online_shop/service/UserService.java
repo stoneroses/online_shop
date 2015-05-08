@@ -2,6 +2,8 @@ package com.wang.michael.online_shop.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.wang.michael.online_shop.exception.UserNotFound;
 import com.wang.michael.online_shop.model.User;
 
@@ -24,5 +26,7 @@ public interface UserService {
     public User save(User user);
 
     public User savePassword(Long id, String password) throws UserNotFound;
+
+    public Page<User> getUsers(int page, int size);
 
 }

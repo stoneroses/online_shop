@@ -5,6 +5,9 @@ import java.util.List;
 import org.apache.shiro.crypto.hash.Sha256Hash;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -117,5 +120,11 @@ public class UserServiceImpl implements UserService {
         User user = findById(id);
         user.setPassword(getEncryptPassword(password, user.getEmail()));
         return userRepository.save(user);
+    }
+
+    @Override
+    public Page<User> getUsers(int page, int size) {
+        Pageable pageable = new PageRequest(page, size);
+        return userRepository.findAll(pageable);
     }
 }

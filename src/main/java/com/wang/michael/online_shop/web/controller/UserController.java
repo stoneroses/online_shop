@@ -8,6 +8,7 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -62,10 +63,15 @@ public class UserController extends BaseController {
 
     @RequestMapping(value = { "/list", "/", "" }, method = RequestMethod.GET)
     @RequiresPermissions("user_list")
-    public ModelAndView userListPage(Model model) {
+    public ModelAndView userListPage(Model model, @RequestParam(value = "page", required = true, defaultValue = "1") int page,
+            @RequestParam(value = "size", required = true, defaultValue = "10") int size) {
         ModelAndView mav = new ModelAndView("user-index");
-        List<User> userList = userService.findAll();
-        mav.addObject("userList", userList);
+        Page<User> userPage = userService.getUsers(page - 1, size);
+        mav.addObject("userPage", userPage);
+        mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
+        mav.addObject("currentPage", page);
+        mav.addObject("nextPage", page + 1 < userPage.getTotalPages() ? page + 1 : userPage.getTotalPages());
+        mav.addObject("pageSize", 10);
         mav.addObject("pageTitle", "User List");
         return mav;
     }
