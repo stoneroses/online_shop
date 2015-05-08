@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <c:forEach var="role" items="${roleList}">
+    <c:forEach var="role" items="${rolePage.content}">
       <tr>
         <td><a href="${ctx}/roles/${role.id}">${role.name}</a></td>
         <td><c:forEach var="permission" items="${role.permissions}">
@@ -28,6 +28,10 @@
     </c:forEach>
   </tbody>
 </table>
+
+<c:set var="pageObject" value="${rolePage}" />
+<%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
+
 <shiro:hasPermission name="role_create">
   <a href="${ctx}/roles/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>

@@ -6,12 +6,14 @@ import javax.validation.Valid;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -65,10 +67,15 @@ public class RoleController extends BaseController {
 
     @RequestMapping(value = { "/list", "/", "" }, method = RequestMethod.GET)
     @RequiresPermissions("role_list")
-    public ModelAndView roleListPage(Model model) {
+    public ModelAndView roleListPage(Model model, @RequestParam(value = "page", required = true, defaultValue = "1") int page,
+            @RequestParam(value = "size", required = true, defaultValue = "10") int size) {
         ModelAndView mav = new ModelAndView("role-index");
-        List<Role> roleList = roleService.findAll();
-        mav.addObject("roleList", roleList);
+        Page<Role> rolePage = roleService.getRoles(page - 1, size);
+        mav.addObject("rolePage", rolePage);
+        mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
+        mav.addObject("currentPage", page);
+        mav.addObject("nextPage", page + 1 < rolePage.getTotalPages() ? page + 1 : rolePage.getTotalPages());
+        mav.addObject("pageSize", 10);
         mav.addObject("pageTitle", "Role List");
         return mav;
     }
