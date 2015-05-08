@@ -44,7 +44,6 @@ public class PermissionController extends BaseController {
         mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
         mav.addObject("nextPage", page + 1 < permissionPage.getTotalPages() ? page + 1 : permissionPage.getTotalPages());
         mav.addObject("pageSize", 10);
-        mav.addObject("pageSize", 10);
         mav.addObject("pageTitle", "Permission List");
         return mav;
     }
