@@ -1,3 +1,5 @@
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">Please sign in</h3>
@@ -12,7 +14,8 @@
           <input class="form-control" placeholder="Password" name="password" type="password" value="">
         </div>
         <div class="checkbox">
-          <label> <input name="rememberMe" type="checkbox" value="true" checked> Remember Me
+          <label> <input name="rememberMe" type="checkbox" value="true" checked> <spring:message
+              code="actions.remember.me" />
           </label>
         </div>
         <input class="btn btn-lg btn-success btn-block" type="submit" value="Login">

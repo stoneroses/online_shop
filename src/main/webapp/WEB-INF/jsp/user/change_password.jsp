@@ -55,8 +55,7 @@
             <button type="submit" class="btn btn-default">
               <spring:message code="admin.actions.save" />
             </button>
-            <a href="${ctx}/" class="btn btn-default"> <spring:message code="actions.back" />
-            </a>
+            <a href="${ctx}/" class="btn btn-default"><spring:message code="actions.back" /></a>
           </div>
         </div>
       </fieldset>
