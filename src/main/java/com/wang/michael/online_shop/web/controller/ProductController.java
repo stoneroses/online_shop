@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -66,10 +67,15 @@ public class ProductController extends BaseController {
 
     @RequestMapping(value = { "/list", "/", "" }, method = RequestMethod.GET)
     @RequiresPermissions("product_list")
-    public ModelAndView productListPage(Model model) {
+    public ModelAndView productListPage(Model model, @RequestParam(value = "page", required = true, defaultValue = "1") int page,
+            @RequestParam(value = "size", required = true, defaultValue = "10") int size) {
         ModelAndView mav = new ModelAndView("product-index");
-        List<Product> productList = productService.findAll();
-        mav.addObject("productList", productList);
+        Page<Product> productPage = productService.getProducts(page - 1, size);
+        mav.addObject("productPage", productPage);
+        mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
+        mav.addObject("currentPage", page);
+        mav.addObject("nextPage", page + 1 < productPage.getTotalPages() ? page + 1 : productPage.getTotalPages());
+        mav.addObject("pageSize", 10);
         mav.addObject("pageTitle", "Product List");
         return mav;
     }

@@ -2,6 +2,8 @@ package com.wang.michael.online_shop.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import com.wang.michael.online_shop.exception.ProductNotFound;
 import com.wang.michael.online_shop.model.Product;
 
@@ -16,4 +18,6 @@ public interface ProductService {
     public Product save(Product product);
 
     public List<Product> findByName(String productName);
+
+    public Page<Product> getProducts(int page, int size);
 }
