@@ -7,7 +7,7 @@
     <li><a href="?page=${previousPage}&size=${pageSize}" aria-label="Previous"> <span aria-hidden="true">&lt;</span>
     </a></li>
     <c:forEach begin="1" end="${pageObject.totalPages}" varStatus="loop">
-      <li <c:if test="${param.page eq loop.index }">class="active"</c:if>><a
+      <li <c:if test="${currentPage eq loop.index }">class="active"</c:if>><a
         href="?page=${loop.index}&size=${pageSize}">${loop.index}</a></li>
     </c:forEach>
     <li><a href="?page=${nextPage}&size=${pageSize}" aria-label="Next"> <span aria-hidden="true">&gt;</span>
