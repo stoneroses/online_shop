@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <c:forEach var="news" items="${newsList}">
+    <c:forEach var="news" items="${newsPage.content}">
       <tr>
         <td><a href="${ctx}/news/${news.id}">${news.title}</a></td>
         <td>${news.content}</td>
@@ -26,6 +26,10 @@
     </c:forEach>
   </tbody>
 </table>
+
+<c:set var="pageObject" value="${newsPage}" />
+<%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
+
 <shiro:hasPermission name="news_create">
   <a href="${ctx}/news/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>

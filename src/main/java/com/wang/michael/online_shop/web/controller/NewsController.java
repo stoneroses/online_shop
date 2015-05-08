@@ -1,16 +1,16 @@
 package com.wang.michael.online_shop.web.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
 
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -35,10 +35,15 @@ public class NewsController extends BaseController {
     }
 
     @RequestMapping(value = { "/list", "/", "" }, method = RequestMethod.GET)
-    public ModelAndView newsListPage(Model model) {
+    public ModelAndView newsListPage(Model model, @RequestParam(value = "page", required = true, defaultValue = "1") int page,
+            @RequestParam(value = "size", required = true, defaultValue = "10") int size) {
         ModelAndView mav = new ModelAndView("news-index");
-        List<News> newsList = newsService.findAll();
-        mav.addObject("newsList", newsList);
+        Page<News> newsPage = newsService.getNews(page - 1, size);
+        mav.addObject("newsPage", newsPage);
+        mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
+        mav.addObject("currentPage", page);
+        mav.addObject("nextPage", page + 1 < newsPage.getTotalPages() ? page + 1 : newsPage.getTotalPages());
+        mav.addObject("pageSize", 10);
         mav.addObject("pageTitle", "News List");
         return mav;
     }
