@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
-    <c:forEach var="link" items="${linkList}">
+    <c:forEach var="link" items="${linkPage.content}">
       <tr>
         <td><a href="${ctx}/links/${link.id}">${link.name}</a></td>
         <td>${link.url}</td>
@@ -27,6 +27,10 @@
     </c:forEach>
   </tbody>
 </table>
+
+<c:set var="pageObject" value="${linkPage}" />
+<%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
+
 <shiro:hasPermission name="link_create">
   <a href="${ctx}/links/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>
