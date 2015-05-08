@@ -60,7 +60,11 @@ public class SettingServiceImpl implements SettingService {
 
     @Override
     public Setting findByKey(String key) throws SettingNotFound {
-        return settingRepository.findByKey(key);
+        Setting result = settingRepository.findByKey(key);
+        if (result == null) {
+            throw new SettingNotFound("key: " + key + " is not found.");
+        }
+        return result;
     }
 
 }

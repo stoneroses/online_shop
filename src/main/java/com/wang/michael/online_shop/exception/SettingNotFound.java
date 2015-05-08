@@ -2,6 +2,14 @@ package com.wang.michael.online_shop.exception;
 
 public class SettingNotFound extends Exception {
 
+    public SettingNotFound(String message) {
+        super(message);
+    }
+
+    public SettingNotFound() {
+        super();
+    }
+
     /**
      * serialVersionUID
      */
