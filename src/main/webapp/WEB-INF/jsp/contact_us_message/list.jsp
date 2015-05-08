@@ -16,7 +16,7 @@
     </tr>
   </thead>
   <tbody>
-    <c:forEach var="contactUsMessage" items="${contactUsMessageList}">
+    <c:forEach var="contactUsMessage" items="${contactUsMessagePage.content}">
       <tr>
         <td>${contactUsMessage.name}</td>
         <td>${contactUsMessage.phone}</td>
@@ -33,6 +33,10 @@
     </c:forEach>
   </tbody>
 </table>
+
+<c:set var="pageObject" value="${contactUsMessagePage}" />
+<%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
+
 <shiro:hasPermission name="contact_us_message_create">
   <a href="${ctx}/contact_us_messages/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>
