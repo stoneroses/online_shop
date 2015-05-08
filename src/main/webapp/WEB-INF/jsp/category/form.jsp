@@ -66,7 +66,9 @@
     <form:form method="POST" modelAttribute="category" action="${ctx}/categories/save" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
-        <legend><spring:message code="${formLegend}" /></legend>
+        <legend>
+          <spring:message code="${formLegend}" />
+        </legend>
         <div class="form-group">
           <label for="name" class="col-sm-2 control-label"><spring:message code="category.name" /></label>
           <div class="col-sm-10">
