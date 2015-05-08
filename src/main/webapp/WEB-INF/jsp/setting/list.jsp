@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <c:forEach var="setting" items="${settingList}">
+    <c:forEach var="setting" items="${settingPage.content}">
       <tr>
         <td><a href="${ctx}/settings/${setting.id}">${setting.key}</a></td>
         <td>${setting.value}</td>
@@ -25,6 +25,10 @@
     </c:forEach>
   </tbody>
 </table>
+
+<c:set var="pageObject" value="${settingPage}" />
+<%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
+
 <shiro:hasPermission name="setting_create">
   <a href="${ctx}/settings/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>
