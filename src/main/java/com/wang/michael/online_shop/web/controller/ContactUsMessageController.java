@@ -61,6 +61,7 @@ public class ContactUsMessageController extends BaseController {
         ModelAndView mav = new ModelAndView("contact_us_message-index");
         Page<ContactUsMessage> contactUsMessagePage = contactUsMessageService.getContactUsMessagePages(page - 1, size);
         mav.addObject("contactUsMessagePage", contactUsMessagePage);
+        mav.addObject("totalPages", contactUsMessagePage.getTotalPages());
         mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
         mav.addObject("currentPage", page);
         mav.addObject("nextPage", page + 1 < contactUsMessagePage.getTotalPages() ? page + 1 : contactUsMessagePage.getTotalPages());

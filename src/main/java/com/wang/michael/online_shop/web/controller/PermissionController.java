@@ -41,6 +41,7 @@ public class PermissionController extends BaseController {
         ModelAndView mav = new ModelAndView("permission-index");
         Page<Permission> permissionPage = permissionService.getPermissions(page - 1, size);
         mav.addObject("permissionPage", permissionPage);
+        mav.addObject("totalPages", permissionPage.getTotalPages());
         mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
         mav.addObject("currentPage", page);
         mav.addObject("nextPage", page + 1 < permissionPage.getTotalPages() ? page + 1 : permissionPage.getTotalPages());

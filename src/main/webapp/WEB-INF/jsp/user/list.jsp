@@ -36,7 +36,6 @@
   </tbody>
 </table>
 
-<c:set var="pageObject" value="${userPage}" />
 <%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
 
 <shiro:hasPermission name="user_create">

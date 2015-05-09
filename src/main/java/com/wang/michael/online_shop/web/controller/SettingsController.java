@@ -60,6 +60,7 @@ public class SettingsController extends BaseController {
         ModelAndView mav = new ModelAndView("setting-index");
         Page<Setting> settingPage = settingService.getSettings(page - 1, size);
         mav.addObject("settingPage", settingPage);
+        mav.addObject("totalPages", settingPage.getTotalPages());
         mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
         mav.addObject("currentPage", page);
         mav.addObject("nextPage", page + 1 < settingPage.getTotalPages() ? page + 1 : settingPage.getTotalPages());

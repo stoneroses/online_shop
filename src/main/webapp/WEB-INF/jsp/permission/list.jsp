@@ -30,7 +30,6 @@
   </tbody>
 </table>
 
-<c:set var="pageObject" value="${permissionPage}" />
 <%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
 
 <shiro:hasPermission name="permission_create">

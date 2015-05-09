@@ -27,7 +27,6 @@
   </tbody>
 </table>
 
-<c:set var="pageObject" value="${newsPage}" />
 <%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
 
 <shiro:hasPermission name="news_create">

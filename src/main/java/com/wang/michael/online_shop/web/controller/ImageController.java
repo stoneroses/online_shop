@@ -129,6 +129,7 @@ public class ImageController extends BaseController {
         ModelAndView mav = new ModelAndView("image-index");
         Page<Image> imagePage = imageService.getImages(page - 1, size);
         mav.addObject("imagePage", imagePage);
+        mav.addObject("totalPages", imagePage.getTotalPages());
         mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
         mav.addObject("currentPage", page);
         mav.addObject("nextPage", page + 1 < imagePage.getTotalPages() ? page + 1 : imagePage.getTotalPages());

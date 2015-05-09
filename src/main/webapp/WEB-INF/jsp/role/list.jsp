@@ -29,7 +29,6 @@
   </tbody>
 </table>
 
-<c:set var="pageObject" value="${rolePage}" />
 <%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
 
 <shiro:hasPermission name="role_create">

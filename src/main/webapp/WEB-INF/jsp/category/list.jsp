@@ -30,7 +30,6 @@
   </tbody>
 </table>
 
-<c:set var="pageObject" value="${categoryPage}" />
 <%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
 
 <shiro:hasPermission name="category_create">

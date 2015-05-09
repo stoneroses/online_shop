@@ -34,7 +34,6 @@
   </tbody>
 </table>
 
-<c:set var="pageObject" value="${contactUsMessagePage}" />
 <%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
 
 <shiro:hasPermission name="contact_us_message_create">

@@ -26,7 +26,6 @@
   </tbody>
 </table>
 
-<c:set var="pageObject" value="${settingPage}" />
 <%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
 
 <shiro:hasPermission name="setting_create">
