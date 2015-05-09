@@ -11,7 +11,7 @@
 <shiro:user>
   Hi, 
   <!-- Single button -->
-  <div class="btn-group">
+  <div class="btn-group dropup">
     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
       <shiro:principal />
       <span class="caret"></span>
