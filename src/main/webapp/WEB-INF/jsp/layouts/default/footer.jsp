@@ -30,6 +30,9 @@
       <shiro:hasPermission name="news_list">
         <li><a href="${ctx}/news"><spring:message code="page.menu.maintenance.news" /></a></li>
       </shiro:hasPermission>
+      <shiro:hasPermission name="testimonial_list">
+        <li><a href="${ctx}/testimonials"><spring:message code="page.menu.maintenance.testimonial" /></a></li>
+      </shiro:hasPermission>
       <shiro:hasPermission name="link_list">
         <li><a href="${ctx}/links"><spring:message code="page.menu.maintenance.links" /></a></li>
       </shiro:hasPermission>

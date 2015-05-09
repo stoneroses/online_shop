@@ -206,4 +206,21 @@
   <definition name="contact_us_message-view" extends="default_layout">
     <put-attribute name="body" value="/WEB-INF/jsp/contact_us_message/view.jsp" />
   </definition>
+
+  <definition name="testimonial-index" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/testimonial/list.jsp" />
+  </definition>
+
+  <definition name="testimonial-new" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/testimonial/new.jsp" />
+  </definition>
+
+  <definition name="testimonial-edit" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/testimonial/edit.jsp" />
+  </definition>
+
+  <definition name="testimonial-view" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/testimonial/view.jsp" />
+  </definition>
+
 </tiles-definitions>

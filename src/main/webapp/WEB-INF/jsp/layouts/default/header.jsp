@@ -12,7 +12,7 @@
         <li><a href="${ctx}/equipments"><spring:message code="page.nav.equipments" /></a></li>
         <li><a href="${ctx}/pigeon_sales"><spring:message code="page.nav.pigeon.sales" /></a></li>
         <li><a href="${ctx}/news"><spring:message code="page.nav.news" /></a></li>
-        <li><a href="${ctx}/testimonial"><spring:message code="page.nav.testimonial" /></a></li>
+        <li><a href="${ctx}/testimonials"><spring:message code="page.nav.testimonials" /></a></li>
         <li><a href="${ctx}/about_us"><spring:message code="page.nav.about" /></a></li>
         <li><a href="${ctx}/contact_us"><spring:message code="page.nav.contact" /></a></li>
         <li><a href="${ctx}/strayed_pigeons"><spring:message code="page.nav.found.strayed.pigeons" /></a></li>
