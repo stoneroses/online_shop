@@ -40,11 +40,7 @@ public class NewsController extends BaseController {
         ModelAndView mav = new ModelAndView("news-index");
         Page<News> newsPage = newsService.getNews(page - 1, size);
         mav.addObject("newsPage", newsPage);
-        mav.addObject("totalPages", newsPage.getTotalPages());
-        mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
-        mav.addObject("currentPage", page);
-        mav.addObject("nextPage", page + 1 < newsPage.getTotalPages() ? page + 1 : newsPage.getTotalPages());
-        mav.addObject("pageSize", 10);
+        preparePaginationData(mav, "newsPage", newsPage, page, 10);
         mav.addObject("pageTitle", "News List");
         return mav;
     }

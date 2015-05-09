@@ -3,7 +3,9 @@ package com.wang.michael.online_shop.web.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.wang.michael.online_shop.exception.SettingNotFound;
 import com.wang.michael.online_shop.model.Category;
@@ -40,5 +42,14 @@ public class BaseController {
         } catch (SettingNotFound e) {
             return "Un-configurated page_title_prefix";
         }
+    }
+
+    protected void preparePaginationData(ModelAndView mav, String pageObjectName, Page<?> pageObjec, int page, int pageSize) {
+        mav.addObject(pageObjectName, pageObjec);
+        mav.addObject("totalPages", pageObjec.getTotalPages());
+        mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
+        mav.addObject("currentPage", page);
+        mav.addObject("nextPage", page + 1 < pageObjec.getTotalPages() ? page + 1 : pageObjec.getTotalPages());
+        mav.addObject("pageSize", pageSize);
     }
 }

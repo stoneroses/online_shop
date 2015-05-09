@@ -68,11 +68,7 @@ public class UserController extends BaseController {
         ModelAndView mav = new ModelAndView("user-index");
         Page<User> userPage = userService.getUsers(page - 1, size);
         mav.addObject("userPage", userPage);
-        mav.addObject("totalPages", userPage.getTotalPages());
-        mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
-        mav.addObject("currentPage", page);
-        mav.addObject("nextPage", page + 1 < userPage.getTotalPages() ? page + 1 : userPage.getTotalPages());
-        mav.addObject("pageSize", 10);
+        preparePaginationData(mav, "userPage", userPage, page, 10);
         mav.addObject("pageTitle", "User List");
         return mav;
     }

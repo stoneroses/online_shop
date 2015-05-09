@@ -72,11 +72,7 @@ public class ProductController extends BaseController {
         ModelAndView mav = new ModelAndView("product-index");
         Page<Product> productPage = productService.getProducts(page - 1, size);
         mav.addObject("productPage", productPage);
-        mav.addObject("totalPages", productPage.getTotalPages());
-        mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
-        mav.addObject("currentPage", page);
-        mav.addObject("nextPage", page + 1 < productPage.getTotalPages() ? page + 1 : productPage.getTotalPages());
-        mav.addObject("pageSize", 10);
+        preparePaginationData(mav, "productPage", productPage, page, 10);
         mav.addObject("pageTitle", "Product List");
         return mav;
     }

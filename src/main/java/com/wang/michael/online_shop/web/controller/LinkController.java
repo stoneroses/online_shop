@@ -60,11 +60,7 @@ public class LinkController extends BaseController {
         ModelAndView mav = new ModelAndView("link-index");
         Page<Link> linkPage = linkService.getLinks(page - 1, size);
         mav.addObject("linkPage", linkPage);
-        mav.addObject("totalPages", linkPage.getTotalPages());
-        mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
-        mav.addObject("currentPage", page);
-        mav.addObject("nextPage", page + 1 < linkPage.getTotalPages() ? page + 1 : linkPage.getTotalPages());
-        mav.addObject("pageSize", 10);
+        preparePaginationData(mav, "linkPage", linkPage, page, 10);
         mav.addObject("pageTitle", "Link List");
         return mav;
     }

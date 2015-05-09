@@ -62,12 +62,7 @@ public class CategoryController extends BaseController {
             @RequestParam(value = "size", required = true, defaultValue = "10") int size) {
         ModelAndView mav = new ModelAndView("category-index");
         Page<Category> categoryPage = categoryService.getTopCategory(page - 1, size);
-        mav.addObject("categoryPage", categoryPage);
-        mav.addObject("totalPages", categoryPage.getTotalPages());
-        mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
-        mav.addObject("currentPage", page);
-        mav.addObject("nextPage", page + 1 < categoryPage.getTotalPages() ? page + 1 : categoryPage.getTotalPages());
-        mav.addObject("pageSize", 10);
+        preparePaginationData(mav, "categoryPage", categoryPage, page, 10);
         mav.addObject("pageTitle", "Category List");
         return mav;
     }

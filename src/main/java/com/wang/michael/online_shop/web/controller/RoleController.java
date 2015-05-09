@@ -72,11 +72,7 @@ public class RoleController extends BaseController {
         ModelAndView mav = new ModelAndView("role-index");
         Page<Role> rolePage = roleService.getRoles(page - 1, size);
         mav.addObject("rolePage", rolePage);
-        mav.addObject("totalPages", rolePage.getTotalPages());
-        mav.addObject("previousPage", page - 1 > 1 ? page - 1 : 1);
-        mav.addObject("currentPage", page);
-        mav.addObject("nextPage", page + 1 < rolePage.getTotalPages() ? page + 1 : rolePage.getTotalPages());
-        mav.addObject("pageSize", 10);
+        preparePaginationData(mav, "rolePage", rolePage, page, 10);
         mav.addObject("pageTitle", "Role List");
         return mav;
     }
