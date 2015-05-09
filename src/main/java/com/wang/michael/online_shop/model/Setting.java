@@ -24,12 +24,12 @@ public class Setting {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name = "setting_key", length = 256)
+    @Column(name = "setting_key", length = 256, unique = true)
     @Size(min = 2, max = 256)
     private String key;
 
-    @Column(name = "setting_value", length = 1024)
-    @Size(min = 2, max = 1024)
+    @Column(name = "setting_value", length = 2048)
+    @Size(min = 2, max = 2048)
     private String value;
 
     @JsonIgnore

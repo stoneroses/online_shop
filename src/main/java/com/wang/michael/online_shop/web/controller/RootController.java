@@ -76,4 +76,19 @@ public class RootController extends BaseController {
         redirectAttributes.addFlashAttribute("message", message);
         return mav;
     }
+
+    @RequestMapping(value = "/strayed_pigeons", method = RequestMethod.GET)
+    public ModelAndView strayedPigeonsPage() {
+        ModelAndView mav = new ModelAndView("strayed_pigeons");
+        String strayedPigeons = null;
+        try {
+            strayedPigeons = settingService.findByKey("strayed_pigeons").getValue();
+        } catch (SettingNotFound e) {
+            strayedPigeons = "Default about us message. Please add strayed_pigeons settings instead.";
+        }
+        mav.addObject("strayedPigeons", strayedPigeons);
+        mav.addObject("pageTitle", "Found Strayed Pigeons");
+        return mav;
+    }
+
 }
