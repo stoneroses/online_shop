@@ -223,4 +223,20 @@
     <put-attribute name="body" value="/WEB-INF/jsp/testimonial/view.jsp" />
   </definition>
 
+  <definition name="pigeon_sale-index" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/pigeon_sale/list.jsp" />
+  </definition>
+
+  <definition name="pigeon_sale-new" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/pigeon_sale/new.jsp" />
+  </definition>
+
+  <definition name="pigeon_sale-edit" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/pigeon_sale/edit.jsp" />
+  </definition>
+
+  <definition name="pigeon_sale-view" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/pigeon_sale/view.jsp" />
+  </definition>
+
 </tiles-definitions>

@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
@@ -22,10 +24,10 @@ import org.joda.time.DateTime;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "images")
+@Table(name = "pigeon_sales")
 @Data
-@ToString(exclude = { "products" })
-public class Image {
+@ToString(exclude = { "images" })
+public class PigeonSale {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,21 +37,32 @@ public class Image {
     @Size(min = 2, max = 256)
     private String name;
 
+    @Column(length = 256)
+    @Size(min = 2, max = 256)
+    private String reference;
+
+    @Column(length = 256)
+    @Size(min = 2, max = 256)
+    private String father;
+
+    @Column(length = 256)
+    @Size(min = 2, max = 256)
+    private String mother;
+
+    @Column
+    private double price;
+
+    @Column
+    private double discount;
+
     @Column(length = 1024)
-    @Size(min = 10, max = 1024)
+    @Size(min = 2, max = 1024)
     private String description;
 
-    @Column(length = 1024)
-    @Size(min = 10, max = 1024)
-    private String location;
-
     @JsonIgnore
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE }, fetch = FetchType.LAZY, mappedBy = "images")
-    private Collection<Product> products;
-
-    @JsonIgnore
-    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE }, fetch = FetchType.LAZY, mappedBy = "images")
-    private Collection<PigeonSale> pigeonSales;
+    @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE }, fetch = FetchType.LAZY)
+    @JoinTable(name = "pigeon_sale_image", joinColumns = { @JoinColumn(name = "pigeon_sale_id", updatable = false) }, inverseJoinColumns = { @JoinColumn(name = "image_id", updatable = false) })
+    private Collection<Image> images;
 
     @JsonIgnore
     @Column(name = "createdDateTime")
@@ -60,4 +73,8 @@ public class Image {
     @Column(name = "updatedDateTime")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime updatedDateTime;
+
+    public double getNowPrice() {
+        return this.price * (100 - this.discount) / 100;
+    }
 }

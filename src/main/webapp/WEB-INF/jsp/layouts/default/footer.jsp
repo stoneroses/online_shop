@@ -56,6 +56,10 @@
         <li><a href="${ctx}/categories"><spring:message code="page.menu.maintenance.categories" /></a></li>
       </shiro:hasPermission>
       <li class="divider"></li>
+      <shiro:hasPermission name="pigeon_sale_list">
+        <li><a href="${ctx}/pigeon_sales"><spring:message code="page.menu.maintenance.pigeon.sales" /></a></li>
+      </shiro:hasPermission>
+      <li class="divider"></li>
       <shiro:hasPermission name="news_list">
         <li><a href="${ctx}/news"><spring:message code="page.menu.maintenance.news" /></a></li>
       </shiro:hasPermission>
