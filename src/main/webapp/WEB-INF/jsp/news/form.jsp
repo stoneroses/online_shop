@@ -36,3 +36,9 @@
   </div>
 </div>
 <a href="${ctx}/news" class="btn btn-default"><spring:message code="news.list" /></a>
+
+<script>
+  // Replace the <textarea id="editor1"> with a CKEditor
+  // instance, using default configuration.
+  CKEDITOR.replace('content');
+</script>
