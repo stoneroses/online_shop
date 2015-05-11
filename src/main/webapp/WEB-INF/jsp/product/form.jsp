@@ -141,3 +141,7 @@
   </div>
 </div>
 <a href="${ctx}/products" class="btn btn-default"><spring:message code="product.list" /></a>
+
+<script>
+  CKEDITOR.replace('description');
+</script>

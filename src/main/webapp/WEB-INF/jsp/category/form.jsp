@@ -79,7 +79,7 @@
         <div class="form-group">
           <label for="description" class="col-sm-2 control-label"><spring:message code="category.description" /></label>
           <div class="col-sm-10">
-            <form:input path="description" class="form-control" />
+            <form:textarea path="description" class="form-control" />
             <form:errors path="description" cssClass="text-danger" />
           </div>
         </div>
@@ -159,3 +159,7 @@
   </div>
 </div>
 <a href="${ctx}/categories" class="btn btn-default"><spring:message code="category.list" /></a>
+
+<script>
+  CKEDITOR.replace('description');
+</script>

@@ -43,3 +43,7 @@
   </div>
 </div>
 <a href="${ctx}/testimonials" class="btn btn-default"><spring:message code="testimonial.list" /></a>
+
+<script>
+  CKEDITOR.replace('content');
+</script>

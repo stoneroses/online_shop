@@ -36,3 +36,7 @@
   </div>
 </div>
 <a href="${ctx}/settings" class="btn btn-default"><spring:message code="setting.list" /></a>
+
+<script>
+  CKEDITOR.replace('value');
+</script>
