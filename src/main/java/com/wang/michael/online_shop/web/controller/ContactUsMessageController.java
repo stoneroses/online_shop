@@ -32,6 +32,11 @@ public class ContactUsMessageController extends BaseController {
         return "ContactUsMessages";
     }
 
+    @ModelAttribute("currentNavButton")
+    public String getCurrentNavButton() {
+        return "contact_us";
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     @RequiresPermissions("contact_us_message_create")
     public ModelAndView newContactUsMessagePage() throws Exception {

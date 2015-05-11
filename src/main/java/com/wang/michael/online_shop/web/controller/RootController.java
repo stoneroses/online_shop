@@ -42,6 +42,7 @@ public class RootController extends BaseController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView indexPage() {
         ModelAndView mav = new ModelAndView("index");
+        mav.addObject("currentNavButton", "home");
         mav.addObject("pageTitle", "Home");
         return mav;
     }
@@ -62,6 +63,7 @@ public class RootController extends BaseController {
         } catch (SettingNotFound e) {
             aboutUs = "Default about us message. Please add about_us settings instead.";
         }
+        mav.addObject("currentNavButton", "about_us");
         mav.addObject("aboutUs", aboutUs);
         mav.addObject("pageTitle", "About Us");
         return mav;
@@ -76,6 +78,7 @@ public class RootController extends BaseController {
         } catch (SettingNotFound e) {
             contactUs = "Default contact us message. Please add contact_us settings instead.";
         }
+        mav.addObject("currentNavButton", "contact_us");
         mav.addObject("contactUs", contactUs);
         mav.addObject("pageTitle", "Contact Us");
         return mav;
@@ -109,6 +112,7 @@ public class RootController extends BaseController {
         } catch (SettingNotFound e) {
             strayedPigeons = "Default about us message. Please add strayed_pigeons settings instead.";
         }
+        mav.addObject("currentNavButton", "strayed_pigeons");
         mav.addObject("strayedPigeons", strayedPigeons);
         mav.addObject("pageTitle", "Found Strayed Pigeons");
         return mav;

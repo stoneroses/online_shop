@@ -41,6 +41,11 @@ public class PigeonSaleController extends BaseController {
         return "PigeonSales";
     }
 
+    @ModelAttribute("currentNavButton")
+    public String getCurrentNavButton() {
+        return "pigeon_sales";
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     @RequiresPermissions("pigeon_sale_create")
     public ModelAndView newPigeonSalePage() throws Exception {

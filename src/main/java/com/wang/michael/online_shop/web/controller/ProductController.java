@@ -44,6 +44,11 @@ public class ProductController extends BaseController {
         return "Products";
     }
 
+    @ModelAttribute("currentNavButton")
+    public String getCurrentNavButton() {
+        return "equipments";
+    }
+
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     @RequiresPermissions("product_create")
     public ModelAndView newProductPage() throws Exception {

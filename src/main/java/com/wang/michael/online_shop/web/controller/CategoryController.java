@@ -24,13 +24,18 @@ import com.wang.michael.online_shop.model.Category;
 import com.wang.michael.online_shop.service.CategoryService;
 
 @RestController
-@RequestMapping(value = "/categories")
+@RequestMapping(value = { "/categories", "/equipments" })
 public class CategoryController extends BaseController {
 
     @Autowired
     private CategoryService categoryService;
 
-    @ModelAttribute("pageTitle")
+    @ModelAttribute("currentNavButton")
+    public String getCurrentNavButton() {
+        return "equipments";
+    }
+
+    @ModelAttribute("currentNabButton")
     public String defaultPageTitle() {
         return "Categories";
     }

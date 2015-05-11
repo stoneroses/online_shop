@@ -37,6 +37,11 @@ public class ImageController extends BaseController {
     @Autowired
     private ImageService imageService;
 
+    @ModelAttribute("currentNavButton")
+    public String getCurrentNavButton() {
+        return "equipments";
+    }
+
     @Value("${file.upload.root}")
     private String fileUploadRoot;
 
