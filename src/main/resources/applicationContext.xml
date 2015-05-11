@@ -64,4 +64,10 @@
     </property>
   </bean>
 
+  <bean id="reCaptcha" class="net.tanesha.recaptcha.ReCaptchaImpl">
+    <property name="privateKey" value="6LcXpQYTAAAAAKRUU-gYmXk_nfZXu7d_ghWlJdTy" />
+    <property name="publicKey" value="6LcXpQYTAAAAADhWGl0GIefsFk2CV16CyfRZYRQP" />
+    <property name="includeNoscript" value="false" />
+  </bean>
+
 </beans>
