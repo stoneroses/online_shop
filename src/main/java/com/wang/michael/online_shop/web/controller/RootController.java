@@ -1,9 +1,16 @@
 package com.wang.michael.online_shop.web.controller;
 
+import java.util.Properties;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+
+import net.tanesha.recaptcha.ReCaptcha;
+import net.tanesha.recaptcha.ReCaptchaResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,6 +34,9 @@ public class RootController extends BaseController {
     private SettingService settingService;
 
     @Autowired
+    private ReCaptcha reCaptcha;
+
+    @Autowired
     private ContactUsMessageService contactUsMessageService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -34,6 +44,13 @@ public class RootController extends BaseController {
         ModelAndView mav = new ModelAndView("index");
         mav.addObject("pageTitle", "Home");
         return mav;
+    }
+
+    @ModelAttribute("captchaScript")
+    public String getCaptchaScript() {
+        Properties options = new Properties();
+        options.put("theme", "clean");
+        return reCaptcha.createRecaptchaHtml("error message", options);
     }
 
     @RequestMapping(value = "/about_us", method = RequestMethod.GET)
@@ -65,8 +82,14 @@ public class RootController extends BaseController {
     }
 
     @RequestMapping(value = "/contact_us", method = RequestMethod.POST)
-    public ModelAndView saveContactUsMessage(@Valid ContactUsMessage contactUsMessage, BindingResult bindingResult,
+    public ModelAndView saveContactUsMessage(@Valid ContactUsMessage contactUsMessage, BindingResult bindingResult, HttpServletRequest request,
             final RedirectAttributes redirectAttributes) {
+        ReCaptchaResponse captchaResponse = reCaptcha.checkAnswer(request.getRemoteAddr(), request.getParameter("recaptcha_challenge_field"),
+                request.getParameter("recaptcha_response_field"));
+        if (!captchaResponse.isValid()) {
+            return new ModelAndView("contact_us", "message", "recaptcha code error!");
+        }
+
         if (bindingResult.hasErrors()) {
             return new ModelAndView("contact_us");
         }

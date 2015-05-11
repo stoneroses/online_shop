@@ -19,14 +19,16 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="firstName" class="col-sm-2 control-label"><spring:message code="contact.us.message.first.name" /></label>
+          <label for="firstName" class="col-sm-2 control-label"><spring:message
+              code="contact.us.message.first.name" /></label>
           <div class="col-sm-10">
             <form:input path="firstName" class="form-control" />
             <form:errors path="firstName" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
-          <label for="lastName" class="col-sm-2 control-label"><spring:message code="contact.us.message.last.name" /></label>
+          <label for="lastName" class="col-sm-2 control-label"><spring:message
+              code="contact.us.message.last.name" /></label>
           <div class="col-sm-10">
             <form:input path="lastName" class="form-control" />
             <form:errors path="lastName" cssClass="text-danger" />
@@ -47,20 +49,21 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="subject" class="col-sm-2 control-label"><spring:message
-              code="contact.us.message.subject" /></label>
+          <label for="subject" class="col-sm-2 control-label"><spring:message code="contact.us.message.subject" /></label>
           <div class="col-sm-10">
             <form:input path="subject" class="form-control" />
             <form:errors path="subject" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">
-          <label for="content" class="col-sm-2 control-label"><spring:message
-              code="contact.us.message.content" /></label>
+          <label for="content" class="col-sm-2 control-label"><spring:message code="contact.us.message.content" /></label>
           <div class="col-sm-10">
             <form:textarea path="content" class="form-control" />
             <form:errors path="content" cssClass="text-danger" />
           </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-10 col-sm-offset-2">${captchaScript}</div>
         </div>
         <div class="form-group">
           <div class="col-sm-offset-2 col-sm-10">
