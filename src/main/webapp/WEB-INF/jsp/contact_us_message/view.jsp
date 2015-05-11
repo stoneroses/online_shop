@@ -4,8 +4,9 @@
 <h1>
   <spring:message code="contact.us.message.page.title.view" />
 </h1>
-<p>${contactUsMessage.name}</p>
+<p>${contactUsMessage.title} ${contactUsMessage.firstName} ${contactUsMessage.phone}</p>
 <p>${contactUsMessage.phone}</p>
+<p>${contactUsMessage.email}</p>
 <p>${contactUsMessage.subject}</p>
 <p>${contactUsMessage.content}</p>
 <a href="${ctx}/contact_us_messages" class="btn btn-default"><spring:message code="contact.us.message.list" /></a>

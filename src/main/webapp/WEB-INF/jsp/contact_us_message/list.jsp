@@ -18,7 +18,7 @@
   <tbody>
     <c:forEach var="contactUsMessage" items="${contactUsMessagePage.content}">
       <tr>
-        <td>${contactUsMessage.name}</td>
+        <td>${contactUsMessage.firstName} ${contactUsMessage.lastName}</td>
         <td>${contactUsMessage.phone}</td>
         <td><a href="${ctx}/contact_us_messages/${contactUsMessage.id}">${contactUsMessage.subject}</a></td>
         <td>${contactUsMessage.content}</td>

@@ -12,10 +12,31 @@
           <spring:message code="${formLegend}" />
         </legend>
         <div class="form-group">
-          <label for="name" class="col-sm-2 control-label"><spring:message code="contact.us.message.name" /></label>
+          <label for="title" class="col-sm-2 control-label"><spring:message code="contact.us.message.title" /></label>
           <div class="col-sm-10">
-            <form:input path="name" class="form-control" />
-            <form:errors path="name" cssClass="text-danger" />
+            <form:input path="title" class="form-control" />
+            <form:errors path="title" cssClass="text-danger" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="firstName" class="col-sm-2 control-label"><spring:message code="contact.us.message.first.name" /></label>
+          <div class="col-sm-10">
+            <form:input path="firstName" class="form-control" />
+            <form:errors path="firstName" cssClass="text-danger" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastName" class="col-sm-2 control-label"><spring:message code="contact.us.message.last.name" /></label>
+          <div class="col-sm-10">
+            <form:input path="lastName" class="form-control" />
+            <form:errors path="lastName" cssClass="text-danger" />
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email" class="col-sm-2 control-label"><spring:message code="contact.us.message.email" /></label>
+          <div class="col-sm-10">
+            <form:input path="email" class="form-control" />
+            <form:errors path="email" cssClass="text-danger" />
           </div>
         </div>
         <div class="form-group">

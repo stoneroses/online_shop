@@ -24,11 +24,23 @@ public class ContactUsMessage {
 
     @Column(length = 128)
     @Size(min = 2, max = 128)
-    private String name;
+    private String title;
+
+    @Column(name = "first_name", length = 128)
+    @Size(min = 2, max = 128)
+    private String firstName;
+
+    @Column(name = "last_name", length = 128)
+    @Size(min = 2, max = 128)
+    private String lastName;
 
     @Column(length = 128)
     @Size(min = 2, max = 128)
     private String phone;
+
+    @Column(length = 256)
+    @Size(min = 2, max = 256)
+    private String email;
 
     @Column(length = 256)
     @Size(min = 2, max = 256)
