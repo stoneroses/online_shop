@@ -1,9 +1,12 @@
 package com.wang.michael.online_shop.web.controller;
 
+import java.security.SecureRandom;
 import java.util.List;
+import java.util.Random;
 
 import javax.validation.Valid;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.subject.Subject;
@@ -11,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +47,12 @@ public class UserController extends BaseController {
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     public ModelAndView newUserPage() throws Exception {
-        ModelAndView mav = new ModelAndView("user-new", "user", new User());
+        User user = new User();
+        String randomPassword = generateRandomPassword(8);
+        user.setPassword(randomPassword);
+        user.setConfirmPassword(randomPassword);
+        ModelAndView mav = new ModelAndView("user-new", "user", user);
+        mav.addObject("randomPassword", "randomPassword");
         mav.addObject("pageTitle", "Create User");
         return mav;
     }
@@ -108,7 +117,13 @@ public class UserController extends BaseController {
     @RequiresPermissions("user_save")
     public ModelAndView savePasswordByAdmin(@RequestParam(value = "id", required = true) Integer id,
             @RequestParam(value = "password", required = true) String password,
-            @RequestParam(value = "confirmPassword", required = true) String confirmPassword) throws UserNotFound {
+            @RequestParam(value = "confirmPassword", required = true) String confirmPassword, final RedirectAttributes redirectAttributes)
+            throws UserNotFound {
+
+        if (!StringUtils.equals(password, confirmPassword)) {
+            redirectAttributes.addFlashAttribute("errorMessage", "user.confirm.password.not.match");
+            return new ModelAndView("redirect:/users/" + id + "/change_password");
+        }
         ModelAndView mav = new ModelAndView("user-view");
         User user = userService.savePassword(Long.valueOf(id), password);
         mav.addObject("user", user);
@@ -151,7 +166,11 @@ public class UserController extends BaseController {
 
     @RequestMapping(value = "/change_password", method = RequestMethod.POST)
     public ModelAndView savePassword(@RequestParam(value = "password", required = true) String password,
-            @RequestParam(value = "confirmPassword", required = true) String confirmPassword) throws UserNotFound {
+            @RequestParam(value = "confirmPassword", required = true) String confirmPassword, BindingResult result) throws UserNotFound {
+        if (StringUtils.equals(password, confirmPassword)) {
+            result.addError(new ObjectError("conformPassword", "{user.confirm.password.not.match}"));
+            return new ModelAndView("redirect:/users/change_password");
+        }
         ModelAndView mav = new ModelAndView("user-view");
         Subject currentUser = SecurityUtils.getSubject();
         User user = userService.savePassword(currentUser.getPrincipal().toString(), password);
@@ -159,5 +178,17 @@ public class UserController extends BaseController {
         mav.addObject("pageTitle", "Change Password");
         mav.addObject("message", "Password updated successfully.");
         return mav;
+    }
+
+    private String generateRandomPassword(int passwordLength) {
+        Random random = new SecureRandom();
+        String letters = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789`~!@#$%^&*()-_+=";
+
+        String pw = "";
+        for (int i = 0; i < passwordLength; i++) {
+            int index = (int) (random.nextDouble() * letters.length());
+            pw += letters.substring(index, index + 1);
+        }
+        return pw;
     }
 }

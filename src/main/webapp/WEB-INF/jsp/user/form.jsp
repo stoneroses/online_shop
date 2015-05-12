@@ -8,6 +8,8 @@
     <form:form method="POST" modelAttribute="user" action="${ctx}/users/save" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
+        <form:hidden path="password"/>
+        <form:hidden path="confirmPassword"/>
         <legend>
           <spring:message code="${formLegend}" />
         </legend>

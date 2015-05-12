@@ -44,13 +44,15 @@ public class User {
     @Size(min = 2, max = 256)
     private String name;
 
+    @NotEmpty(message = "{user.password.not.empty}")
     @Column(name = "password")
     @JsonIgnore
     @Size(min = 8, max = 256)
     private String password;
 
+    @NotEmpty(message = "{user.confirm.password.not.empty}")
     @Transient
-    @Size(min = 8, max = 30)
+    @Size(min = 8, max = 256)
     private String confirmPassword;
 
     @Column(length = 1024)

@@ -96,6 +96,7 @@ public class UserServiceImpl implements UserService {
     public User savePassword(String email, String password) throws UserNotFound {
         User user = getByEmail(email);
         user.setPassword(getEncryptPassword(password, email));
+        user.setConfirmPassword(getEncryptPassword(password, email));
         return userRepository.save(user);
     }
 
@@ -119,6 +120,7 @@ public class UserServiceImpl implements UserService {
     public User savePassword(Long id, String password) throws UserNotFound {
         User user = findById(id);
         user.setPassword(getEncryptPassword(password, user.getEmail()));
+        user.setConfirmPassword(getEncryptPassword(password, user.getEmail()));
         return userRepository.save(user);
     }
 
