@@ -30,5 +30,10 @@
   <!--/.nav-collapse -->
 </nav>
 <script>
+<c:if test="${not empty currentNavButton}">
 $("li[id=${currentNavButton}]").addClass("active");
+</c:if>
+<c:if test="${empty currentNavButton}">
+$("li[id=home]").addClass("active");
+</c:if>
 </script>
