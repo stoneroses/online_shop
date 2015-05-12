@@ -54,8 +54,7 @@ public class ContactUsMessageController extends BaseController {
         }
         ModelAndView mav = new ModelAndView("redirect:/contact_us_messages/list");
         contactUsMessageService.save(contactUsMessage);
-        String message = "ContactUsMessage was successfully saved.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "contact.us.message.successfully.saved");
         return mav;
     }
 
@@ -86,8 +85,7 @@ public class ContactUsMessageController extends BaseController {
     public ModelAndView deleteContactUsMessage(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws ContactUsMessageNotFound {
         ModelAndView mav = new ModelAndView("redirect:/contact_us_messages/list");
         contactUsMessageService.delete(Long.valueOf(id));
-        String message = "ContactUsMessage was successfully deleted.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "contact.us.message.successfully.deleted");
         return mav;
     }
 

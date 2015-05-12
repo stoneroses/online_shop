@@ -54,7 +54,7 @@ public class LoginController extends BaseController {
         ReCaptchaResponse captchaResponse = reCaptcha.checkAnswer(request.getRemoteAddr(), request.getParameter("recaptcha_challenge_field"),
                 request.getParameter("recaptcha_response_field"));
         if (!captchaResponse.isValid()) {
-            request.setAttribute("message", "recaptcha code error!");
+            request.setAttribute("message", "recaptcha.code.error");
             return "login";
         }
 

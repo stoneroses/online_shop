@@ -59,8 +59,7 @@ public class TestimonialController extends BaseController {
         }
         ModelAndView mav = new ModelAndView("redirect:/testimonials/list");
         testimonialService.save(testimonial);
-        String message = "Testimonial was successfully saved.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "testimonial.successfully.saved");
         return mav;
     }
 
@@ -80,8 +79,7 @@ public class TestimonialController extends BaseController {
     public ModelAndView deleteTestimonial(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws TestimonialNotFound {
         ModelAndView mav = new ModelAndView("redirect:/testimonials/list");
         testimonialService.delete(Long.valueOf(id));
-        String message = "Testimonial was successfully deleted.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "testimonial.successfully.deleted");
         return mav;
     }
 

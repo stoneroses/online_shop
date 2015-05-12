@@ -74,9 +74,9 @@ public class ImageController extends BaseController {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("image-edit");
         }
-        String message = null;
+        String storedFileName = null;
         if (file != null) {
-            String storedFileName = generateStoredFileName(file.getOriginalFilename());
+            storedFileName = generateStoredFileName(file.getOriginalFilename());
             String realFilePath = generateRealFilePath(storedFileName);
             if (!file.isEmpty()) {
                 try {
@@ -86,18 +86,18 @@ public class ImageController extends BaseController {
                     BufferedOutputStream stream = new BufferedOutputStream(new FileOutputStream(fileObject));
                     stream.write(bytes);
                     stream.close();
-                    message = "You successfully uploaded " + storedFileName + "!";
-                    image.setLocation(storedFileName);
                 } catch (Exception e) {
                     throw new ImageUploadException("You failed to upload " + storedFileName + " => " + e.getMessage(), e);
                 }
             } else {
-                throw new ImageUploadException("You failed to upload " + storedFileName + " because the file was empty.");
+                return new ModelAndView("image-edit", "warningMessage", "image.failed.upload.empty");
             }
         }
         ModelAndView mav = new ModelAndView("redirect:/images/list");
+        redirectAttributes.addFlashAttribute("message", "image.successfully.uploaded");
+        redirectAttributes.addFlashAttribute("messageArg", storedFileName);
+        image.setLocation(storedFileName);
         imageService.save(image);
-        redirectAttributes.addFlashAttribute("message", message);
         return mav;
     }
 
@@ -155,8 +155,7 @@ public class ImageController extends BaseController {
     public ModelAndView deleteImage(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws Exception {
         ModelAndView mav = new ModelAndView("redirect:/images/list");
         imageService.delete(Long.valueOf(id));
-        String message = "Image was successfully deleted.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "image.successfully.deleted");
         return mav;
     }
 

@@ -56,8 +56,7 @@ public class CategoryController extends BaseController {
         }
         ModelAndView mav = new ModelAndView("redirect:/categories/list");
         categoryService.save(category);
-        String message = "Category was successfully saved.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "category.successfully.saved");
         return mav;
     }
 
@@ -88,8 +87,7 @@ public class CategoryController extends BaseController {
     public ModelAndView deleteCategory(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws CategoryNotFound {
         ModelAndView mav = new ModelAndView("redirect:/categories/list");
         categoryService.delete(Long.valueOf(id));
-        String message = "Category was successfully deleted.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "category.successfully.deleted");
         return mav;
     }
 

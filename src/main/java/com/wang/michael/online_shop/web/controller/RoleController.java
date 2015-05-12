@@ -60,8 +60,7 @@ public class RoleController extends BaseController {
         }
         ModelAndView mav = new ModelAndView("redirect:/roles/list");
         roleService.save(role);
-        String message = "Role was successfully saved.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "role.successfully.saved");
         return mav;
     }
 
@@ -93,8 +92,7 @@ public class RoleController extends BaseController {
     public ModelAndView deleteRole(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws RoleNotFound {
         ModelAndView mav = new ModelAndView("redirect:/roles/list");
         roleService.delete(Long.valueOf(id));
-        String message = "Role was successfully deleted.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "role.successfully.deleted");
         return mav;
     }
 

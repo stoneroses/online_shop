@@ -48,8 +48,7 @@ public class SettingsController extends BaseController {
         }
         ModelAndView mav = new ModelAndView("redirect:/settings/list");
         settingService.save(setting);
-        String message = "Setting was successfully saved.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "setting.successfully.saved");
         return mav;
     }
 
@@ -81,8 +80,7 @@ public class SettingsController extends BaseController {
     public ModelAndView deleteSetting(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws SettingNotFound {
         ModelAndView mav = new ModelAndView("redirect:/settings/list");
         settingService.delete(Long.valueOf(id));
-        String message = "Setting was successfully deleted.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "setting.successfully.deleted");
         return mav;
     }
 

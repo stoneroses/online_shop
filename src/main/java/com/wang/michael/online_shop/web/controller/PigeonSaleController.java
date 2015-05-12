@@ -62,8 +62,7 @@ public class PigeonSaleController extends BaseController {
         }
         ModelAndView mav = new ModelAndView("redirect:/pigeon_sales/list");
         pigeonSaleService.save(pigeonSale);
-        String message = "PigeonSale was successfully saved.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "pigeon.sale.successfully.saved");
         return mav;
     }
 
@@ -95,8 +94,7 @@ public class PigeonSaleController extends BaseController {
     public ModelAndView deletePigeonSale(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws PigeonSaleNotFound {
         ModelAndView mav = new ModelAndView("redirect:/pigeon_sales/list");
         pigeonSaleService.delete(Long.valueOf(id));
-        String message = "PigeonSale was successfully deleted.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "pigeon.sale.successfully.deleted");
         return mav;
     }
 

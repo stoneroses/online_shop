@@ -48,8 +48,7 @@ public class LinkController extends BaseController {
         }
         ModelAndView mav = new ModelAndView("redirect:/links/list");
         linkService.save(link);
-        String message = "Link was successfully saved.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "link.successfully.saved");
         return mav;
     }
 
@@ -81,8 +80,7 @@ public class LinkController extends BaseController {
     public ModelAndView deleteLink(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws LinkNotFound {
         ModelAndView mav = new ModelAndView("redirect:/links/list");
         linkService.delete(Long.valueOf(id));
-        String message = "Link was successfully deleted.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "link.successfully.deleted");
         return mav;
     }
 

@@ -52,7 +52,7 @@ public class UserController extends BaseController {
         user.setPassword(randomPassword);
         user.setConfirmPassword(randomPassword);
         ModelAndView mav = new ModelAndView("user-new", "user", user);
-        mav.addObject("randomPassword", "randomPassword");
+        mav.addObject("randomPassword", randomPassword);
         mav.addObject("pageTitle", "Create User");
         return mav;
     }
@@ -65,8 +65,7 @@ public class UserController extends BaseController {
         }
         ModelAndView mav = new ModelAndView("redirect:/users/list");
         userService.save(user);
-        String message = "User was successfully saved.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "user.successfully.saved");
         return mav;
     }
 
@@ -98,8 +97,7 @@ public class UserController extends BaseController {
     public ModelAndView deleteUser(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws UserNotFound {
         ModelAndView mav = new ModelAndView("redirect:/users/list");
         userService.delete(Long.valueOf(id));
-        String message = "User was successfully deleted.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "user.successfully.deleted");
         return mav;
     }
 
@@ -121,14 +119,14 @@ public class UserController extends BaseController {
             throws UserNotFound {
 
         if (!StringUtils.equals(password, confirmPassword)) {
-            redirectAttributes.addFlashAttribute("errorMessage", "user.confirm.password.not.match");
+            redirectAttributes.addFlashAttribute("warningMessage", "user.confirm.password.not.match");
             return new ModelAndView("redirect:/users/" + id + "/change_password");
         }
         ModelAndView mav = new ModelAndView("user-view");
         User user = userService.savePassword(Long.valueOf(id), password);
         mav.addObject("user", user);
         mav.addObject("pageTitle", "Change Password");
-        mav.addObject("message", "Password updated successfully.");
+        mav.addObject("message", "userpassword.successfully.updated");
         return mav;
     }
 
@@ -176,7 +174,7 @@ public class UserController extends BaseController {
         User user = userService.savePassword(currentUser.getPrincipal().toString(), password);
         mav.addObject("user", user);
         mav.addObject("pageTitle", "Change Password");
-        mav.addObject("message", "Password updated successfully.");
+        mav.addObject("message", "userpassword.successfully.updated");
         return mav;
     }
 

@@ -59,8 +59,7 @@ public class NewsController extends BaseController {
         }
         ModelAndView mav = new ModelAndView("redirect:/news/list");
         newsService.save(news);
-        String message = "News was successfully saved.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "news.successfully.saved");
         return mav;
     }
 
@@ -80,8 +79,7 @@ public class NewsController extends BaseController {
     public ModelAndView deleteNews(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws NewsNotFound {
         ModelAndView mav = new ModelAndView("redirect:/news/list");
         newsService.delete(Long.valueOf(id));
-        String message = "News was successfully deleted.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "news.successfully.deleted");
         return mav;
     }
 

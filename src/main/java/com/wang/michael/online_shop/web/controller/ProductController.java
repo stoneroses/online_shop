@@ -65,8 +65,7 @@ public class ProductController extends BaseController {
         }
         ModelAndView mav = new ModelAndView("redirect:/products/list");
         productService.save(product);
-        String message = "Product was successfully saved.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "product.successfully.saved");
         return mav;
     }
 
@@ -98,8 +97,7 @@ public class ProductController extends BaseController {
     public ModelAndView deleteProduct(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws ProductNotFound {
         ModelAndView mav = new ModelAndView("redirect:/products/list");
         productService.delete(Long.valueOf(id));
-        String message = "Product was successfully deleted.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "product.successfully.deleted");
         return mav;
     }
 

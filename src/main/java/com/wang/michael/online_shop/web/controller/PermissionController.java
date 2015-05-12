@@ -65,8 +65,7 @@ public class PermissionController extends BaseController {
         }
         ModelAndView mav = new ModelAndView("redirect:/permissions/list");
         permissionService.save(permission);
-        String message = "Permission was successfully saved.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "permission.successfully.saved.");
         return mav;
     }
 
@@ -75,8 +74,7 @@ public class PermissionController extends BaseController {
     public ModelAndView deletePermission(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws PermissionNotFound {
         ModelAndView mav = new ModelAndView("redirect:/permissions/list");
         permissionService.delete(Long.valueOf(id));
-        String message = "Permission was successfully deleted.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "permission.successfully.deleted");
         return mav;
     }
 

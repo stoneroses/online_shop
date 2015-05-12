@@ -90,7 +90,7 @@ public class RootController extends BaseController {
         ReCaptchaResponse captchaResponse = reCaptcha.checkAnswer(request.getRemoteAddr(), request.getParameter("recaptcha_challenge_field"),
                 request.getParameter("recaptcha_response_field"));
         if (!captchaResponse.isValid()) {
-            return new ModelAndView("contact_us", "message", "recaptcha code error!");
+            return new ModelAndView("contact_us", "message", "recaptcha.code.error");
         }
 
         if (bindingResult.hasErrors()) {
@@ -98,8 +98,7 @@ public class RootController extends BaseController {
         }
         ModelAndView mav = new ModelAndView("redirect:/contact_us");
         contactUsMessageService.save(contactUsMessage);
-        String message = "Thanks for contacting us. We will get back to you as soon as possible.";
-        redirectAttributes.addFlashAttribute("message", message);
+        redirectAttributes.addFlashAttribute("message", "contact.us.message.successfully.accepted");
         return mav;
     }
 

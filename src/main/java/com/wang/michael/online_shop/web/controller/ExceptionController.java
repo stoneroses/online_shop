@@ -25,7 +25,7 @@ public class ExceptionController extends BaseController {
     public ModelAndView exception(Exception exception, WebRequest request) {
         ModelAndView modelAndView = new ModelAndView("error/500");
         modelAndView.addObject("pageTitle", "Errors!");
-        modelAndView.addObject("errorMessage", ExceptionUtils.getRootCause(exception) + " - " + ExceptionUtils.getRootCauseMessage(exception));
+        modelAndView.addObject("errorMessage", exception.getMessage());
         modelAndView.addObject("detailErrorMessage", ExceptionUtils.getStackTrace(exception));
         return modelAndView;
     }
