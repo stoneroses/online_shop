@@ -35,11 +35,6 @@ public class CategoryController extends BaseController {
         return "equipments";
     }
 
-    @ModelAttribute("currentNabButton")
-    public String defaultPageTitle() {
-        return "Categories";
-    }
-
     @RequestMapping(value = "/create", method = RequestMethod.GET)
     @RequiresPermissions("category_create")
     public ModelAndView newCategoryPage() throws Exception {
