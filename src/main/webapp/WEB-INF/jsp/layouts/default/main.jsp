@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>${pageTitlePrefix} - <tiles:insertAttribute name="title" ignore="true" /></title>
+<title>${pageTitlePrefix} - <spring:message code="${pageTitle}" arguments="${pageTitleArg}" text=""/></title>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 <!-- Optional theme -->

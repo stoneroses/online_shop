@@ -39,7 +39,7 @@ public class CategoryController extends BaseController {
     @RequiresPermissions("category_create")
     public ModelAndView newCategoryPage() throws Exception {
         ModelAndView mav = new ModelAndView("category-new", "category", new Category());
-        mav.addObject("pageTitle", "Create Category");
+        mav.addObject("pageTitle", "category.page.title.create");
         return mav;
     }
 
@@ -62,7 +62,7 @@ public class CategoryController extends BaseController {
         ModelAndView mav = new ModelAndView("category-index");
         Page<Category> categoryPage = categoryService.getTopCategory(page - 1, size);
         preparePaginationData(mav, "categoryPage", categoryPage, page, 10);
-        mav.addObject("pageTitle", "Category List");
+        mav.addObject("pageTitle", "category.page.title.list");
         return mav;
     }
 
@@ -73,7 +73,8 @@ public class CategoryController extends BaseController {
         Category category = null;
         category = categoryService.findById(Long.valueOf(id));
         mav.addObject("category", category);
-        mav.addObject("pageTitle", "Edit Category " + category.getName());
+        mav.addObject("pageTitle", "category.page.title.edit");
+        mav.addObject("pageTitleArg", category.getName());
         return mav;
     }
 
@@ -92,7 +93,8 @@ public class CategoryController extends BaseController {
         Category category = null;
         category = categoryService.findById(Long.valueOf(id));
         mav.addObject("category", category);
-        mav.addObject("pageTitle", "View Category " + category.getName());
+        mav.addObject("pageTitle", "category.page.title.view");
+        mav.addObject("pageTitleArg", category.getName());
         return mav;
     }
 

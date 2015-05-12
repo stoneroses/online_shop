@@ -2,7 +2,7 @@
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<h1><spring:message code="category.page.title.view" /></h1>
+<h1><spring:message code="category.page.title.view" arguments="${pageTitleArg}"/></h1>
 <p>
   <spring:message code="category.parent" />: <a href="${ctx}/categories/${category.parent.id}">${category.parent.name}</a>
 </p>
