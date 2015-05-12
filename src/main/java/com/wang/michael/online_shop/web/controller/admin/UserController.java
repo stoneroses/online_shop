@@ -14,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -118,7 +117,6 @@ public class UserController extends BaseController {
             @RequestParam(value = "password", required = true) String password,
             @RequestParam(value = "confirmPassword", required = true) String confirmPassword, final RedirectAttributes redirectAttributes)
             throws UserNotFound {
-
         if (!StringUtils.equals(password, confirmPassword)) {
             redirectAttributes.addFlashAttribute("warningMessage", "user.confirm.password.not.match");
             return new ModelAndView("redirect:/admin/users/" + id + "/change_password");
@@ -165,9 +163,10 @@ public class UserController extends BaseController {
 
     @RequestMapping(value = "/change_password", method = RequestMethod.POST)
     public ModelAndView savePassword(@RequestParam(value = "password", required = true) String password,
-            @RequestParam(value = "confirmPassword", required = true) String confirmPassword, BindingResult result) throws UserNotFound {
-        if (StringUtils.equals(password, confirmPassword)) {
-            result.addError(new ObjectError("conformPassword", "{user.confirm.password.not.match}"));
+            @RequestParam(value = "confirmPassword", required = true) String confirmPassword, final RedirectAttributes redirectAttributes)
+            throws UserNotFound {
+        if (!StringUtils.equals(password, confirmPassword)) {
+            redirectAttributes.addFlashAttribute("warningMessage", "user.confirm.password.not.match");
             return new ModelAndView("redirect:/admin/users/change_password");
         }
         ModelAndView mav = new ModelAndView("user-view");
