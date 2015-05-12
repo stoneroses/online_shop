@@ -5,4 +5,4 @@
 <c:set var="formLegend" value="contact.us.message.page.title.new" />
 <c:set var="formAction" value="${ctx}/contact_us" />
 
-<%@ include file="contact_us_message/form.jsp"%>
+<%@ include file="admin/contact_us_message/form.jsp"%>

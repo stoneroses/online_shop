@@ -42,199 +42,199 @@
 
 
   <definition name="news-index" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/news/list.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/news/list.jsp" />
   </definition>
 
   <definition name="news-new" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/news/new.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/news/new.jsp" />
   </definition>
 
   <definition name="news-edit" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/news/edit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/news/edit.jsp" />
   </definition>
 
   <definition name="news-view" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/news/view.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/news/view.jsp" />
   </definition>
 
   <definition name="category-index" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/category/list.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/category/list.jsp" />
   </definition>
 
   <definition name="category-new" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/category/new.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/category/new.jsp" />
   </definition>
 
   <definition name="category-edit" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/category/edit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/category/edit.jsp" />
   </definition>
 
   <definition name="category-view" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/category/view.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/category/view.jsp" />
   </definition>
 
   <definition name="user-index" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/user/list.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/user/list.jsp" />
   </definition>
 
   <definition name="user-new" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/user/new.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/user/new.jsp" />
   </definition>
 
   <definition name="user-edit" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/user/edit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/user/edit.jsp" />
   </definition>
 
   <definition name="user-view" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/user/view.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/user/view.jsp" />
   </definition>
 
   <definition name="user-change-password" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/user/change_password.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/user/change_password.jsp" />
   </definition>
 
   <definition name="permission-index" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/permission/list.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/permission/list.jsp" />
   </definition>
 
   <definition name="permission-new" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/permission/new.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/permission/new.jsp" />
   </definition>
 
   <definition name="permission-edit" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/permission/edit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/permission/edit.jsp" />
   </definition>
 
   <definition name="permission-view" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/permission/view.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/permission/view.jsp" />
   </definition>
 
   <definition name="role-index" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/role/list.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/role/list.jsp" />
   </definition>
 
   <definition name="role-new" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/role/new.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/role/new.jsp" />
   </definition>
 
   <definition name="role-edit" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/role/edit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/role/edit.jsp" />
   </definition>
 
   <definition name="role-view" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/role/view.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/role/view.jsp" />
   </definition>
 
   <definition name="image-index" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/image/list.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/image/list.jsp" />
   </definition>
 
   <definition name="image-new" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/image/new.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/image/new.jsp" />
   </definition>
 
   <definition name="image-edit" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/image/edit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/image/edit.jsp" />
   </definition>
 
   <definition name="image-view" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/image/view.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/image/view.jsp" />
   </definition>
 
   <definition name="link-index" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/link/list.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/link/list.jsp" />
   </definition>
 
   <definition name="link-new" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/link/new.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/link/new.jsp" />
   </definition>
 
   <definition name="link-edit" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/link/edit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/link/edit.jsp" />
   </definition>
 
   <definition name="link-view" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/link/view.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/link/view.jsp" />
   </definition>
 
   <definition name="product-index" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/product/list.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/product/list.jsp" />
   </definition>
 
   <definition name="product-new" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/product/new.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/product/new.jsp" />
   </definition>
 
   <definition name="product-edit" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/product/edit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/product/edit.jsp" />
   </definition>
 
   <definition name="product-view" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/product/view.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/product/view.jsp" />
   </definition>
 
   <definition name="setting-index" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/setting/list.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/setting/list.jsp" />
   </definition>
 
   <definition name="setting-new" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/setting/new.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/setting/new.jsp" />
   </definition>
 
   <definition name="setting-edit" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/setting/edit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/setting/edit.jsp" />
   </definition>
 
   <definition name="setting-view" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/setting/view.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/setting/view.jsp" />
   </definition>
 
   <definition name="contact_us_message-index" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/contact_us_message/list.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/contact_us_message/list.jsp" />
   </definition>
 
   <definition name="contact_us_message-new" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/contact_us_message/new.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/contact_us_message/new.jsp" />
   </definition>
 
   <definition name="contact_us_message-edit" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/contact_us_message/edit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/contact_us_message/edit.jsp" />
   </definition>
 
   <definition name="contact_us_message-view" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/contact_us_message/view.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/contact_us_message/view.jsp" />
   </definition>
 
   <definition name="testimonial-index" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/testimonial/list.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/testimonial/list.jsp" />
   </definition>
 
   <definition name="testimonial-new" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/testimonial/new.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/testimonial/new.jsp" />
   </definition>
 
   <definition name="testimonial-edit" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/testimonial/edit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/testimonial/edit.jsp" />
   </definition>
 
   <definition name="testimonial-view" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/testimonial/view.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/testimonial/view.jsp" />
   </definition>
 
   <definition name="pigeon_sale-index" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/pigeon_sale/list.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/pigeon_sale/list.jsp" />
   </definition>
 
   <definition name="pigeon_sale-new" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/pigeon_sale/new.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/pigeon_sale/new.jsp" />
   </definition>
 
   <definition name="pigeon_sale-edit" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/pigeon_sale/edit.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/pigeon_sale/edit.jsp" />
   </definition>
 
   <definition name="pigeon_sale-view" extends="default_layout">
-    <put-attribute name="body" value="/WEB-INF/jsp/pigeon_sale/view.jsp" />
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/pigeon_sale/view.jsp" />
   </definition>
 
 </tiles-definitions>
