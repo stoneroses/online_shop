@@ -107,10 +107,8 @@ public class UserServiceImpl implements UserService {
             User oldUser = userRepository.findOne(user.getId());
             user.setCreatedDateTime(oldUser.getCreatedDateTime());
             user.setUpdatedDateTime(new DateTime());
-            user.setPassword(oldUser.getPassword());
         } else {
             user.setCreatedDateTime(new DateTime());
-            user.setPassword("password");
         }
         return userRepository.save(user);
     }

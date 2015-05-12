@@ -50,7 +50,6 @@ public class User {
     @Size(min = 8, max = 256)
     private String password;
 
-    @NotEmpty(message = "{user.confirm.password.not.empty}")
     @Transient
     @Size(min = 8, max = 256)
     private String confirmPassword;

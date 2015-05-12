@@ -87,6 +87,9 @@ public class UserController extends BaseController {
         ModelAndView mav = new ModelAndView("user-edit");
         User user = null;
         user = userService.findById(Long.valueOf(id));
+        String randomPassword = generateRandomPassword(8);
+        user.setPassword(randomPassword);
+        user.setConfirmPassword(randomPassword);
         mav.addObject("user", user);
         mav.addObject("pageTitle", "Edit User " + user.getName());
         return mav;
@@ -117,6 +120,14 @@ public class UserController extends BaseController {
             @RequestParam(value = "password", required = true) String password,
             @RequestParam(value = "confirmPassword", required = true) String confirmPassword, final RedirectAttributes redirectAttributes)
             throws UserNotFound {
+        if (StringUtils.length(password) < 8) {
+            redirectAttributes.addFlashAttribute("warningMessage", "user.password.not.long.enough");
+            return new ModelAndView("redirect:/admin/users/" + id + "/change_password");
+        }
+        if (StringUtils.isBlank(password)) {
+            redirectAttributes.addFlashAttribute("warningMessage", "user.password.not.empty");
+            return new ModelAndView("redirect:/admin/users/" + id + "/change_password");
+        }
         if (!StringUtils.equals(password, confirmPassword)) {
             redirectAttributes.addFlashAttribute("warningMessage", "user.confirm.password.not.match");
             return new ModelAndView("redirect:/admin/users/" + id + "/change_password");
@@ -165,6 +176,14 @@ public class UserController extends BaseController {
     public ModelAndView savePassword(@RequestParam(value = "password", required = true) String password,
             @RequestParam(value = "confirmPassword", required = true) String confirmPassword, final RedirectAttributes redirectAttributes)
             throws UserNotFound {
+        if (StringUtils.length(password) < 8) {
+            redirectAttributes.addFlashAttribute("warningMessage", "user.password.not.long.enough");
+            return new ModelAndView("redirect:/admin/users/change_password");
+        }
+        if (StringUtils.isBlank(password)) {
+            redirectAttributes.addFlashAttribute("warningMessage", "user.password.not.empty");
+            return new ModelAndView("redirect:/admin/users/change_password");
+        }
         if (!StringUtils.equals(password, confirmPassword)) {
             redirectAttributes.addFlashAttribute("warningMessage", "user.confirm.password.not.match");
             return new ModelAndView("redirect:/admin/users/change_password");
