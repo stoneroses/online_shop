@@ -40,7 +40,7 @@ public class BaseController {
         try {
             return this.settingService.findByKey("page_title_prefix").getValue();
         } catch (SettingNotFound e) {
-            return "page.title.prefix.not.configured";
+            return "Page_title_prefix is not configured";
         }
     }
 
