@@ -113,7 +113,7 @@
           <div class="col-sm-12">
             <div id="imagesThumbnail" class="row">
 
-              <c:forEach var="image" items="${pigeon.sale.images}" varStatus="row">
+              <c:forEach var="image" items="${pigeonSale.images}" varStatus="row">
 
                 <div class="col-xs-6 col-md-3">
                   <span>${image.name}</span><span id="removeImageButton-${image.id}"
