@@ -52,3 +52,8 @@ body {
   word-wrap: break-word;
   padding: 15px;
 }
+
+.home-post > h3 {
+  border-bottom: 1px solid #a7a7a7;
+  color: #316599;
+}
