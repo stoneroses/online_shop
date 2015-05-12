@@ -244,4 +244,13 @@
   <definition name="view-news" extends="default_layout">
     <put-attribute name="body" value="/WEB-INF/jsp/view/news/view.jsp" />
   </definition>
+
+  <definition name="list-testimonial" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/view/testimonial/list.jsp" />
+  </definition>
+
+  <definition name="view-testimonial" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/view/testimonial/view.jsp" />
+  </definition>
+
 </tiles-definitions>
