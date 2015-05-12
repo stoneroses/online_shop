@@ -1,7 +1,7 @@
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<a href="${ctx}"><spring:message code="page.footer.home" /></a>
+<a href="${ctx}/"><spring:message code="page.footer.home" /></a>
 |
 <a href="${ctx}/about_us"><spring:message code="page.footer.about" /></a>
 |
