@@ -19,6 +19,8 @@ import lombok.Data;
 import lombok.ToString;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -34,6 +36,8 @@ public class User {
     private Long id;
 
     @Column(name = "email", unique = true)
+    @Email(message = "{user.email.not.correct.format}")
+    @NotEmpty(message = "{user.email.not.empty}")
     private String email;
 
     @Column(length = 256)

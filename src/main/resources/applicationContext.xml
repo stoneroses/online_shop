@@ -70,4 +70,10 @@
     <property name="includeNoscript" value="false" />
   </bean>
 
+  <bean name="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+    <property name="validationMessageSource">
+      <ref bean="messageSource" />
+    </property>
+  </bean>
+
 </beans>

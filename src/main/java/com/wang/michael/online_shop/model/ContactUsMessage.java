@@ -11,6 +11,8 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
 
 @Entity
@@ -38,8 +40,10 @@ public class ContactUsMessage {
     @Size(min = 2, max = 128)
     private String phone;
 
-    @Column(length = 256)
+    @Email(message = "{contact.us.message.email.not.correct.format}")
+    @NotEmpty(message = "{contact.us.message.email.not.empty}")
     @Size(min = 2, max = 256)
+    @Column(length = 256)
     private String email;
 
     @Column(length = 256)
