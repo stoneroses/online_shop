@@ -17,18 +17,18 @@
   <tbody>
     <c:forEach var="user" items="${userPage.content}">
       <tr>
-        <td><a href="${ctx}/users/${user.id}">${user.name}</a></td>
+        <td><a href="${ctx}/admin/users/${user.id}">${user.name}</a></td>
         <td>${user.email}</td>
         <td><c:forEach var="role" items="${user.roles}">
             <span class="label label-default">${permission.role}</span>
           </c:forEach></td>
         <td><shiro:hasPermission name="user_edit">
-            <a href="${ctx}/users/${user.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
+            <a href="${ctx}/admin/users/${user.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
           </shiro:hasPermission> <shiro:hasPermission name="user_save">
-            <a href="${ctx}/users/${user.id}/change_password" class="btn btn-default"><spring:message
+            <a href="${ctx}/admin/users/${user.id}/change_password" class="btn btn-default"><spring:message
                 code="user.page.title.change.password" /></a>
           </shiro:hasPermission> <shiro:hasPermission name="user_delete">
-            <a href="${ctx}/users/${user.id}/delete" class="btn btn-default"><spring:message
+            <a href="${ctx}/admin/users/${user.id}/delete" class="btn btn-default"><spring:message
                 code="admin.actions.delete" /></a>
           </shiro:hasPermission></td>
       </tr>
@@ -39,5 +39,5 @@
 <%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
 
 <shiro:hasPermission name="user_create">
-  <a href="${ctx}/users/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
+  <a href="${ctx}/admin/users/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>

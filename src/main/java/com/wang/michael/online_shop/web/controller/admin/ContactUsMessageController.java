@@ -1,4 +1,4 @@
-package com.wang.michael.online_shop.web.controller;
+package com.wang.michael.online_shop.web.controller.admin;
 
 import javax.validation.Valid;
 
@@ -19,9 +19,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.wang.michael.online_shop.exception.ContactUsMessageNotFound;
 import com.wang.michael.online_shop.model.ContactUsMessage;
 import com.wang.michael.online_shop.service.ContactUsMessageService;
+import com.wang.michael.online_shop.web.controller.BaseController;
 
 @RestController
-@RequestMapping(value = "/contact_us_messages")
+@RequestMapping(value = "/admin/contact_us_messages")
 public class ContactUsMessageController extends BaseController {
 
     @Autowired
@@ -52,7 +53,7 @@ public class ContactUsMessageController extends BaseController {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("contact_us_message-edit");
         }
-        ModelAndView mav = new ModelAndView("redirect:/contact_us_messages/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/contact_us_messages/list");
         contactUsMessageService.save(contactUsMessage);
         redirectAttributes.addFlashAttribute("message", "contact.us.message.successfully.saved");
         return mav;
@@ -83,7 +84,7 @@ public class ContactUsMessageController extends BaseController {
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     @RequiresPermissions("contact_us_message_delete")
     public ModelAndView deleteContactUsMessage(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws ContactUsMessageNotFound {
-        ModelAndView mav = new ModelAndView("redirect:/contact_us_messages/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/contact_us_messages/list");
         contactUsMessageService.delete(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("message", "contact.us.message.successfully.deleted");
         return mav;

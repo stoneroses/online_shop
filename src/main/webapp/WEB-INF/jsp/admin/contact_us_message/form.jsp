@@ -77,5 +77,5 @@
   </div>
 </div>
 <shiro:hasPermission name="contact_us_message_list">
-  <a href="${ctx}/contact_us_messages" class="btn btn-default"><spring:message code="contact.us.message.list" /></a>
+  <a href="${ctx}/admin/contact_us_messages" class="btn btn-default"><spring:message code="contact.us.message.list" /></a>
 </shiro:hasPermission>

@@ -18,25 +18,25 @@
     </button>
     <ul class="dropdown-menu" role="menu">
       <shiro:hasPermission name="contact_us_message_list">
-        <li><a href="${ctx}/contact_us_messages"><spring:message
+        <li><a href="${ctx}/admin/contact_us_messages"><spring:message
               code="page.menu.maintenance.contact.us.messages" /></a></li>
       </shiro:hasPermission>
       <shiro:hasPermission name="setting_list">
-        <li><a href="${ctx}/settings"><spring:message code="page.menu.maintenance.settings" /></a></li>
+        <li><a href="${ctx}/admin/settings"><spring:message code="page.menu.maintenance.settings" /></a></li>
       </shiro:hasPermission>
       <li class="divider"></li>
       <shiro:hasPermission name="permission_list">
-        <li><a href="${ctx}/permissions"><spring:message code="page.menu.maintenance.permissions" /></a></li>
+        <li><a href="${ctx}/admin/permissions"><spring:message code="page.menu.maintenance.permissions" /></a></li>
       </shiro:hasPermission>
       <shiro:hasPermission name="role_list">
-        <li><a href="${ctx}/roles"><spring:message code="page.menu.maintenance.roles" /></a></li>
+        <li><a href="${ctx}/admin/roles"><spring:message code="page.menu.maintenance.roles" /></a></li>
       </shiro:hasPermission>
       <shiro:hasPermission name="user_list">
-        <li><a href="${ctx}/users"><spring:message code="page.menu.maintenance.users" /></a></li>
+        <li><a href="${ctx}/admin/users"><spring:message code="page.menu.maintenance.users" /></a></li>
       </shiro:hasPermission>
       <li class="divider"></li>
-      <li><a href="${ctx}/users/profile"><spring:message code="page.menu.profile" /></a></li>
-      <li><a href="${ctx}/users/change_password"><spring:message code="page.menu.change.password" /></a></li>
+      <li><a href="${ctx}/admin/users/profile"><spring:message code="page.menu.profile" /></a></li>
+      <li><a href="${ctx}/admin/users/change_password"><spring:message code="page.menu.change.password" /></a></li>
       <li class="divider"></li>
       <li><a href="${ctx}/logout"><spring:message code="page.menu.log.out" /></a></li>
     </ul>
@@ -47,27 +47,27 @@
     </button>
     <ul class="dropdown-menu" role="menu">
       <shiro:hasPermission name="image_list">
-        <li><a href="${ctx}/images"><spring:message code="page.menu.maintenance.images" /></a></li>
+        <li><a href="${ctx}/admin/images"><spring:message code="page.menu.maintenance.images" /></a></li>
       </shiro:hasPermission>
       <shiro:hasPermission name="product_list">
-        <li><a href="${ctx}/products"><spring:message code="page.menu.maintenance.products" /></a></li>
+        <li><a href="${ctx}/admin/products"><spring:message code="page.menu.maintenance.products" /></a></li>
       </shiro:hasPermission>
       <shiro:hasPermission name="category_list">
-        <li><a href="${ctx}/categories"><spring:message code="page.menu.maintenance.categories" /></a></li>
+        <li><a href="${ctx}/admin/categories"><spring:message code="page.menu.maintenance.categories" /></a></li>
       </shiro:hasPermission>
       <li class="divider"></li>
       <shiro:hasPermission name="pigeon_sale_list">
-        <li><a href="${ctx}/pigeon_sales"><spring:message code="page.menu.maintenance.pigeon.sales" /></a></li>
+        <li><a href="${ctx}/admin/pigeon_sales"><spring:message code="page.menu.maintenance.pigeon.sales" /></a></li>
       </shiro:hasPermission>
       <li class="divider"></li>
       <shiro:hasPermission name="news_list">
-        <li><a href="${ctx}/news"><spring:message code="page.menu.maintenance.news" /></a></li>
+        <li><a href="${ctx}/admin/news"><spring:message code="page.menu.maintenance.news" /></a></li>
       </shiro:hasPermission>
       <shiro:hasPermission name="testimonial_list">
-        <li><a href="${ctx}/testimonials"><spring:message code="page.menu.maintenance.testimonial" /></a></li>
+        <li><a href="${ctx}/admin/testimonials"><spring:message code="page.menu.maintenance.testimonial" /></a></li>
       </shiro:hasPermission>
       <shiro:hasPermission name="link_list">
-        <li><a href="${ctx}/links"><spring:message code="page.menu.maintenance.links" /></a></li>
+        <li><a href="${ctx}/admin/links"><spring:message code="page.menu.maintenance.links" /></a></li>
       </shiro:hasPermission>
     </ul>
   </div>

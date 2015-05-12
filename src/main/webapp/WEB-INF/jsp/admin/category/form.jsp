@@ -14,7 +14,7 @@
     $("#productsTable > tbody").disableSelection();
 
     $("#productsInput").autocomplete({
-      source : "${ctx}/products/search",
+      source : "${ctx}/admin/products/search",
       paramName : "productName",
       minLength : 2,
       select : function(event, ui) {
@@ -39,7 +39,7 @@
     $("#categoriesTable > tbody").disableSelection();
 
     $("#categoriesInput").autocomplete({
-      source : "${ctx}/categories/search",
+      source : "${ctx}/admin/categories/search",
       paramName : "categoryName",
       minLength : 2,
       select : function(event, ui) {
@@ -63,7 +63,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form:form method="POST" modelAttribute="category" action="${ctx}/categories/save" class="form-horizontal">
+    <form:form method="POST" modelAttribute="category" action="${ctx}/admin/categories/save" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
         <legend>
@@ -158,7 +158,7 @@
     </form:form>
   </div>
 </div>
-<a href="${ctx}/categories" class="btn btn-default"><spring:message code="category.list" /></a>
+<a href="${ctx}/admin/categories" class="btn btn-default"><spring:message code="category.list" /></a>
 
 <script>
   CKEDITOR.replace('description');

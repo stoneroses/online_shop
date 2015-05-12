@@ -4,7 +4,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form:form method="POST" modelAttribute="setting" action="${ctx}/settings/save" class="form-horizontal">
+    <form:form method="POST" modelAttribute="setting" action="${ctx}/admin/settings/save" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
         <legend>
@@ -35,7 +35,7 @@
     </form:form>
   </div>
 </div>
-<a href="${ctx}/settings" class="btn btn-default"><spring:message code="setting.list" /></a>
+<a href="${ctx}/admin/settings" class="btn btn-default"><spring:message code="setting.list" /></a>
 
 <script>
   CKEDITOR.replace('value');

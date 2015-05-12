@@ -1,4 +1,4 @@
-package com.wang.michael.online_shop.web.controller;
+package com.wang.michael.online_shop.web.controller.admin;
 
 import javax.validation.Valid;
 
@@ -19,9 +19,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.wang.michael.online_shop.exception.NewsNotFound;
 import com.wang.michael.online_shop.model.News;
 import com.wang.michael.online_shop.service.NewsService;
+import com.wang.michael.online_shop.web.controller.BaseController;
 
 @RestController
-@RequestMapping(value = "/news")
+@RequestMapping(value = "/admin/news")
 public class NewsController extends BaseController {
 
     @Autowired
@@ -57,7 +58,7 @@ public class NewsController extends BaseController {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("news-edit");
         }
-        ModelAndView mav = new ModelAndView("redirect:/news/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/news/list");
         newsService.save(news);
         redirectAttributes.addFlashAttribute("message", "news.successfully.saved");
         return mav;
@@ -77,7 +78,7 @@ public class NewsController extends BaseController {
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     @RequiresPermissions("news_delete")
     public ModelAndView deleteNews(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws NewsNotFound {
-        ModelAndView mav = new ModelAndView("redirect:/news/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/news/list");
         newsService.delete(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("message", "news.successfully.deleted");
         return mav;

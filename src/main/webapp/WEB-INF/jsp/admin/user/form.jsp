@@ -5,7 +5,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form:form method="POST" modelAttribute="user" action="${ctx}/users/save" class="form-horizontal">
+    <form:form method="POST" modelAttribute="user" action="${ctx}/admin/users/save" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
         <form:hidden path="password"/>
@@ -59,4 +59,4 @@
     </form:form>
   </div>
 </div>
-<a href="${ctx}/users" class="btn btn-default"><spring:message code="user.list" /></a>
+<a href="${ctx}/admin/users" class="btn btn-default"><spring:message code="user.list" /></a>

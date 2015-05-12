@@ -11,11 +11,11 @@
   <span class="label label-default">${permission.name}</span>
 </c:forEach>
 <shiro:hasPermission name="role_list">
-  <a href="${ctx}/roles" class="btn btn-default"><spring:message code="role.list" /></a>
+  <a href="${ctx}/admin/roles" class="btn btn-default"><spring:message code="role.list" /></a>
 </shiro:hasPermission>
 <shiro:hasPermission name="role_edit">
-  <a href="${ctx}/roles/${role.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
+  <a href="${ctx}/admin/roles/${role.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
 </shiro:hasPermission>
 <shiro:hasPermission name="role_delete">
-  <a href="${ctx}/roles/${role.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
+  <a href="${ctx}/admin/roles/${role.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
 </shiro:hasPermission>

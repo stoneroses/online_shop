@@ -29,10 +29,10 @@
   </div>
 </div>
 
-<a href="${ctx}/products" class="btn btn-default"><spring:message code="product.list" /></a>
+<a href="${ctx}/admin/products" class="btn btn-default"><spring:message code="product.list" /></a>
 <shiro:hasPermission name="product_edit">
-  <a href="${ctx}/products/${product.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
+  <a href="${ctx}/admin/products/${product.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
 </shiro:hasPermission>
 <shiro:hasPermission name="product_delete">
-  <a href="${ctx}/products/${product.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
+  <a href="${ctx}/admin/products/${product.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
 </shiro:hasPermission>

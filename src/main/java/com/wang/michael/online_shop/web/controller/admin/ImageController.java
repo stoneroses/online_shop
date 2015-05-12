@@ -1,4 +1,4 @@
-package com.wang.michael.online_shop.web.controller;
+package com.wang.michael.online_shop.web.controller.admin;
 
 import java.io.BufferedOutputStream;
 import java.io.File;
@@ -29,9 +29,10 @@ import com.wang.michael.online_shop.exception.ImageNotFound;
 import com.wang.michael.online_shop.exception.ImageUploadException;
 import com.wang.michael.online_shop.model.Image;
 import com.wang.michael.online_shop.service.ImageService;
+import com.wang.michael.online_shop.web.controller.BaseController;
 
 @RestController
-@RequestMapping(value = "/images")
+@RequestMapping(value = "/admin/images")
 public class ImageController extends BaseController {
 
     @Autowired
@@ -93,7 +94,7 @@ public class ImageController extends BaseController {
                 return new ModelAndView("image-edit", "warningMessage", "image.failed.upload.empty");
             }
         }
-        ModelAndView mav = new ModelAndView("redirect:/images/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/images/list");
         redirectAttributes.addFlashAttribute("message", "image.successfully.uploaded");
         redirectAttributes.addFlashAttribute("messageArg", storedFileName);
         image.setLocation(storedFileName);
@@ -153,7 +154,7 @@ public class ImageController extends BaseController {
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     @RequiresPermissions("image_delete")
     public ModelAndView deleteImage(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws Exception {
-        ModelAndView mav = new ModelAndView("redirect:/images/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/images/list");
         imageService.delete(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("message", "image.successfully.deleted");
         return mav;

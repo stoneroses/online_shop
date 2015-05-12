@@ -1,4 +1,4 @@
-package com.wang.michael.online_shop.web.controller;
+package com.wang.michael.online_shop.web.controller.admin;
 
 import java.util.List;
 
@@ -23,9 +23,10 @@ import com.wang.michael.online_shop.model.Permission;
 import com.wang.michael.online_shop.model.Role;
 import com.wang.michael.online_shop.service.PermissionService;
 import com.wang.michael.online_shop.service.RoleService;
+import com.wang.michael.online_shop.web.controller.BaseController;
 
 @RestController
-@RequestMapping(value = "/roles")
+@RequestMapping(value = "/admin/roles")
 public class RoleController extends BaseController {
 
     @Autowired
@@ -58,7 +59,7 @@ public class RoleController extends BaseController {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("role-edit");
         }
-        ModelAndView mav = new ModelAndView("redirect:/roles/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/roles/list");
         roleService.save(role);
         redirectAttributes.addFlashAttribute("message", "role.successfully.saved");
         return mav;
@@ -90,7 +91,7 @@ public class RoleController extends BaseController {
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     @RequiresPermissions("role_delete")
     public ModelAndView deleteRole(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws RoleNotFound {
-        ModelAndView mav = new ModelAndView("redirect:/roles/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/roles/list");
         roleService.delete(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("message", "role.successfully.deleted");
         return mav;

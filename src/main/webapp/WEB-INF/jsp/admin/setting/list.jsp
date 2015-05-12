@@ -14,12 +14,12 @@
   <tbody>
     <c:forEach var="setting" items="${settingPage.content}">
       <tr>
-        <td><a href="${ctx}/settings/${setting.id}">${setting.key}</a></td>
+        <td><a href="${ctx}/admin/settings/${setting.id}">${setting.key}</a></td>
         <td>${setting.value}</td>
         <td><shiro:hasPermission name="setting_edit">
-            <a href="${ctx}/settings/${setting.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
+            <a href="${ctx}/admin/settings/${setting.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
           </shiro:hasPermission> <shiro:hasPermission name="setting_delete">
-            <a href="${ctx}/settings/${setting.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
+            <a href="${ctx}/admin/settings/${setting.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
           </shiro:hasPermission></td>
       </tr>
     </c:forEach>
@@ -29,5 +29,5 @@
 <%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
 
 <shiro:hasPermission name="setting_create">
-  <a href="${ctx}/settings/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
+  <a href="${ctx}/admin/settings/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>

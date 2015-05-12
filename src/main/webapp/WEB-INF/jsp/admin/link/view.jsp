@@ -7,10 +7,10 @@
 <p>${link.name}</p>
 <p>${link.url}</p>
 <p>${link.newWindow}</p>
-<a href="${ctx}/links" class="btn btn-default"><spring:message code="link.list" /></a>
+<a href="${ctx}/admin/links" class="btn btn-default"><spring:message code="link.list" /></a>
 <shiro:hasPermission name="link_edit">
-  <a href="${ctx}/links/${link.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
+  <a href="${ctx}/admin/links/${link.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
 </shiro:hasPermission>
 <shiro:hasPermission name="link_delete">
-  <a href="${ctx}/links/${link.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
+  <a href="${ctx}/admin/links/${link.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
 </shiro:hasPermission>

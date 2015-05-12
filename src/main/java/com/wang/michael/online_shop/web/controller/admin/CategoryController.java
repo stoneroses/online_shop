@@ -1,4 +1,4 @@
-package com.wang.michael.online_shop.web.controller;
+package com.wang.michael.online_shop.web.controller.admin;
 
 import java.util.List;
 
@@ -22,9 +22,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.wang.michael.online_shop.exception.CategoryNotFound;
 import com.wang.michael.online_shop.model.Category;
 import com.wang.michael.online_shop.service.CategoryService;
+import com.wang.michael.online_shop.web.controller.BaseController;
 
 @RestController
-@RequestMapping(value = { "/categories", "/equipments" })
+@RequestMapping(value = { "/admin/categories" })
 public class CategoryController extends BaseController {
 
     @Autowired
@@ -49,7 +50,7 @@ public class CategoryController extends BaseController {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("category-edit");
         }
-        ModelAndView mav = new ModelAndView("redirect:/categories/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/categories/list");
         categoryService.save(category);
         redirectAttributes.addFlashAttribute("message", "category.successfully.saved");
         return mav;
@@ -81,7 +82,7 @@ public class CategoryController extends BaseController {
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     @RequiresPermissions("category_delete")
     public ModelAndView deleteCategory(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws CategoryNotFound {
-        ModelAndView mav = new ModelAndView("redirect:/categories/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/categories/list");
         categoryService.delete(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("message", "category.successfully.deleted");
         return mav;

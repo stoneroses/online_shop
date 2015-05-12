@@ -1,4 +1,4 @@
-package com.wang.michael.online_shop.web.controller;
+package com.wang.michael.online_shop.web.controller.admin;
 
 import java.util.List;
 
@@ -23,9 +23,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.wang.michael.online_shop.exception.ProductNotFound;
 import com.wang.michael.online_shop.model.Product;
 import com.wang.michael.online_shop.service.ProductService;
+import com.wang.michael.online_shop.web.controller.BaseController;
 
 @RestController
-@RequestMapping(value = "/products")
+@RequestMapping(value = "/admin/products")
 public class ProductController extends BaseController {
 
     @Autowired
@@ -63,7 +64,7 @@ public class ProductController extends BaseController {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("product-edit");
         }
-        ModelAndView mav = new ModelAndView("redirect:/products/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/products/list");
         productService.save(product);
         redirectAttributes.addFlashAttribute("message", "product.successfully.saved");
         return mav;
@@ -95,7 +96,7 @@ public class ProductController extends BaseController {
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     @RequiresPermissions("product_delete")
     public ModelAndView deleteProduct(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws ProductNotFound {
-        ModelAndView mav = new ModelAndView("redirect:/products/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/products/list");
         productService.delete(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("message", "product.successfully.deleted");
         return mav;

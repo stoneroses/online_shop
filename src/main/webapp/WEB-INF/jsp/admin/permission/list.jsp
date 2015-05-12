@@ -16,13 +16,13 @@
   <tbody>
     <c:forEach var="permission" items="${permissionPage.content}">
       <tr>
-        <td><a href="${ctx}/permissions/${permission.id}">${permission.name}</a></td>
+        <td><a href="${ctx}/admin/permissions/${permission.id}">${permission.name}</a></td>
         <td>${permission.description}</td>
         <td><shiro:hasPermission name="permission_edit">
-            <a href="${ctx}/permissions/${permission.id}/edit" class="btn btn-default"><spring:message
+            <a href="${ctx}/admin/permissions/${permission.id}/edit" class="btn btn-default"><spring:message
                 code="admin.actions.edit" /></a>
           </shiro:hasPermission> <shiro:hasPermission name="permission_delete">
-            <a href="${ctx}/permissions/${permission.id}/delete" class="btn btn-default"><spring:message
+            <a href="${ctx}/admin/permissions/${permission.id}/delete" class="btn btn-default"><spring:message
                 code="admin.actions.delete" /></a>
           </shiro:hasPermission></td>
       </tr>
@@ -33,5 +33,5 @@
 <%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
 
 <shiro:hasPermission name="permission_create">
-  <a href="${ctx}/permissions/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
+  <a href="${ctx}/admin/permissions/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>

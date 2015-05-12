@@ -20,13 +20,13 @@
       <tr>
         <td>${contactUsMessage.firstName} ${contactUsMessage.lastName}</td>
         <td>${contactUsMessage.phone}</td>
-        <td><a href="${ctx}/contact_us_messages/${contactUsMessage.id}">${contactUsMessage.subject}</a></td>
+        <td><a href="${ctx}/admin/contact_us_messages/${contactUsMessage.id}">${contactUsMessage.subject}</a></td>
         <td>${contactUsMessage.content}</td>
         <td><shiro:hasPermission name="contact_us_message_edit">
-            <a href="${ctx}/contact_us_messages/${contactUsMessage.id}/edit" class="btn btn-default"><spring:message
+            <a href="${ctx}/admin/contact_us_messages/${contactUsMessage.id}/edit" class="btn btn-default"><spring:message
                 code="admin.actions.edit" /></a>
           </shiro:hasPermission> <shiro:hasPermission name="contact_us_message_delete">
-            <a href="${ctx}/contact_us_messages/${contactUsMessage.id}/delete" class="btn btn-default"><spring:message
+            <a href="${ctx}/admin/contact_us_messages/${contactUsMessage.id}/delete" class="btn btn-default"><spring:message
                 code="admin.actions.delete" /></a>
           </shiro:hasPermission></td>
       </tr>
@@ -37,5 +37,5 @@
 <%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
 
 <shiro:hasPermission name="contact_us_message_create">
-  <a href="${ctx}/contact_us_messages/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
+  <a href="${ctx}/admin/contact_us_messages/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>

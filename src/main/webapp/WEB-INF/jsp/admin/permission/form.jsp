@@ -4,7 +4,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form:form method="POST" modelAttribute="permission" action="${ctx}/permissions/save" class="form-horizontal">
+    <form:form method="POST" modelAttribute="permission" action="${ctx}/admin/permissions/save" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
         <legend>
@@ -35,4 +35,4 @@
     </form:form>
   </div>
 </div>
-<a href="${ctx}/permissions" class="btn btn-default"><spring:message code="permission.list" /></a>
+<a href="${ctx}/admin/permissions" class="btn btn-default"><spring:message code="permission.list" /></a>

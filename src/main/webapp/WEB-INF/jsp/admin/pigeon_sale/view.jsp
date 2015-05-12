@@ -30,10 +30,10 @@
   </div>
 </div>
 
-<a href="${ctx}/pigeon_sales" class="btn btn-default"><spring:message code="pigeon.sale.list" /></a>
+<a href="${ctx}/admin/pigeon_sales" class="btn btn-default"><spring:message code="pigeon.sale.list" /></a>
 <shiro:hasPermission name="pigeon_sale_edit">
-  <a href="${ctx}/pigeon_sales/${pigeonSale.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
+  <a href="${ctx}/admin/pigeon_sales/${pigeonSale.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
 </shiro:hasPermission>
 <shiro:hasPermission name="pigeon_sale_delete">
-  <a href="${ctx}/pigeon_sales/${pigeonSale.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
+  <a href="${ctx}/admin/pigeon_sales/${pigeonSale.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
 </shiro:hasPermission>

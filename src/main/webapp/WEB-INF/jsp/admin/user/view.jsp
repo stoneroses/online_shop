@@ -7,11 +7,11 @@
 <p>${user.name}</p>
 <p>${user.description}</p>
 <shiro:hasPermission name="user_list">
-<a href="${ctx}/users" class="btn btn-default"><spring:message code="user.list" /></a>
+<a href="${ctx}/admin/users" class="btn btn-default"><spring:message code="user.list" /></a>
 </shiro:hasPermission>
 <shiro:hasPermission name="user_edit">
-  <a href="${ctx}/users/${user.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
+  <a href="${ctx}/admin/users/${user.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
 </shiro:hasPermission>
 <shiro:hasPermission name="user_delete">
-  <a href="${ctx}/users/${user.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
+  <a href="${ctx}/admin/users/${user.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
 </shiro:hasPermission>

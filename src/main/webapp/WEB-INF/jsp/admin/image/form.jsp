@@ -4,7 +4,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form:form method="POST" modelAttribute="image" action="${ctx}/images/save" class="form-horizontal"
+    <form:form method="POST" modelAttribute="image" action="${ctx}/admin/images/save" class="form-horizontal"
       enctype="multipart/form-data">
       <fieldset>
         <form:hidden path="id" />
@@ -51,4 +51,4 @@
     </form:form>
   </div>
 </div>
-<a href="${ctx}/images" class="btn btn-default"><spring:message code="image.list" /></a>
+<a href="${ctx}/admin/images" class="btn btn-default"><spring:message code="image.list" /></a>

@@ -1,4 +1,4 @@
-package com.wang.michael.online_shop.web.controller;
+package com.wang.michael.online_shop.web.controller.admin;
 
 import javax.validation.Valid;
 
@@ -18,9 +18,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.wang.michael.online_shop.exception.PermissionNotFound;
 import com.wang.michael.online_shop.model.Permission;
 import com.wang.michael.online_shop.service.PermissionService;
+import com.wang.michael.online_shop.web.controller.BaseController;
 
 @RestController
-@RequestMapping(value = "/permissions")
+@RequestMapping(value = "/admin/permissions")
 public class PermissionController extends BaseController {
 
     @Autowired
@@ -63,7 +64,7 @@ public class PermissionController extends BaseController {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("permission-edit");
         }
-        ModelAndView mav = new ModelAndView("redirect:/permissions/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/permissions/list");
         permissionService.save(permission);
         redirectAttributes.addFlashAttribute("message", "permission.successfully.saved.");
         return mav;
@@ -72,7 +73,7 @@ public class PermissionController extends BaseController {
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     @RequiresPermissions("permission_delete")
     public ModelAndView deletePermission(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws PermissionNotFound {
-        ModelAndView mav = new ModelAndView("redirect:/permissions/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/permissions/list");
         permissionService.delete(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("message", "permission.successfully.deleted");
         return mav;

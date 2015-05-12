@@ -15,14 +15,14 @@
   <tbody>
     <c:forEach var="testimonial" items="${testimonialPage.content}">
       <tr>
-        <td><a href="${ctx}/testimonials/${testimonial.id}">${testimonial.name}</a></td>
-        <td><a href="${ctx}/testimonials/${testimonial.id}">${testimonial.title}</a></td>
+        <td><a href="${ctx}/admin/testimonials/${testimonial.id}">${testimonial.name}</a></td>
+        <td><a href="${ctx}/admin/testimonials/${testimonial.id}">${testimonial.title}</a></td>
         <td>${testimonial.content}</td>
         <td><shiro:hasPermission name="testimonial_edit">
-            <a href="${ctx}/testimonials/${testimonial.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
+            <a href="${ctx}/admin/testimonials/${testimonial.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
           </shiro:hasPermission>
           <shiro:hasPermission name="testimonial_delete">
-            <a href="${ctx}/testimonials/${testimonial.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
+            <a href="${ctx}/admin/testimonials/${testimonial.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
           </shiro:hasPermission></td>
       </tr>
     </c:forEach>
@@ -32,5 +32,5 @@
 <%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
 
 <shiro:hasPermission name="testimonial_create">
-  <a href="${ctx}/testimonials/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
+  <a href="${ctx}/admin/testimonials/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>

@@ -1,4 +1,4 @@
-package com.wang.michael.online_shop.web.controller;
+package com.wang.michael.online_shop.web.controller.admin;
 
 import java.security.SecureRandom;
 import java.util.List;
@@ -29,9 +29,10 @@ import com.wang.michael.online_shop.model.Role;
 import com.wang.michael.online_shop.model.User;
 import com.wang.michael.online_shop.service.RoleService;
 import com.wang.michael.online_shop.service.UserService;
+import com.wang.michael.online_shop.web.controller.BaseController;
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/admin/users")
 public class UserController extends BaseController {
 
     @Autowired
@@ -63,7 +64,7 @@ public class UserController extends BaseController {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("user-edit");
         }
-        ModelAndView mav = new ModelAndView("redirect:/users/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/users/list");
         userService.save(user);
         redirectAttributes.addFlashAttribute("message", "user.successfully.saved");
         return mav;
@@ -95,7 +96,7 @@ public class UserController extends BaseController {
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     @RequiresPermissions("user_delete")
     public ModelAndView deleteUser(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws UserNotFound {
-        ModelAndView mav = new ModelAndView("redirect:/users/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/users/list");
         userService.delete(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("message", "user.successfully.deleted");
         return mav;
@@ -120,7 +121,7 @@ public class UserController extends BaseController {
 
         if (!StringUtils.equals(password, confirmPassword)) {
             redirectAttributes.addFlashAttribute("warningMessage", "user.confirm.password.not.match");
-            return new ModelAndView("redirect:/users/" + id + "/change_password");
+            return new ModelAndView("redirect:/admin/users/" + id + "/change_password");
         }
         ModelAndView mav = new ModelAndView("user-view");
         User user = userService.savePassword(Long.valueOf(id), password);
@@ -167,7 +168,7 @@ public class UserController extends BaseController {
             @RequestParam(value = "confirmPassword", required = true) String confirmPassword, BindingResult result) throws UserNotFound {
         if (StringUtils.equals(password, confirmPassword)) {
             result.addError(new ObjectError("conformPassword", "{user.confirm.password.not.match}"));
-            return new ModelAndView("redirect:/users/change_password");
+            return new ModelAndView("redirect:/admin/users/change_password");
         }
         ModelAndView mav = new ModelAndView("user-view");
         Subject currentUser = SecurityUtils.getSubject();

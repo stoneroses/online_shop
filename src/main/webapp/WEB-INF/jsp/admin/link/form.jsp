@@ -4,7 +4,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form:form method="POST" modelAttribute="link" action="${ctx}/links/save" class="form-horizontal">
+    <form:form method="POST" modelAttribute="link" action="${ctx}/admin/links/save" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
         <legend>
@@ -42,4 +42,4 @@
     </form:form>
   </div>
 </div>
-<a href="${ctx}/links" class="btn btn-default"><spring:message code="link.list" /></a>
+<a href="${ctx}/admin/links" class="btn btn-default"><spring:message code="link.list" /></a>

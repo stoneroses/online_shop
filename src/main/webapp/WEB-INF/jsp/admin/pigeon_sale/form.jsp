@@ -14,7 +14,7 @@
     });
 
     $("#imagesInput").autocomplete({
-      source : "${ctx}/images/search",
+      source : "${ctx}/admin/images/search",
       paramName : "imageName",
       minLength : 2,
       select : function(event, ui) {
@@ -46,7 +46,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form:form method="POST" modelAttribute="pigeonSale" action="${ctx}/pigeon_sales/save" class="form-horizontal">
+    <form:form method="POST" modelAttribute="pigeonSale" action="${ctx}/admin/pigeon_sales/save" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
         <legend>
@@ -140,4 +140,4 @@
     </form:form>
   </div>
 </div>
-<a href="${ctx}/pigeon_sales" class="btn btn-default"><spring:message code="pigeon.sale.list" /></a>
+<a href="${ctx}/admin/pigeon_sales" class="btn btn-default"><spring:message code="pigeon.sale.list" /></a>

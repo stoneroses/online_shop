@@ -4,7 +4,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form:form method="POST" modelAttribute="news" action="${ctx}/news/save" class="form-horizontal">
+    <form:form method="POST" modelAttribute="news" action="${ctx}/admin/news/save" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
         <legend>
@@ -35,7 +35,7 @@
     </form:form>
   </div>
 </div>
-<a href="${ctx}/news" class="btn btn-default"><spring:message code="news.list" /></a>
+<a href="${ctx}/admin/news" class="btn btn-default"><spring:message code="news.list" /></a>
 
 <script>
   // Replace the <textarea id="editor1"> with a CKEditor

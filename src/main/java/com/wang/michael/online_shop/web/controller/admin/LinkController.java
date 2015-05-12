@@ -1,4 +1,4 @@
-package com.wang.michael.online_shop.web.controller;
+package com.wang.michael.online_shop.web.controller.admin;
 
 import javax.validation.Valid;
 
@@ -19,9 +19,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.wang.michael.online_shop.exception.LinkNotFound;
 import com.wang.michael.online_shop.model.Link;
 import com.wang.michael.online_shop.service.LinkService;
+import com.wang.michael.online_shop.web.controller.BaseController;
 
 @RestController
-@RequestMapping(value = "/links")
+@RequestMapping(value = "/admin/links")
 public class LinkController extends BaseController {
 
     @Autowired
@@ -46,7 +47,7 @@ public class LinkController extends BaseController {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("link-edit");
         }
-        ModelAndView mav = new ModelAndView("redirect:/links/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/links/list");
         linkService.save(link);
         redirectAttributes.addFlashAttribute("message", "link.successfully.saved");
         return mav;
@@ -78,7 +79,7 @@ public class LinkController extends BaseController {
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     @RequiresPermissions("link_delete")
     public ModelAndView deleteLink(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws LinkNotFound {
-        ModelAndView mav = new ModelAndView("redirect:/links/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/links/list");
         linkService.delete(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("message", "link.successfully.deleted");
         return mav;

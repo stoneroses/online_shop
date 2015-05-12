@@ -5,7 +5,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form:form method="POST" modelAttribute="role" action="${ctx}/roles/save" class="form-horizontal">
+    <form:form method="POST" modelAttribute="role" action="${ctx}/admin/roles/save" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
         <legend>
@@ -49,4 +49,4 @@
     </form:form>
   </div>
 </div>
-<a href="${ctx}/roles" class="btn btn-default"><spring:message code="role.list" /></a>
+<a href="${ctx}/admin/roles" class="btn btn-default"><spring:message code="role.list" /></a>

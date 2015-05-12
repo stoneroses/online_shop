@@ -1,4 +1,4 @@
-package com.wang.michael.online_shop.web.controller;
+package com.wang.michael.online_shop.web.controller.admin;
 
 import javax.validation.Valid;
 
@@ -19,9 +19,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.wang.michael.online_shop.exception.SettingNotFound;
 import com.wang.michael.online_shop.model.Setting;
 import com.wang.michael.online_shop.service.SettingService;
+import com.wang.michael.online_shop.web.controller.BaseController;
 
 @RestController
-@RequestMapping(value = "/settings")
+@RequestMapping(value = "/admin/settings")
 public class SettingsController extends BaseController {
 
     @Autowired
@@ -46,7 +47,7 @@ public class SettingsController extends BaseController {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("setting-edit");
         }
-        ModelAndView mav = new ModelAndView("redirect:/settings/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/settings/list");
         settingService.save(setting);
         redirectAttributes.addFlashAttribute("message", "setting.successfully.saved");
         return mav;
@@ -78,7 +79,7 @@ public class SettingsController extends BaseController {
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     @RequiresPermissions("setting_delete")
     public ModelAndView deleteSetting(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws SettingNotFound {
-        ModelAndView mav = new ModelAndView("redirect:/settings/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/settings/list");
         settingService.delete(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("message", "setting.successfully.deleted");
         return mav;

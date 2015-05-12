@@ -4,7 +4,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form:form method="POST" modelAttribute="testimonial" action="${ctx}/testimonials/save" class="form-horizontal">
+    <form:form method="POST" modelAttribute="testimonial" action="${ctx}/admin/testimonials/save" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
         <legend>
@@ -42,7 +42,7 @@
     </form:form>
   </div>
 </div>
-<a href="${ctx}/testimonials" class="btn btn-default"><spring:message code="testimonial.list" /></a>
+<a href="${ctx}/admin/testimonials" class="btn btn-default"><spring:message code="testimonial.list" /></a>
 
 <script>
   CKEDITOR.replace('content');

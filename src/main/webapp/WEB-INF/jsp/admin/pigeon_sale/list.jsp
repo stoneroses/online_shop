@@ -14,12 +14,12 @@
   <tbody>
     <c:forEach var="pigeonSale" items="${pigeonSalePage.content}">
       <tr>
-        <td><a href="${ctx}/pigeon_sales/${pigeonSale.id}">${pigeonSale.name}</a></td>
+        <td><a href="${ctx}/admin/pigeon_sales/${pigeonSale.id}">${pigeonSale.name}</a></td>
         <td>${pigeonSale.description}</td>
         <td><shiro:hasPermission name="pigeon_sale_edit">
-            <a href="${ctx}/pigeon_sales/${pigeonSale.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
+            <a href="${ctx}/admin/pigeon_sales/${pigeonSale.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
           </shiro:hasPermission> <shiro:hasPermission name="pigeon_sale_delete">
-            <a href="${ctx}/pigeon_sales/${pigeonSale.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
+            <a href="${ctx}/admin/pigeon_sales/${pigeonSale.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
           </shiro:hasPermission></td>
       </tr>
     </c:forEach>
@@ -29,5 +29,5 @@
 <%@ include file="/WEB-INF/jsp/layouts/default/pagination.jsp"%>
 
 <shiro:hasPermission name="pigeon_sale_create">
-  <a href="${ctx}/pigeon_sales/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
+  <a href="${ctx}/admin/pigeon_sales/create" class="btn btn-default"><spring:message code="admin.actions.create" /></a>
 </shiro:hasPermission>

@@ -1,4 +1,4 @@
-package com.wang.michael.online_shop.web.controller;
+package com.wang.michael.online_shop.web.controller.admin;
 
 import javax.validation.Valid;
 
@@ -20,9 +20,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.wang.michael.online_shop.exception.PigeonSaleNotFound;
 import com.wang.michael.online_shop.model.PigeonSale;
 import com.wang.michael.online_shop.service.PigeonSaleService;
+import com.wang.michael.online_shop.web.controller.BaseController;
 
 @RestController
-@RequestMapping(value = "/pigeon_sales")
+@RequestMapping(value = "/admin/pigeon_sales")
 public class PigeonSaleController extends BaseController {
 
     @Autowired
@@ -60,7 +61,7 @@ public class PigeonSaleController extends BaseController {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("pigeon_sale-edit");
         }
-        ModelAndView mav = new ModelAndView("redirect:/pigeon_sales/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/pigeon_sales/list");
         pigeonSaleService.save(pigeonSale);
         redirectAttributes.addFlashAttribute("message", "pigeon.sale.successfully.saved");
         return mav;
@@ -92,7 +93,7 @@ public class PigeonSaleController extends BaseController {
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     @RequiresPermissions("pigeon_sale_delete")
     public ModelAndView deletePigeonSale(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws PigeonSaleNotFound {
-        ModelAndView mav = new ModelAndView("redirect:/pigeon_sales/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/pigeon_sales/list");
         pigeonSaleService.delete(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("message", "pigeon.sale.successfully.deleted");
         return mav;

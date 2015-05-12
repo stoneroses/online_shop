@@ -14,7 +14,7 @@
     });
 
     $("#imagesInput").autocomplete({
-      source : "${ctx}/images/search",
+      source : "${ctx}/admin/images/search",
       paramName : "imageName",
       minLength : 2,
       select : function(event, ui) {
@@ -46,7 +46,7 @@
 
 <div class="panel panel-default">
   <div class="panel-body">
-    <form:form method="POST" modelAttribute="product" action="${ctx}/products/save" class="form-horizontal">
+    <form:form method="POST" modelAttribute="product" action="${ctx}/admin/products/save" class="form-horizontal">
       <fieldset>
         <form:hidden path="id" />
         <legend>
@@ -140,7 +140,7 @@
     </form:form>
   </div>
 </div>
-<a href="${ctx}/products" class="btn btn-default"><spring:message code="product.list" /></a>
+<a href="${ctx}/admin/products" class="btn btn-default"><spring:message code="product.list" /></a>
 
 <script>
   CKEDITOR.replace('description');

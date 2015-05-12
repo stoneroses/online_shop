@@ -1,4 +1,4 @@
-package com.wang.michael.online_shop.web.controller;
+package com.wang.michael.online_shop.web.controller.admin;
 
 import javax.validation.Valid;
 
@@ -19,9 +19,10 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.wang.michael.online_shop.exception.TestimonialNotFound;
 import com.wang.michael.online_shop.model.Testimonial;
 import com.wang.michael.online_shop.service.TestimonialService;
+import com.wang.michael.online_shop.web.controller.BaseController;
 
 @RestController
-@RequestMapping(value = "/testimonials")
+@RequestMapping(value = "/admin/testimonials")
 public class TestimonialController extends BaseController {
 
     @Autowired
@@ -57,7 +58,7 @@ public class TestimonialController extends BaseController {
         if (bindingResult.hasErrors()) {
             return new ModelAndView("testimonial-edit");
         }
-        ModelAndView mav = new ModelAndView("redirect:/testimonials/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/testimonials/list");
         testimonialService.save(testimonial);
         redirectAttributes.addFlashAttribute("message", "testimonial.successfully.saved");
         return mav;
@@ -77,7 +78,7 @@ public class TestimonialController extends BaseController {
     @RequestMapping(value = "/{id}/delete", method = RequestMethod.GET)
     @RequiresPermissions("testimonial_delete")
     public ModelAndView deleteTestimonial(@PathVariable Integer id, final RedirectAttributes redirectAttributes) throws TestimonialNotFound {
-        ModelAndView mav = new ModelAndView("redirect:/testimonials/list");
+        ModelAndView mav = new ModelAndView("redirect:/admin/testimonials/list");
         testimonialService.delete(Long.valueOf(id));
         redirectAttributes.addFlashAttribute("message", "testimonial.successfully.deleted");
         return mav;
