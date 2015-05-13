@@ -5,7 +5,7 @@
 <p>${category.description}</p>
 <c:forEach var="categoryChild" items="${category.children}" varStatus="row">
   <div class="row">
-    <a href="${ctx}/categories/${v.id}">${categoryChild.name}</a> ${categoryChild.description}
+    <a href="${ctx}/categories/${categoryChild.id}">${categoryChild.name}</a> ${categoryChild.description}
   </div>
 </c:forEach>
 <div class="row">
