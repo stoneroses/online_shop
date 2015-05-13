@@ -55,7 +55,7 @@ public class Category {
     private Category parent;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "parent")
+    @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     private Collection<Category> children;
 
     @JsonIgnore
