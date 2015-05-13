@@ -53,7 +53,26 @@ body {
   padding: 15px;
 }
 
-.home-post > h3 {
+.home-post>h3 {
   border-bottom: 1px solid #a7a7a7;
   color: #316599;
+}
+
+div.post-content {
+  background: none repeat scroll 0 0 #000000;
+  opacity: 0.5;
+  margin: 0 auto;
+  margin-bottom: -25%;
+  text-align: center position: relative;
+  width: 40%;
+  color: #FFFFFF !important;
+}
+
+.thumbnail {
+  margin: 0 auto;
+  text-align: center;
+}
+
+.wrapper {
+  text-align: center;
 }
