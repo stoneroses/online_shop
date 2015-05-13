@@ -261,4 +261,12 @@
     <put-attribute name="body" value="/WEB-INF/jsp/view/pigeon_sale/view.jsp" />
   </definition>
 
+  <definition name="list-category" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/view/category/list.jsp" />
+  </definition>
+
+  <definition name="view-category" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/view/category/view.jsp" />
+  </definition>
+
 </tiles-definitions>

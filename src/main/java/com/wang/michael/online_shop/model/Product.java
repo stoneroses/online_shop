@@ -18,6 +18,7 @@ import javax.validation.constraints.Size;
 import lombok.Data;
 import lombok.ToString;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
@@ -78,5 +79,12 @@ public class Product {
 
     public double getNowPrice() {
         return this.price * (100 - this.discount) / 100;
+    }
+
+    public String getImageLocation() {
+        if (!CollectionUtils.isEmpty(this.images)) {
+            return ((Image) CollectionUtils.get(images, 0)).getLocation();
+        }
+        return "";
     }
 }
