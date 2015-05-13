@@ -269,4 +269,12 @@
     <put-attribute name="body" value="/WEB-INF/jsp/view/category/view.jsp" />
   </definition>
 
+  <definition name="list-product" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/view/product/list.jsp" />
+  </definition>
+
+  <definition name="view-product" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/view/product/view.jsp" />
+  </definition>
+
 </tiles-definitions>
