@@ -7,7 +7,7 @@
   </div>
   <div class="list-group">
     <c:forEach var="category" items="${categoryList}">
-      <a href="${ctx}/categories/${category.id}" class="list-group-item"><span class="badge">${category.products.size()}</span>${category.name}</a>
+      <a href="${ctx}/categories/${category.id}" class="list-group-item"><span class="badge">${category.productNumber}</span>${category.name}</a>
     </c:forEach>
   </div>
 </div>

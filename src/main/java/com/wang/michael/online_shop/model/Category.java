@@ -21,6 +21,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
@@ -68,4 +69,14 @@ public class Category {
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime updatedDateTime;
 
+    public int getProductNumber() {
+        int result = 0;
+        for (Category category : children) {
+            result += category.getProductNumber();
+        }
+        if (!CollectionUtils.isEmpty(products)) {
+            result += this.products.size();
+        }
+        return result;
+    }
 }
