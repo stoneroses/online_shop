@@ -66,7 +66,7 @@ public class ContactUsMessageController extends BaseController {
         ModelAndView mav = new ModelAndView("contact_us_message-index");
         Page<ContactUsMessage> contactUsMessagePage = contactUsMessageService.getContactUsMessagePages(page - 1, size);
         preparePaginationData(mav, "contactUsMessagePage", contactUsMessagePage, page, 10);
-        mav.addObject("pageTitle", "contact.us.message.list");
+        mav.addObject("pageTitle", "contact.us.message.page.title.list");
         return mav;
     }
 
