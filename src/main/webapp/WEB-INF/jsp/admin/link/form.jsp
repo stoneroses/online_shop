@@ -8,7 +8,7 @@
       <fieldset>
         <form:hidden path="id" />
         <legend>
-          <spring:message code="${formLegend}" />
+          <spring:message code="${pageTitle}" arguments="${pageTitleArg}" text="" />
         </legend>
         <div class="form-group">
           <label for="name" class="col-sm-2 control-label"><spring:message code="link.name" /></label>

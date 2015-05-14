@@ -37,7 +37,7 @@ public class LinkController extends BaseController {
     @RequiresPermissions("link_create")
     public ModelAndView newLinkPage() throws Exception {
         ModelAndView mav = new ModelAndView("link-new", "link", new Link());
-        mav.addObject("pageTitle", "Create Link");
+        mav.addObject("pageTitle", "link.page.title.create");
         return mav;
     }
 
@@ -61,7 +61,7 @@ public class LinkController extends BaseController {
         Page<Link> linkPage = linkService.getLinks(page - 1, size);
         mav.addObject("linkPage", linkPage);
         preparePaginationData(mav, "linkPage", linkPage, page, 10);
-        mav.addObject("pageTitle", "Link List");
+        mav.addObject("pageTitle", "link.page.title.list");
         return mav;
     }
 
@@ -72,7 +72,8 @@ public class LinkController extends BaseController {
         Link link = null;
         link = linkService.findById(Long.valueOf(id));
         mav.addObject("link", link);
-        mav.addObject("pageTitle", "Edit Link " + link.getName());
+        mav.addObject("pageTitle", "link.page.title.edit");
+        mav.addObject("pageTitleArg", link.getName());
         return mav;
     }
 
@@ -91,7 +92,8 @@ public class LinkController extends BaseController {
         Link link = null;
         link = linkService.findById(Long.valueOf(id));
         mav.addObject("link", link);
-        mav.addObject("pageTitle", "View Link " + link.getName());
+        mav.addObject("pageTitle", "link.page.title.view");
+        mav.addObject("pageTitleArg", link.getName());
         return mav;
     }
 

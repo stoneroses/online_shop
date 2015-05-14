@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <h1>
-  <spring:message code="link.page.title.view" />
+  <spring:message code="${pageTitle}" arguments="${pageTitleArg}" text="" />
 </h1>
 <p>${link.name}</p>
 <p>${link.url}</p>
