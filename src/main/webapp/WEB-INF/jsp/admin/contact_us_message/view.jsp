@@ -2,9 +2,9 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <h1>
-  <spring:message code="contact.us.message.page.title.view" />
+  <spring:message code="${pageTitle}" arguments="${pageTitleArg}" text="" />
 </h1>
-<p>${contactUsMessage.title} ${contactUsMessage.firstName} ${contactUsMessage.phone}</p>
+<p>${contactUsMessage.title}${contactUsMessage.firstName}${contactUsMessage.phone}</p>
 <p>${contactUsMessage.phone}</p>
 <p>${contactUsMessage.email}</p>
 <p>${contactUsMessage.subject}</p>

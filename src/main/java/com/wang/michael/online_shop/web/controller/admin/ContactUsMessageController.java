@@ -42,7 +42,7 @@ public class ContactUsMessageController extends BaseController {
     @RequiresPermissions("contact_us_message_create")
     public ModelAndView newContactUsMessagePage() throws Exception {
         ModelAndView mav = new ModelAndView("contact_us_message-new", "contactUsMessage", new ContactUsMessage());
-        mav.addObject("pageTitle", "Create ContactUsMessage");
+        mav.addObject("pageTitle", "contact.us.message.page.title.create");
         return mav;
     }
 
@@ -66,7 +66,7 @@ public class ContactUsMessageController extends BaseController {
         ModelAndView mav = new ModelAndView("contact_us_message-index");
         Page<ContactUsMessage> contactUsMessagePage = contactUsMessageService.getContactUsMessagePages(page - 1, size);
         preparePaginationData(mav, "contactUsMessagePage", contactUsMessagePage, page, 10);
-        mav.addObject("pageTitle", "ContactUsMessage List");
+        mav.addObject("pageTitle", "contact.us.message.list");
         return mav;
     }
 
@@ -77,7 +77,8 @@ public class ContactUsMessageController extends BaseController {
         ContactUsMessage contactUsMessage = null;
         contactUsMessage = contactUsMessageService.findById(Long.valueOf(id));
         mav.addObject("contactUsMessage", contactUsMessage);
-        mav.addObject("pageTitle", "Edit ContactUsMessage " + contactUsMessage.getSubject());
+        mav.addObject("pageTitle", "contact.us.message.page.title.edit");
+        mav.addObject("pageTitleArg", contactUsMessage.getSubject());
         return mav;
     }
 
@@ -97,7 +98,8 @@ public class ContactUsMessageController extends BaseController {
         ContactUsMessage contactUsMessage = null;
         contactUsMessage = contactUsMessageService.findById(Long.valueOf(id));
         mav.addObject("contactUsMessage", contactUsMessage);
-        mav.addObject("pageTitle", "View ContactUsMessage " + contactUsMessage.getSubject());
+        mav.addObject("pageTitle", "contact.us.message.page.title.view");
+        mav.addObject("pageTitleArg", contactUsMessage.getSubject());
         return mav;
     }
 
