@@ -63,7 +63,7 @@ public class ImageController extends BaseController {
     @RequiresPermissions("image_create")
     public ModelAndView newImagePage() throws Exception {
         ModelAndView mav = new ModelAndView("image-new", "image", new Image());
-        mav.addObject("pageTitle", "Create Image");
+        mav.addObject("pageTitle", "image.page.title.create");
         return mav;
     }
 
@@ -136,7 +136,7 @@ public class ImageController extends BaseController {
         Page<Image> imagePage = imageService.getImages(page - 1, size);
         mav.addObject("imagePage", imagePage);
         preparePaginationData(mav, "imagePage", imagePage, page, 10);
-        mav.addObject("pageTitle", "Image List");
+        mav.addObject("pageTitle", "image.page.title.list");
         return mav;
     }
 
@@ -147,7 +147,8 @@ public class ImageController extends BaseController {
         Image image = null;
         image = imageService.findById(Long.valueOf(id));
         mav.addObject("image", image);
-        mav.addObject("pageTitle", "Edit Image " + image.getName());
+        mav.addObject("pageTitle", "image.page.title.edit");
+        mav.addObject("pageTitleArg", image.getName());
         return mav;
     }
 
@@ -166,7 +167,8 @@ public class ImageController extends BaseController {
         Image image = null;
         image = imageService.findById(Long.valueOf(id));
         mav.addObject("image", image);
-        mav.addObject("pageTitle", "View Image " + image.getName());
+        mav.addObject("pageTitle", "image.page.title.view");
+        mav.addObject("pageTitleArg", image.getName());
         return mav;
     }
 
