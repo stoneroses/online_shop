@@ -37,7 +37,7 @@ public class NewsController extends BaseController {
     @RequiresPermissions("news_create")
     public ModelAndView newNewsPage() {
         ModelAndView mav = new ModelAndView("news-new", "news", new News());
-        mav.addObject("pageTitle", "Create News");
+        mav.addObject("pageTitle", "news.page.title.create");
         return mav;
     }
 
@@ -48,7 +48,7 @@ public class NewsController extends BaseController {
         Page<News> newsPage = newsService.getNews(page - 1, size);
         mav.addObject("newsPage", newsPage);
         preparePaginationData(mav, "newsPage", newsPage, page, 10);
-        mav.addObject("pageTitle", "News List");
+        mav.addObject("pageTitle", "news.page.title.list");
         return mav;
     }
 
@@ -71,7 +71,8 @@ public class NewsController extends BaseController {
         News news = null;
         news = newsService.findById(Long.valueOf(id));
         mav.addObject("news", news);
-        mav.addObject("pageTitle", "Edit News " + news.getTitle());
+        mav.addObject("pageTitle", "news.page.title.edit");
+        mav.addObject("pageTitleArg", news.getTitle());
         return mav;
     }
 
@@ -90,7 +91,8 @@ public class NewsController extends BaseController {
         News news = null;
         news = newsService.findById(Long.valueOf(id));
         mav.addObject("news", news);
-        mav.addObject("pageTitle", "View News " + news.getTitle());
+        mav.addObject("pageTitle", "news.page.title.view");
+        mav.addObject("pageTitleArg", news.getTitle());
         return mav;
     }
 

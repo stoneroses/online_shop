@@ -35,7 +35,7 @@ public class ViewTestimonialController extends BaseController {
         Page<Testimonial> testimonialPage = testimonialService.getTestimonial(page - 1, size);
         mav.addObject("testimonialPage", testimonialPage);
         preparePaginationData(mav, "testimonialPage", testimonialPage, page, 10);
-        mav.addObject("pageTitle", "Testimonial List");
+        mav.addObject("pageTitle", "testimonial.page.title.list");
         return mav;
     }
 
@@ -45,7 +45,8 @@ public class ViewTestimonialController extends BaseController {
         Testimonial testimonial = null;
         testimonial = testimonialService.findById(Long.valueOf(id));
         mav.addObject("testimonial", testimonial);
-        mav.addObject("pageTitle", "View Testimonial " + testimonial.getTitle());
+        mav.addObject("pageTitle", "page.empty.page.title");
+        mav.addObject("pageTitleArg", testimonial.getTitle());
         return mav;
     }
 

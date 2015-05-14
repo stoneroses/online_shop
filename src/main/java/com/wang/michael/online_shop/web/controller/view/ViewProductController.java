@@ -49,7 +49,7 @@ public class ViewProductController extends BaseController {
         Page<Product> productPage = productService.getProducts(page - 1, size);
         mav.addObject("productPage", productPage);
         preparePaginationData(mav, "productPage", productPage, page, 10);
-        mav.addObject("pageTitle", "Product List");
+        mav.addObject("pageTitle", "product.page.title.list");
         return mav;
     }
 
@@ -59,7 +59,8 @@ public class ViewProductController extends BaseController {
         Product product = null;
         product = productService.findById(Long.valueOf(id));
         mav.addObject("product", product);
-        mav.addObject("pageTitle", "View Product " + product.getName());
+        mav.addObject("pageTitle", "page.empty.page.title");
+        mav.addObject("pageTitleArg", product.getName());
         return mav;
     }
 

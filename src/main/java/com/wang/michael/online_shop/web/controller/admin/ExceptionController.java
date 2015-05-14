@@ -18,7 +18,7 @@ public class ExceptionController extends BaseController {
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ModelAndView handleMissingResource(Exception e) {
         ModelAndView modelAndView = new ModelAndView("error/404");
-        modelAndView.addObject("pageTitle", "Page not found.");
+        modelAndView.addObject("pageTitle", "page.not.found");
         return modelAndView;
     }
 
@@ -26,7 +26,7 @@ public class ExceptionController extends BaseController {
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ModelAndView exception(Exception exception, WebRequest request) {
         ModelAndView modelAndView = new ModelAndView("error/500");
-        modelAndView.addObject("pageTitle", "Errors!");
+        modelAndView.addObject("pageTitle", "page.error");
         modelAndView.addObject("errorMessage", exception.getMessage());
         modelAndView.addObject("detailErrorMessage", ExceptionUtils.getStackTrace(exception));
         return modelAndView;

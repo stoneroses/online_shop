@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <h1>
-  <spring:message code="role.page.title.view" />
+  <spring:message code="${pageTitle}" arguments="${pageTitleArg}" text="" />
 </h1>
 <p>${role.name}</p>
 <p>${role.description}</p>

@@ -37,7 +37,7 @@ public class TestimonialController extends BaseController {
     @RequiresPermissions("testimonial_create")
     public ModelAndView newTestimonialPage() {
         ModelAndView mav = new ModelAndView("testimonial-new", "testimonial", new Testimonial());
-        mav.addObject("pageTitle", "Create Testimonial");
+        mav.addObject("pageTitle", "testimonial.page.title.create");
         return mav;
     }
 
@@ -48,7 +48,7 @@ public class TestimonialController extends BaseController {
         Page<Testimonial> testimonialPage = testimonialService.getTestimonial(page - 1, size);
         mav.addObject("testimonialPage", testimonialPage);
         preparePaginationData(mav, "testimonialPage", testimonialPage, page, 10);
-        mav.addObject("pageTitle", "Testimonial List");
+        mav.addObject("pageTitle", "testimonial.page.title.list");
         return mav;
     }
 
@@ -71,7 +71,8 @@ public class TestimonialController extends BaseController {
         Testimonial testimonial = null;
         testimonial = testimonialService.findById(Long.valueOf(id));
         mav.addObject("testimonial", testimonial);
-        mav.addObject("pageTitle", "Edit Testimonial " + testimonial.getTitle());
+        mav.addObject("pageTitle", "testimonial.page.title.edit");
+        mav.addObject("pageTitleArg", testimonial.getTitle());
         return mav;
     }
 
@@ -90,7 +91,8 @@ public class TestimonialController extends BaseController {
         Testimonial testimonial = null;
         testimonial = testimonialService.findById(Long.valueOf(id));
         mav.addObject("testimonial", testimonial);
-        mav.addObject("pageTitle", "View Testimonial " + testimonial.getTitle());
+        mav.addObject("pageTitle", "testimonial.page.title.view");
+        mav.addObject("pageTitleArg", testimonial.getTitle());
         return mav;
     }
 

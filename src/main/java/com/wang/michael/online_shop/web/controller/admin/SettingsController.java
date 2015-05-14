@@ -37,7 +37,7 @@ public class SettingsController extends BaseController {
     @RequiresPermissions("setting_create")
     public ModelAndView newSettingPage() throws Exception {
         ModelAndView mav = new ModelAndView("setting-new", "setting", new Setting());
-        mav.addObject("pageTitle", "Create Setting");
+        mav.addObject("pageTitle", "setting.page.title.create");
         return mav;
     }
 
@@ -61,7 +61,7 @@ public class SettingsController extends BaseController {
         Page<Setting> settingPage = settingService.getSettings(page - 1, size);
         mav.addObject("settingPage", settingPage);
         preparePaginationData(mav, "settingPage", settingPage, page, 10);
-        mav.addObject("pageTitle", "Setting List");
+        mav.addObject("pageTitle", "setting.page.title.list");
         return mav;
     }
 
@@ -72,7 +72,8 @@ public class SettingsController extends BaseController {
         Setting setting = null;
         setting = settingService.findById(Long.valueOf(id));
         mav.addObject("setting", setting);
-        mav.addObject("pageTitle", "Edit Setting " + setting.getKey());
+        mav.addObject("pageTitle", "setting.page.title.edit");
+        mav.addObject("pageTitleArg", setting.getKey());
         return mav;
     }
 
@@ -91,7 +92,8 @@ public class SettingsController extends BaseController {
         Setting setting = null;
         setting = settingService.findById(Long.valueOf(id));
         mav.addObject("setting", setting);
-        mav.addObject("pageTitle", "View Setting " + setting.getKey());
+        mav.addObject("pageTitle", "setting.page.title.view");
+        mav.addObject("pageTitleArg", setting.getKey());
         return mav;
     }
 

@@ -50,7 +50,7 @@
       <fieldset>
         <form:hidden path="id" />
         <legend>
-          <spring:message code="${formLegend}" />
+          <spring:message code="${pageTitle}" arguments="${pageTitleArg}" />
         </legend>
         <div class="form-group">
           <label for="name" class="col-sm-2 control-label"><spring:message code="pigeon.sale.name" /></label>

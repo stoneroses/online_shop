@@ -53,7 +53,7 @@ public class ViewCategoryController extends BaseController {
         Category category = null;
         category = categoryService.findById(Long.valueOf(id));
         mav.addObject("category", category);
-        mav.addObject("pageTitle", "category.page.title.view");
+        mav.addObject("pageTitle", "page.empty.page.title");
         mav.addObject("pageTitleArg", category.getName());
         return mav;
     }

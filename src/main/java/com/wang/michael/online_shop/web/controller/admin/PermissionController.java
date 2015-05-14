@@ -31,7 +31,7 @@ public class PermissionController extends BaseController {
     @RequiresPermissions("permission_create")
     public ModelAndView newPermissionPage() throws Exception {
         ModelAndView mav = new ModelAndView("permission-new", "permission", new Permission());
-        mav.addObject("pageTitle", "Create Permission");
+        mav.addObject("pageTitle", "permission.page.title.create");
         return mav;
     }
 
@@ -43,7 +43,7 @@ public class PermissionController extends BaseController {
         Page<Permission> permissionPage = permissionService.getPermissions(page - 1, size);
         mav.addObject("permissionPage", permissionPage);
         preparePaginationData(mav, "permissionPage", permissionPage, page, 10);
-        mav.addObject("pageTitle", "Permission List");
+        mav.addObject("pageTitle", "permission.page.title.list");
         return mav;
     }
 
@@ -54,7 +54,8 @@ public class PermissionController extends BaseController {
         Permission permission = null;
         permission = permissionService.findById(Long.valueOf(id));
         mav.addObject("permission", permission);
-        mav.addObject("pageTitle", "Edit Permission " + permission.getName());
+        mav.addObject("pageTitle", "permission.page.title.edit");
+        mav.addObject("pageTitleArg", permission.getName());
         return mav;
     }
 
@@ -85,7 +86,8 @@ public class PermissionController extends BaseController {
         Permission permission = null;
         permission = permissionService.findById(Long.valueOf(id));
         mav.addObject("permission", permission);
-        mav.addObject("pageTitle", "View Permission " + permission.getName());
+        mav.addObject("pageTitle", "permission.page.title.view");
+        mav.addObject("pageTitleArg", permission.getName());
         return mav;
     }
 

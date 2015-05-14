@@ -43,7 +43,7 @@ public class RootController extends BaseController {
     public ModelAndView indexPage() {
         ModelAndView mav = new ModelAndView("index");
         mav.addObject("currentNavButton", "home");
-        mav.addObject("pageTitle", "Home");
+        mav.addObject("pageTitle", "page.footer.home");
         return mav;
     }
 
@@ -65,7 +65,7 @@ public class RootController extends BaseController {
         }
         mav.addObject("currentNavButton", "about_us");
         mav.addObject("aboutUs", aboutUs);
-        mav.addObject("pageTitle", "About Us");
+        mav.addObject("pageTitle", "page.footer.about");
         return mav;
     }
 
@@ -80,7 +80,7 @@ public class RootController extends BaseController {
         }
         mav.addObject("currentNavButton", "contact_us");
         mav.addObject("contactUs", contactUs);
-        mav.addObject("pageTitle", "Contact Us");
+        mav.addObject("pageTitle", "page.footer.contact");
         return mav;
     }
 
@@ -113,7 +113,7 @@ public class RootController extends BaseController {
         }
         mav.addObject("currentNavButton", "strayed_pigeons");
         mav.addObject("strayedPigeons", strayedPigeons);
-        mav.addObject("pageTitle", "Found Strayed Pigeons");
+        mav.addObject("pageTitle", "page.nav.found.strayed.pigeons");
         return mav;
     }
 

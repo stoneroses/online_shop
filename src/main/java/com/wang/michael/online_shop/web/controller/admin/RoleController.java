@@ -49,7 +49,7 @@ public class RoleController extends BaseController {
     @RequiresPermissions("role_create")
     public ModelAndView newRolePage() throws Exception {
         ModelAndView mav = new ModelAndView("role-new", "role", new Role());
-        mav.addObject("pageTitle", "Create Role");
+        mav.addObject("pageTitle", "role.page.title.create");
         return mav;
     }
 
@@ -73,7 +73,7 @@ public class RoleController extends BaseController {
         Page<Role> rolePage = roleService.getRoles(page - 1, size);
         mav.addObject("rolePage", rolePage);
         preparePaginationData(mav, "rolePage", rolePage, page, 10);
-        mav.addObject("pageTitle", "Role List");
+        mav.addObject("pageTitle", "role.page.title.list");
         return mav;
     }
 
@@ -84,7 +84,8 @@ public class RoleController extends BaseController {
         Role role = null;
         role = roleService.findById(Long.valueOf(id));
         mav.addObject("role", role);
-        mav.addObject("pageTitle", "Edit Role " + role.getName());
+        mav.addObject("pageTitle", "role.page.title.edit");
+        mav.addObject("pageTitleArg", role.getName());
         return mav;
     }
 
@@ -103,7 +104,8 @@ public class RoleController extends BaseController {
         Role role = null;
         role = roleService.findById(Long.valueOf(id));
         mav.addObject("role", role);
-        mav.addObject("pageTitle", "View Role " + role.getName());
+        mav.addObject("pageTitle", "role.page.title.view");
+        mav.addObject("pageTitleArg", role.getName());
         return mav;
     }
 

@@ -11,7 +11,7 @@
         <form:hidden path="password"/>
         <form:hidden path="confirmPassword"/>
         <legend>
-          <spring:message code="${formLegend}" />
+          <spring:message code="${pageTitle}" arguments="${pageTitleArg}" />
         </legend>
         <div class="form-group">
           <label for="name" class="col-sm-2 control-label"><spring:message code="user.name" /></label>

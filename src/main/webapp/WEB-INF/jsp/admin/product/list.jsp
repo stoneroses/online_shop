@@ -2,7 +2,9 @@
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<h1><spring:message code="product.list" /></h1>
+<h1>
+  <spring:message code="${pageTitle}" arguments="${pageTitleArg}" text="" />
+</h1>
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
@@ -17,9 +19,11 @@
         <td><a href="${ctx}/admin/products/${product.id}">${product.name}</a></td>
         <td>${product.description}</td>
         <td><shiro:hasPermission name="product_edit">
-            <a href="${ctx}/admin/products/${product.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
+            <a href="${ctx}/admin/products/${product.id}/edit" class="btn btn-default"><spring:message
+                code="admin.actions.edit" /></a>
           </shiro:hasPermission> <shiro:hasPermission name="product_delete">
-            <a href="${ctx}/admin/products/${product.id}/delete" class="btn btn-default"><spring:message code="admin.actions.delete" /></a>
+            <a href="${ctx}/admin/products/${product.id}/delete" class="btn btn-default"><spring:message
+                code="admin.actions.delete" /></a>
           </shiro:hasPermission></td>
       </tr>
     </c:forEach>

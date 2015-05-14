@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <h1>
-  <spring:message code="contact.us.message.list" />
+  <spring:message code="${pageTitle}" arguments="${pageTitleArg}" text="" />
 </h1>
 <table class="table table-striped table-hover ">
   <thead>

@@ -35,7 +35,7 @@ public class ViewNewsController extends BaseController {
         Page<News> newsPage = newsService.getNews(page - 1, size);
         mav.addObject("newsPage", newsPage);
         preparePaginationData(mav, "newsPage", newsPage, page, 10);
-        mav.addObject("pageTitle", "News");
+        mav.addObject("pageTitle", "news");
         return mav;
     }
 
@@ -45,7 +45,8 @@ public class ViewNewsController extends BaseController {
         News news = null;
         news = newsService.findById(Long.valueOf(id));
         mav.addObject("news", news);
-        mav.addObject("pageTitle", news.getTitle());
+        mav.addObject("pageTitle", "page.empty.page.title");
+        mav.addObject("pageTitleArg", news.getTitle());
         return mav;
     }
 

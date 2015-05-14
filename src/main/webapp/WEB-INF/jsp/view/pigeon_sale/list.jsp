@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <h1>
-  <spring:message code="pigeon.sale.list" />
+  <spring:message code="${pageTitle}" arguments="${pageTitleArg}" text="" />
 </h1>
 <div class="row">
   <c:forEach var="pigeonSale" items="${pigeonSalePage.content}">

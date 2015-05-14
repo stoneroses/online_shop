@@ -49,7 +49,7 @@ public class ViewPigeonSaleController extends BaseController {
         Page<PigeonSale> pigeonSalePage = pigeonSaleService.getPigeonSales(page - 1, size);
         mav.addObject("pigeonSalePage", pigeonSalePage);
         preparePaginationData(mav, "pigeonSalePage", pigeonSalePage, page, 10);
-        mav.addObject("pageTitle", "PigeonSale List");
+        mav.addObject("pageTitle", "pigeon.sale.list");
         return mav;
     }
 
@@ -59,7 +59,8 @@ public class ViewPigeonSaleController extends BaseController {
         PigeonSale pigeonSale = null;
         pigeonSale = pigeonSaleService.findById(Long.valueOf(id));
         mav.addObject("pigeonSale", pigeonSale);
-        mav.addObject("pageTitle", "View PigeonSale " + pigeonSale.getName());
+        mav.addObject("pageTitle", "page.empty.page.title");
+        mav.addObject("pageTitleArg", pigeonSale.getName());
         return mav;
     }
 

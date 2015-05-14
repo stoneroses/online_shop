@@ -2,7 +2,9 @@
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<h1><spring:message code="role.list" /></h1>
+<h1>
+  <spring:message code="${pageTitle}" arguments="${pageTitleArg}" text="" />
+</h1>
 <table class="table table-striped table-hover ">
   <thead>
     <tr>
@@ -19,7 +21,8 @@
             <span class="label label-default">${permission.name}</span>
           </c:forEach></td>
         <td><shiro:hasPermission name="role_edit">
-            <a href="${ctx}/admin/roles/${role.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
+            <a href="${ctx}/admin/roles/${role.id}/edit" class="btn btn-default"><spring:message
+                code="admin.actions.edit" /></a>
           </shiro:hasPermission> <shiro:hasPermission name="role_delete">
             <a href="${ctx}/admin/roles/${role.id}/delete" class="btn btn-default"><spring:message
                 code="admin.actions.delete" /></a>

@@ -9,7 +9,7 @@
     <form:form method="POST" modelAttribute="user" class="form-horizontal">
       <fieldset disabled>
         <legend>
-          <spring:message code="${formLegend}" />
+          <spring:message code="${pageTitle}" arguments="${pageTitleArg}" />
         </legend>
         <div class="form-group">
           <label for="name" class="col-sm-2 control-label"><spring:message code="user.name" /></label>

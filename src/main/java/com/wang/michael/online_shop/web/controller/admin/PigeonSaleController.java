@@ -51,7 +51,7 @@ public class PigeonSaleController extends BaseController {
     @RequiresPermissions("pigeon_sale_create")
     public ModelAndView newPigeonSalePage() throws Exception {
         ModelAndView mav = new ModelAndView("pigeon_sale-new", "pigeonSale", new PigeonSale());
-        mav.addObject("pageTitle", "Create PigeonSale");
+        mav.addObject("pageTitle", "pigeon.sale.page.title.create");
         return mav;
     }
 
@@ -75,7 +75,7 @@ public class PigeonSaleController extends BaseController {
         Page<PigeonSale> pigeonSalePage = pigeonSaleService.getPigeonSales(page - 1, size);
         mav.addObject("pigeonSalePage", pigeonSalePage);
         preparePaginationData(mav, "pigeonSalePage", pigeonSalePage, page, 10);
-        mav.addObject("pageTitle", "PigeonSale List");
+        mav.addObject("pageTitle", "pigeon.sale.page.title.list");
         return mav;
     }
 
@@ -86,7 +86,8 @@ public class PigeonSaleController extends BaseController {
         PigeonSale pigeonSale = null;
         pigeonSale = pigeonSaleService.findById(Long.valueOf(id));
         mav.addObject("pigeonSale", pigeonSale);
-        mav.addObject("pageTitle", "Edit PigeonSale " + pigeonSale.getName());
+        mav.addObject("pageTitle", "pigeon.sale.page.title.edit");
+        mav.addObject("pageTitleArg", pigeonSale.getName());
         return mav;
     }
 
@@ -105,7 +106,8 @@ public class PigeonSaleController extends BaseController {
         PigeonSale pigeonSale = null;
         pigeonSale = pigeonSaleService.findById(Long.valueOf(id));
         mav.addObject("pigeonSale", pigeonSale);
-        mav.addObject("pageTitle", "View PigeonSale " + pigeonSale.getName());
+        mav.addObject("pageTitle", "pigeon.sale.page.title.view");
+        mav.addObject("pageTitleArg", pigeonSale.getName());
         return mav;
     }
 

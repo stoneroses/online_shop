@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <h1>
-  <spring:message code="user.list" />
+  <spring:message code="${pageTitle}" arguments="${pageTitleArg}" text="" />
 </h1>
 <table class="table table-striped table-hover ">
   <thead>
@@ -23,7 +23,8 @@
             <span class="label label-default">${permission.role}</span>
           </c:forEach></td>
         <td><shiro:hasPermission name="user_edit">
-            <a href="${ctx}/admin/users/${user.id}/edit" class="btn btn-default"><spring:message code="admin.actions.edit" /></a>
+            <a href="${ctx}/admin/users/${user.id}/edit" class="btn btn-default"><spring:message
+                code="admin.actions.edit" /></a>
           </shiro:hasPermission> <shiro:hasPermission name="user_save">
             <a href="${ctx}/admin/users/${user.id}/change_password" class="btn btn-default"><spring:message
                 code="user.page.title.change.password" /></a>

@@ -1,7 +1,9 @@
 <%@ taglib uri="http://shiro.apache.org/tags" prefix="shiro"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<h1><spring:message code="news.page.title.view" /></h1>
+<h1>
+  <spring:message code="${pageTitle}" arguments="${pageTitleArg}" text="" />
+</h1>
 <p>${news.title}</p>
 <p>${news.content}</p>
 <a href="${ctx}/admin/news" class="btn btn-default"><spring:message code="news.list" /></a>

@@ -53,7 +53,7 @@ public class UserController extends BaseController {
         user.setConfirmPassword(randomPassword);
         ModelAndView mav = new ModelAndView("user-new", "user", user);
         mav.addObject("randomPassword", randomPassword);
-        mav.addObject("pageTitle", "Create User");
+        mav.addObject("pageTitle", "user.page.title.create");
         return mav;
     }
 
@@ -77,7 +77,7 @@ public class UserController extends BaseController {
         Page<User> userPage = userService.getUsers(page - 1, size);
         mav.addObject("userPage", userPage);
         preparePaginationData(mav, "userPage", userPage, page, 10);
-        mav.addObject("pageTitle", "User List");
+        mav.addObject("pageTitle", "user.page.title.list");
         return mav;
     }
 
@@ -91,7 +91,8 @@ public class UserController extends BaseController {
         user.setPassword(randomPassword);
         user.setConfirmPassword(randomPassword);
         mav.addObject("user", user);
-        mav.addObject("pageTitle", "Edit User " + user.getName());
+        mav.addObject("pageTitle", "user.page.title.edit");
+        mav.addObject("pageTitleArg", user.getName());
         return mav;
     }
 
@@ -110,7 +111,7 @@ public class UserController extends BaseController {
         ModelAndView mav = new ModelAndView("user-change-password");
         User user = userService.findById(Long.valueOf(id));
         mav.addObject("user", user);
-        mav.addObject("pageTitle", "Change Password");
+        mav.addObject("pageTitle", "user.page.title.change.password");
         return mav;
     }
 
@@ -135,7 +136,7 @@ public class UserController extends BaseController {
         ModelAndView mav = new ModelAndView("user-view");
         User user = userService.savePassword(Long.valueOf(id), password);
         mav.addObject("user", user);
-        mav.addObject("pageTitle", "Change Password");
+        mav.addObject("pageTitle", "user.page.title.change.password");
         mav.addObject("message", "userpassword.successfully.updated");
         return mav;
     }
@@ -146,7 +147,8 @@ public class UserController extends BaseController {
         User user = null;
         user = userService.findById(Long.valueOf(id));
         mav.addObject("user", user);
-        mav.addObject("pageTitle", "View User " + user.getName());
+        mav.addObject("pageTitle", "user.page.title.view");
+        mav.addObject("pageTitleArg", user.getName());
         return mav;
     }
 
@@ -157,7 +159,8 @@ public class UserController extends BaseController {
         User user = null;
         user = userService.getByEmail(currentUser.getPrincipal().toString());
         mav.addObject("user", user);
-        mav.addObject("pageTitle", "View User " + user.getName());
+        mav.addObject("pageTitle", "user.page.title.view");
+        mav.addObject("pageTitleArg", user.getName());
         return mav;
     }
 
@@ -168,7 +171,7 @@ public class UserController extends BaseController {
         User user = userService.getByEmail(currentUser.getPrincipal().toString());
         user.setPassword("");
         mav.addObject("user", user);
-        mav.addObject("pageTitle", "Change Password");
+        mav.addObject("pageTitle", "user.page.title.change.password");
         return mav;
     }
 
@@ -192,7 +195,7 @@ public class UserController extends BaseController {
         Subject currentUser = SecurityUtils.getSubject();
         User user = userService.savePassword(currentUser.getPrincipal().toString(), password);
         mav.addObject("user", user);
-        mav.addObject("pageTitle", "Change Password");
+        mav.addObject("pageTitle", "user.page.title.change.password");
         mav.addObject("message", "userpassword.successfully.updated");
         return mav;
     }
