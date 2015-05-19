@@ -14,7 +14,7 @@ body {
   background: -o-linear-gradient(#81BF1C, #5B8D13);
   background: -ms-linear-gradient(#81BF1C, #5B8D13); /*For IE10*/
   background: linear-gradient(#81BF1C, #5B8D13);
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#81BF1Cfff', endColorstr='#5B8D13000');
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#81BF1C', endColorstr='#5B8D13');
   /*For IE7-8-9*/
   height: 1%; /*For IE7*/
 }
@@ -24,15 +24,19 @@ body {
   font: bold 14px arial
 }
 
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover
-  {
+.navbar-default .navbar-nav>li>a:hover, .navbar-default .navbar-nav>li>a:focus {
   color: #fff;
-  background: #5B8D13;
-  font: bold 14px arial
+  background: #81BF1C;
 }
 
-.navbar-default .navbar-brand {
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
   color: #fff;
+  background: #5B8D13;
+}
+
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+  color: #fff;
+  background: #81BF1C;
 }
 
 .panel-green>.panel-heading {
@@ -42,7 +46,7 @@ body {
   background: -o-linear-gradient(#81BF1C, #5B8D13);
   background: -ms-linear-gradient(#81BF1C, #5B8D13); /*For IE10*/
   background: linear-gradient(#81BF1C, #5B8D13);
-  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#81BF1Cfff', endColorstr='#5B8D13000');
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#81BF1C', endColorstr='#5B8D13');
   /*For IE7-8-9*/
   color: #fff;
   font: bold 14px arial
