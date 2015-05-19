@@ -27,7 +27,7 @@
       <bean class="org.springframework.orm.jpa.vendor.HibernateJpaDialect" />
     </property>
   </bean>
-  <context:property-placeholder location="classpath:application.properties" />
+  <context:property-placeholder location="classpath:/application.properties" />
   <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="${jdbc.driver}" />
     <property name="url" value="${jdbc.url}" />
@@ -65,8 +65,8 @@
   </bean>
 
   <bean id="reCaptcha" class="net.tanesha.recaptcha.ReCaptchaImpl">
-    <property name="privateKey" value="6LcXpQYTAAAAAKRUU-gYmXk_nfZXu7d_ghWlJdTy" />
-    <property name="publicKey" value="6LcXpQYTAAAAADhWGl0GIefsFk2CV16CyfRZYRQP" />
+    <property name="privateKey" value="${recaptcha.private.key}" />
+    <property name="publicKey" value="${recaptcha.public.key}" />
     <property name="includeNoscript" value="false" />
   </bean>
 
