@@ -52,7 +52,7 @@
     webAppRootKey是log4j在容器中的唯一标识，缺省为"webapp.root" -->
   <context-param>
     <param-name>webAppRootKey</param-name>
-    <param-value>spring_springmvc_jpa.root</param-value>
+    <param-value>online_shop.root</param-value>
   </context-param>
   <context-param>
     <param-name>log4jConfigLocation</param-name>
