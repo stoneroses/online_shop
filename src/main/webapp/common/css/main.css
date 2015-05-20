@@ -19,6 +19,10 @@ body {
   height: 1%; /*For IE7*/
 }
 
+.navbar-default .navbar-brand {
+  color: #fff;
+}
+
 .navbar-default .navbar-nav>li>a {
   color: #fff;
   font: bold 14px arial
@@ -29,14 +33,36 @@ body {
   background: #81BF1C;
 }
 
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus {
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:hover, .navbar-default .navbar-nav>.active>a:focus
+  {
   color: #fff;
   background: #5B8D13;
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#5B8D13', endColorstr='#5B8D13');
 }
 
-.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus
+  {
   color: #fff;
   background: #81BF1C;
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#81BF1C', endColorstr='#81BF1C');
+}
+
+.dropdown-menu {
+  background: #5B8D13;
+  border: none;
+}
+
+.dropdown-menu>li>a {
+  color: #fff;
+  font: bold 14px arial;
+  background: #5B8D13;
+  border: none;
+}
+
+.dropdown-menu>li>a:hover {
+  color: #fff;
+  background: #81BF1C;
+  filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr='#81BF1C', endColorstr='#81BF1C');
 }
 
 .panel-green>.panel-heading {
