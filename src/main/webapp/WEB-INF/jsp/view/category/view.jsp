@@ -1,6 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
+<%@ include file="category_breadcrumb.jsp"%>
+
 <h3>${category.name}</h3>
 <p>${category.description}</p>
 <c:forEach var="categoryChild" items="${category.children}" varStatus="row">

@@ -1,6 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
+<c:if test="${not empty product.categories}">
+  <c:set var="category" value="${product.categories[0]}" />
+  <%@ include file="../category/category_breadcrumb.jsp"%>
+</c:if>
 <p>${product.name}</p>
 <p>
   <spring:message code="unit.of.measure.money" />

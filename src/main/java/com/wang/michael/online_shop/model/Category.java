@@ -1,5 +1,6 @@
 package com.wang.michael.online_shop.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -77,6 +78,17 @@ public class Category {
         if (!CollectionUtils.isEmpty(products)) {
             result += this.products.size();
         }
+        return result;
+    }
+
+    public Collection<Category> getParents() {
+        Collection<Category> result = null;
+        if (this.parent != null) {
+            result = this.parent.getParents();
+        } else {
+            result = new ArrayList<Category>();
+        }
+        result.add(this);
         return result;
     }
 }
