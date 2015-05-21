@@ -17,7 +17,7 @@
         <div class="wrapper">
           <div class="caption post-content">${product.name}</div>
         </div>
-        <a href="${ctx}/products/${product.id}"> <img alt="${product.description}"
+        <a href="${ctx}/products/${product.id}"> <img alt="${product.name}"
           src="${fileURIRoot}/${product.imageLocation}">
         </a>
       </div>
