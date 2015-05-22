@@ -13,6 +13,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -70,8 +71,10 @@ public class RootController extends BaseController {
     }
 
     @RequestMapping(value = "/contact_us", method = RequestMethod.GET)
-    public ModelAndView newContactUsMessagePage() {
-        ModelAndView mav = new ModelAndView("contact_us", "contactUsMessage", new ContactUsMessage());
+    public ModelAndView newContactUsMessagePage(@RequestParam(value = "subject", required = false) String subject) {
+        ContactUsMessage contactUsMessage = new ContactUsMessage();
+        contactUsMessage.setSubject(subject);
+        ModelAndView mav = new ModelAndView("contact_us", "contactUsMessage", contactUsMessage);
         String contactUs = null;
         try {
             contactUs = settingService.findByKey("contact_us").getValue();
