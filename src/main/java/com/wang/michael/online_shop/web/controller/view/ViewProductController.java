@@ -1,5 +1,6 @@
 package com.wang.michael.online_shop.web.controller.view;
 
+import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
@@ -13,8 +14,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.wang.michael.online_shop.exception.ProductNotFound;
+import com.wang.michael.online_shop.exception.SettingNotFound;
 import com.wang.michael.online_shop.model.Product;
 import com.wang.michael.online_shop.service.ProductService;
+import com.wang.michael.online_shop.service.SettingService;
 import com.wang.michael.online_shop.web.controller.BaseController;
 
 @RestController
@@ -24,12 +27,24 @@ public class ViewProductController extends BaseController {
     @Autowired
     private ProductService productService;
 
+    @Autowired
+    private SettingService settingService;
+
     @Value("${file.uri.root}")
     private String fileURIRoot;
 
     @ModelAttribute("fileURIRoot")
     public String defaultFileURIRoot() {
         return fileURIRoot;
+    }
+
+    @ModelAttribute("displayPrice")
+    public boolean displayPrice() {
+        try {
+            return BooleanUtils.toBoolean(settingService.findByKey("display_price").getValue());
+        } catch (SettingNotFound e) {
+            return false;
+        }
     }
 
     @ModelAttribute("pageTitle")

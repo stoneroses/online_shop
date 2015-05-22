@@ -5,31 +5,63 @@
   <c:set var="category" value="${product.categories[0]}" />
   <%@ include file="../category/category_breadcrumb.jsp"%>
 </c:if>
-<p>${product.name}</p>
-<p>
-  <spring:message code="unit.of.measure.money" />
-  ${product.price}
-</p>
-<p>${product.discount}</p>
-<p>
-  <spring:message code="pigeon.sale.price.after.discount" />
-  :
-  <spring:message code="unit.of.measure.money" />
-  ${product.nowPrice}
-</p>
-<a href="${ctx}/contact_us?subject=${product.name}" class="btn btn-default">Contact Us</a>
-<p>${product.description}</p>
-<div class="form-group">
-  <label for="imagesThumbnail" class="col-sm-12"><spring:message code="image.thumbnail" /></label>
-  <div class="col-sm-12">
-    <div id="imagesThumbnail" class="row">
+
+<div class="panel panel-default">
+  <div class="panel-heading">${product.name}</div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-12">
+        <c:if test="${displayPrice}">
+          <p>
+            <spring:message code="unit.of.measure.money" />
+            ${product.price}
+          </p>
+          <p>${product.discount}</p>
+          <p>
+            <spring:message code="pigeon.sale.price.after.discount" />
+            :
+            <spring:message code="unit.of.measure.money" />
+            ${product.nowPrice}
+          </p>
+        </c:if>
+        <c:if test="${not displayPrice}">
+          <a href="${ctx}/contact_us?subject=${product.name}" class="btn btn-default">Contact Us</a>
+        </c:if>
+      </div>
+    </div>
+
+    <div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls">
+      <div class="slides"></div>
+      <h3 class="title"></h3>
+      <a class="prev">‹</a> <a class="next">›</a> <a class="close">×</a> <a class="play-pause"></a>
+      <ol class="indicator"></ol>
+    </div>
+
+    <div id="links" class="row">
       <c:forEach var="image" items="${product.images}" varStatus="row">
-        <div class="col-xs-6 col-md-3">
-          <input type="hidden" name="images" value="${image.id}" /> <a href="${ctx}${fileURIRoot}${image.location}"
-            target="_blank" class="thumbnail"> <img src="${ctx}${fileURIRoot}${image.location}" alt="${image.name}">
+        <div class="thumbnail col-sm-2">
+          <a href="${ctx}${fileURIRoot}${image.location}" title="${image.name}"> <img
+            src="${ctx}${fileURIRoot}${image.location}" alt="${image.name}" style="height: auto;">
           </a>
         </div>
       </c:forEach>
     </div>
+
+    <p>${product.description}</p>
+    <a href="${ctx}/contact_us?subject=${product.name}" class="btn btn-default">Contact Us</a>
+
   </div>
 </div>
+
+
+<script src="${ctx}/common/javascript/blueimp-gallery.min.js"></script>
+<script>
+  document.getElementById('links').onclick = function(event) {
+    event = event || window.event;
+    var target = event.target || event.srcElement, link = target.src ? target.parentNode : target, options = {
+      index : link,
+      event : event
+    }, links = this.getElementsByTagName('a');
+    blueimp.Gallery(links, options);
+  };
+</script>
