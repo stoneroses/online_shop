@@ -84,6 +84,13 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="sortOrder" class="col-sm-2 control-label"><spring:message code="category.sort.order" /></label>
+          <div class="col-sm-10">
+            <form:input path="sortOrder" class="form-control" />
+            <form:errors path="sortOrder" cssClass="text-danger" />
+          </div>
+        </div>
+        <div class="form-group">
           <label for="categories" class="col-sm-2 control-label"><spring:message code="category.selector" /></label>
           <div class="col-sm-10">
             <input id="categoriesInput" name="categoriesInput" class="form-control" placeholder="Enter category name" />

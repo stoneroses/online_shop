@@ -12,13 +12,13 @@ import com.wang.michael.online_shop.model.Category;
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Long> {
 
-    @Query("SELECT category FROM Category category WHERE LOWER(category.name) LIKE %:categoryName%")
+    @Query("SELECT category FROM Category category WHERE LOWER(category.name) LIKE %:categoryName% ORDER BY sortOrder")
     List<Category> findByName(@Param("categoryName") String categoryName);
 
-    @Query("SELECT category FROM Category category WHERE category.parent = :parentId")
+    @Query("SELECT category FROM Category category WHERE category.parent = :parentId ORDER BY sortOrder")
     List<Category> findAllChildrenCategories(@Param("parentId") Integer parentId);
 
-    @Query("SELECT category FROM Category category WHERE category.parent IS NULL")
+    @Query("SELECT category FROM Category category WHERE category.parent IS NULL ORDER BY sortOrder")
     List<Category> findAllTopCategory();
 
 }

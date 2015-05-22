@@ -60,6 +60,9 @@ public class Category {
     @OneToMany(mappedBy = "parent", fetch = FetchType.LAZY)
     private Collection<Category> children;
 
+    @Column(name = "sort_order")
+    private int sortOrder;
+
     @JsonIgnore
     @Column(name = "createdDateTime")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")

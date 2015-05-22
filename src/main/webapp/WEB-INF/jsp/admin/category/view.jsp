@@ -10,6 +10,7 @@
   : <a href="${ctx}/admin/categories/${category.parent.id}">${category.parent.name}</a>
 </p>
 <p>${category.name}</p>
+<p>${category.sortOrder}</p>
 <table id="categoriesTable" class="table table-striped table-hover ">
   <thead>
     <tr>
