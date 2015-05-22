@@ -9,9 +9,9 @@
   </c:forEach>
   <c:if test="${not empty product}">
     <li><a href="${ctx}/categories/${category.id}">${category.name}</a></li>
-    <li>${product.name}</li>
+    <li class="active">${product.name}</li>
   </c:if>
   <c:if test="${empty product}">
-    <li>${category.name}</li>
+    <li class="active">${category.name}</li>
   </c:if>
 </ol>
