@@ -95,6 +95,13 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="sortOrder" class="col-sm-2 control-label"><spring:message code="product.sort.order" /></label>
+          <div class="col-sm-10">
+            <form:input path="sortOrder" class="form-control" />
+            <form:errors path="sortOrder" cssClass="text-danger" />
+          </div>
+        </div>
+        <div class="form-group">
           <label for="description" class="col-sm-2 control-label"><spring:message code="product.description" /></label>
           <div class="col-sm-10">
             <form:textarea path="description" class="form-control" />

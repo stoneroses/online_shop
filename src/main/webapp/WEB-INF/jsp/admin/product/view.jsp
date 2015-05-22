@@ -6,6 +6,7 @@
   <spring:message code="${pageTitle}" arguments="${pageTitleArg}" text="" />
 </h1>
 <p>${product.name}</p>
+<p>${product.sortOrder}</p>
 <p>${product.reference}</p>
 <p>${product.weight}
   <spring:message code="unit.of.measure.weight" />

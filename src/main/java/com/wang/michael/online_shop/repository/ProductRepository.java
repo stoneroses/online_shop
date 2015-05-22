@@ -12,7 +12,7 @@ import com.wang.michael.online_shop.model.Product;
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
 
-    @Query("SELECT product FROM Product product WHERE LOWER(product.name) LIKE %:productName%")
+    @Query("SELECT product FROM Product product WHERE LOWER(product.name) LIKE %:productName% ORDER BY sortOrder")
     List<Product> findByName(@Param("productName") String productName);
 
 }

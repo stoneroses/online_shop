@@ -67,6 +67,9 @@ public class Product {
     @ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.REFRESH, CascadeType.MERGE }, fetch = FetchType.LAZY, mappedBy = "products")
     private Collection<Category> categories;
 
+    @Column(name = "sort_order")
+    private int sortOrder;
+
     @JsonIgnore
     @Column(name = "createdDateTime")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
