@@ -19,6 +19,7 @@
   <spring:message code="unit.of.measure.money" />
   ${pigeonSale.nowPrice}
 </p>
+<a href="${ctx}/contact_us?subject=${pigeonSale.name}" class="btn btn-default">Contact Us</a>
 <p>${pigeonSale.description}</p>
 <div class="form-group">
   <label for="imagesThumbnail" class="col-sm-12"><spring:message code="image.thumbnail" /></label>
