@@ -103,6 +103,20 @@ div.post-content {
   text-align: center;
 }
 
+.thumbnail a>img {
+  margin: 0 auto;
+  text-align: center;
+  height: 200px;
+  overflow: auto;
+}
+
+.thumbnail a>p {
+  margin: 0 auto;
+  text-align: center;
+  height: 25px;
+  overflow: hidden;
+}
+
 .wrapper {
   text-align: center;
 }

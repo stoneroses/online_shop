@@ -14,11 +14,9 @@
   <c:forEach var="product" items="${category.products}" varStatus="row">
     <div class="col-md-3">
       <div class="thumbnail">
-        <div class="wrapper">
-          <div class="caption post-content">${product.name}</div>
-        </div>
         <a href="${ctx}/products/${product.id}"> <img alt="${product.name}"
           src="${fileURIRoot}/${product.imageLocation}">
+          <p>${product.name}</p>
         </a>
       </div>
     </div>
