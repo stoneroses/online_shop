@@ -6,7 +6,7 @@ CREATE TABLE `products` (
   `stock` INT(11) NOT NULL DEFAULT '0',
   `price` DECIMAL(10,2) NOT NULL DEFAULT '0.00',
   `discount` DECIMAL(4,2) NOT NULL DEFAULT '0.00',
-  `description` VARCHAR(1024) NOT NULL DEFAULT '' COLLATE 'utf8_bin',
+  `description` VARCHAR(4096) NOT NULL DEFAULT '' COLLATE 'utf8_bin',
   `sort_order` INT(11) NULL DEFAULT 0,
   `createdDateTime` DATETIME NOT NULL,
   `updatedDateTime` DATETIME NULL DEFAULT NULL,

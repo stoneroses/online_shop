@@ -54,8 +54,8 @@ public class Product {
     @Column
     private double discount;
 
-    @Column(length = 1024)
-    @Size(min = 2, max = 1024)
+    @Column(length = 4096)
+    @Size(min = 2, max = 4096)
     private String description;
 
     @JsonIgnore
