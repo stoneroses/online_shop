@@ -15,7 +15,7 @@
     <div class="col-md-3">
       <div class="thumbnail">
         <a href="${ctx}/products/${product.id}"> <img alt="${product.name}"
-          src="${fileURIRoot}/${product.imageLocation}">
+          src="${fileURIRoot}${resizeResolution}${product.imageLocation}">
           <p>${product.name}</p>
         </a>
       </div>

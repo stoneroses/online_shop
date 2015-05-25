@@ -2,7 +2,9 @@ package com.wang.michael.online_shop.web.controller;
 
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
@@ -41,6 +43,22 @@ public class BaseController {
             return this.settingService.findByKey("page_title_prefix").getValue();
         } catch (SettingNotFound e) {
             return "Page_title_prefix is not configured";
+        }
+    }
+
+    @Value("${resize.resolution}")
+    private String resizeResolution;
+
+    @ModelAttribute("resizeResolution")
+    public String getResizeResolution() {
+        try {
+            return this.settingService.findByKey("resize_resolution").getValue();
+        } catch (SettingNotFound e) {
+            if (StringUtils.isNotBlank(resizeResolution)) {
+                return resizeResolution;
+            } else {
+                return "204x115";
+            }
         }
     }
 

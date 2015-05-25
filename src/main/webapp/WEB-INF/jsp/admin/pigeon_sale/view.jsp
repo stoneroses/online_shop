@@ -30,7 +30,7 @@
 
         <div class="col-xs-6 col-md-3">
           <input type="hidden" name="images" value="${image.id}" /> <a href="${ctx}${fileURIRoot}${image.location}"
-            target="_blank" class="thumbnail"> <img src="${ctx}${fileURIRoot}${image.location}" alt="${image.name}">
+            target="_blank" class="thumbnail"> <img src="${ctx}${fileURIRoot}${resizeResolution}${image.location}" alt="${image.name}">
           </a>
         </div>
 

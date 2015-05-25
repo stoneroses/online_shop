@@ -119,8 +119,8 @@
                   <span>${image.name}</span><span id="removeImageButton-${image.id}"
                     class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> <input type="hidden"
                     name="images" value="${image.id}" /> <a href="${ctx}${fileURIRoot}${image.location}"
-                    target="_blank" class="thumbnail"> <img src="${ctx}${fileURIRoot}${image.location}"
-                    alt="${image.name}">
+                    target="_blank" class="thumbnail"> <img
+                    src="${ctx}${fileURIRoot}${resizeResolution}${image.location}" alt="${image.name}">
                   </a>
                 </div>
 

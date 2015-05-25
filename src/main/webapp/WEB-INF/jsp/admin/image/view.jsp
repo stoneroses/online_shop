@@ -6,7 +6,7 @@
 </h1>
 <p>${image.name}</p>
 <p>${image.description}</p>
-<a href="${ctx}${fileURIRoot}${image.location}" target="_blank"> <img src="${ctx}${fileURIRoot}${image.location}"
+<a href="${ctx}${fileURIRoot}${image.location}" target="_blank"> <img src="${ctx}${fileURIRoot}${resizeResolution}${image.location}"
   class="img-thumbnail" />
 </a>
 <a href="${ctx}/admin/images" class="btn btn-default"><spring:message code="image.list" /></a>

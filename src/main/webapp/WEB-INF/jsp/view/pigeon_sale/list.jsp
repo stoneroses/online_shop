@@ -12,7 +12,7 @@
           <div class="caption post-content">${pigeonSale.name}</div>
         </div>
         <a href="${ctx}/pigeon_sales/${pigeonSale.id}"> <img alt="${pigeonSale.description}"
-          src="${fileURIRoot}/${pigeonSale.imageLocation}">
+          src="${fileURIRoot}${resizeResolution}${pigeonSale.imageLocation}">
         </a>
       </div>
     </div>

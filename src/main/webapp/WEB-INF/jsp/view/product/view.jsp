@@ -41,7 +41,7 @@
       <c:forEach var="image" items="${product.images}" varStatus="row">
         <div class="thumbnail col-sm-2">
           <a href="${ctx}${fileURIRoot}${image.location}" title="${image.name}"> <img
-            src="${ctx}${fileURIRoot}${image.location}" alt="${image.name}" style="height: auto;">
+            src="${ctx}${fileURIRoot}${resizeResolution}${image.location}" alt="${image.name}" style="height: auto;">
           </a>
         </div>
       </c:forEach>
