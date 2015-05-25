@@ -23,6 +23,7 @@ import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 @Entity
 @Table(name = "products")
@@ -84,6 +85,7 @@ public class Product {
         return this.price * (100 - this.discount) / 100;
     }
 
+    @JsonInclude
     public String getImageLocation() {
         if (!CollectionUtils.isEmpty(this.images)) {
             return ((Image) CollectionUtils.get(images, 0)).getLocation();

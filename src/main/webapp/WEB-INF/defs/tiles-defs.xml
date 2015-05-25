@@ -5,6 +5,7 @@
 <tiles-definitions>
 
   <definition name="base_layout" template="/WEB-INF/jsp/layouts/default/main.jsp">
+    <put-attribute name="header_logo" value="/WEB-INF/jsp/layouts/default/header_logo.jsp" />
     <put-attribute name="header" value="/WEB-INF/jsp/layouts/default/header.jsp" />
     <put-attribute name="message" value="/WEB-INF/jsp/layouts/default/message.jsp" />
     <put-attribute name="body" value="/WEB-INF/jsp/layouts/default/body.jsp" />

@@ -35,6 +35,9 @@
 <body>
   <div class="container">
     <div class="container">
+      <tiles:insertAttribute name="header_logo" />
+    </div>
+    <div class="container">
       <tiles:insertAttribute name="header" />
     </div>
     <div class="container-fluid">

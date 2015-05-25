@@ -1,0 +1,32 @@
+
+<script>
+  $(function() {
+
+    $("#productsInput").autocomplete({
+      source : "${ctx}/admin/products/search",
+      paramName : "productName",
+      minLength : 2,
+      select : function(event, ui) {
+        window.location.href = "${ctx}/products/" + ui.item.id;
+      }
+    }).autocomplete("instance")._renderItem = function(ul, item) {
+      return $("<li>").append(
+          "<a><img width='102' height='58' src='${ctx}${fileURIRoot}${resizeResolution}" + item.imageLocation + "'></img>"
+              + item.name + "</a>").appendTo(ul);
+    };
+  });
+</script>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm-6">
+      <a href="${ctx}"> <img alt="${pageTitlePrefix}" src="${ctx}/common/images/logo.png" height="130" width="500">
+      </a>
+    </div>
+    <div class="col-sm-6 vcenter">
+      <div>
+        <input id="productsInput" name="productsInput" class="form-control" placeholder="Enter product name" />
+      </div>
+    </div>
+  </div>
+</div>
