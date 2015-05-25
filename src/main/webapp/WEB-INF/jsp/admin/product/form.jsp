@@ -9,7 +9,7 @@
 
     $("#imagesThumbnail").disableSelection();
 
-    $("span[id*=removeImageButton]").click(function() {
+    $(document).on('click','span[id*=removeImageButton]', function() {
       $(this).parent().remove();
     });
 

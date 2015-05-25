@@ -5,7 +5,7 @@
 <script>
   $(function() {
 
-    $("span[id*=removeButton]").click(function() {
+    $(document).on('click','span[id*=removeButton]', function() {
       $(this).parents("tr").remove();
     });
 
@@ -36,7 +36,7 @@
           .append("<td><input type='hidden' name='products' value='" + item.id + "'>" + item.name + "</td>")
           .append("<td>" + item.description + "</td>")
           .append(
-              "<td><span id='removeButton-" + item.id +"' class='glyphicon glyphicon-remove-circle' aria-hidden='true'></span></td>");
+              "<td><span id='removeButton-product-" + item.id +"' class='glyphicon glyphicon-remove-circle' aria-hidden='true'></span></td>");
       return tr;
     }
 
@@ -61,7 +61,7 @@
           .append("<td><input type='hidden' name='children' value='" + item.id + "'>" + item.name + "</td>")
           .append("<td>" + item.description + "</td>")
           .append(
-              "<td><span id='removeButton-" + item.id +"' class='glyphicon glyphicon-remove-circle' aria-hidden='true'></span></td>");
+              "<td><span id='removeButton-category-" + item.id +"' class='glyphicon glyphicon-remove-circle' aria-hidden='true'></span></td>");
       return tr;
     }
   });
