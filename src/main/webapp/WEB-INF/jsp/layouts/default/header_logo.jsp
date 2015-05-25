@@ -18,6 +18,10 @@
         return $("<li>").append("<a>" + item.name + "</a>").appendTo(ul);
       }
     };
+
+    $("#searchclear").click(function() {
+      $("#header_logo_productsInput").val('');
+    });
   });
 </script>
 
@@ -27,10 +31,12 @@
       <a href="${ctx}/"> <img alt="${pageTitlePrefix}" src="${ctx}/common/images/logo.png" height="130" width="500">
       </a>
     </div>
-    <div class="col-sm-6 vcenter">
-      <div>
-        <input id="header_logo_productsInput" name="header_logo_productsInput" class="form-control" placeholder="Enter product name" />
-      </div>
+    <div class="col-sm-6">
+      <input id="header_logo_productsInput" name="header_logo_productsInput" class="form-control"
+        placeholder="Enter product name" /> <span id="searchclear" class="glyphicon glyphicon-remove-circle"></span>
+    </div>
+    <div class="col-sm-6">
+      <span id="newsPanel">test</span>
     </div>
   </div>
 </div>

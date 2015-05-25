@@ -121,8 +121,14 @@ div.post-content {
   text-align: center;
 }
 
-.vcenter {
-  display: inline-block;
-  vertical-align: middle;
-  float: none;
+#searchclear {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  bottom: 0;
+  height: 14px;
+  margin: auto;
+  font-size: 14px;
+  cursor: pointer;
+  color: #ccc;
 }
