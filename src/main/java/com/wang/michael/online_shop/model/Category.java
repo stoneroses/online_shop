@@ -84,6 +84,7 @@ public class Category {
         return result;
     }
 
+    @JsonIgnore
     public Collection<Category> getParents() {
         Collection<Category> result = null;
         if (this.parent != null) {

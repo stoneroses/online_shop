@@ -21,7 +21,13 @@
         $("#imagesThumbnail").append(createImageThumbnailDiv(ui.item))
       }
     }).autocomplete("instance")._renderItem = function(ul, item) {
-      return $("<li>").append("<a>" + item.name + "<br>" + item.location + "</a>").appendTo(ul);
+      if (item.location) {
+        return $("<li>").append(
+            "<a><img width='102' height='58' src='${ctx}${fileURIRoot}${resizeResolution}" + item.location + "'></img>"
+                + item.name + "</a>").appendTo(ul);
+      } else {
+        return $("<li>").append("<a>" + item.name + "<br>" + item.location + "</a>").appendTo(ul);
+      }
     };
 
     function createImageThumbnailDiv(item) {
@@ -126,8 +132,8 @@
                   <span>${image.name}</span><span id="removeImageButton-${image.id}"
                     class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> <input type="hidden"
                     name="images" value="${image.id}" /> <a href="${ctx}${fileURIRoot}${image.location}"
-                    target="_blank" class="thumbnail"> <img src="${ctx}${fileURIRoot}${resizeResolution}${image.location}"
-                    alt="${image.name}">
+                    target="_blank" class="thumbnail"> <img
+                    src="${ctx}${fileURIRoot}${resizeResolution}${image.location}" alt="${image.name}">
                   </a>
                 </div>
 

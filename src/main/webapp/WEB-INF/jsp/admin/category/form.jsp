@@ -21,7 +21,13 @@
         $("#productsTable > tbody").append(createProductTr(ui.item))
       }
     }).autocomplete("instance")._renderItem = function(ul, item) {
-      return $("<li>").append("<a>" + item.name + "<br>" + item.description + "</a>").appendTo(ul);
+      if (item.imageLocation) {
+        return $("<li>").append(
+            "<a><img width='102' height='58' src='${ctx}${fileURIRoot}${resizeResolution}" + item.imageLocation + "'></img>"
+                + item.name + "</a>").appendTo(ul);
+      } else {
+        return $("<li>").append("<a>" + item.name + "</a>").appendTo(ul);
+      }
     };
 
     function createProductTr(item) {
@@ -46,7 +52,7 @@
         $("#categoriesTable > tbody").append(createCategoryTr(ui.item))
       }
     }).autocomplete("instance")._renderItem = function(ul, item) {
-      return $("<li>").append("<a>" + item.name + "<br>" + item.description + "</a>").appendTo(ul);
+      return $("<li>").append("<a>" + item.name + "</a>").appendTo(ul);
     };
 
     function createCategoryTr(item) {

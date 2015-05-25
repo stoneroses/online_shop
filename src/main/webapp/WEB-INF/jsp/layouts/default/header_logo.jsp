@@ -2,7 +2,7 @@
 <script>
   $(function() {
 
-    $("#productsInput").autocomplete({
+    $("#header_logo_productsInput").autocomplete({
       source : "${ctx}/admin/products/search",
       paramName : "productName",
       minLength : 2,
@@ -29,7 +29,7 @@
     </div>
     <div class="col-sm-6 vcenter">
       <div>
-        <input id="productsInput" name="productsInput" class="form-control" placeholder="Enter product name" />
+        <input id="header_logo_productsInput" name="header_logo_productsInput" class="form-control" placeholder="Enter product name" />
       </div>
     </div>
   </div>
