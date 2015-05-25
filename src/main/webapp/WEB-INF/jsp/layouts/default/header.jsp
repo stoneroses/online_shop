@@ -4,7 +4,7 @@
 <nav class="navbar navbar-default">
   <div class="container">
     <div class="navbar-header">
-      <a class="navbar-brand" href="${ctx}/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a>
+      <a class="navbar-brand" href="${ctx}/"><img alt="${pageTitlePrefix}" src="${ctx}/favorite.ico" width="18" height="18"></a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
