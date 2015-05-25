@@ -62,6 +62,14 @@ public class BaseController {
         }
     }
 
+    @Value("${file.uri.root}")
+    private String fileURIRoot;
+
+    @ModelAttribute("fileURIRoot")
+    public String defaultFileURIRoot() {
+        return fileURIRoot;
+    }
+
     protected void preparePaginationData(ModelAndView mav, String pageObjectName, Page<?> pageObjec, int page, int pageSize) {
         mav.addObject(pageObjectName, pageObjec);
         mav.addObject("totalPages", pageObjec.getTotalPages());

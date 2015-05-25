@@ -2,7 +2,6 @@ package com.wang.michael.online_shop.web.controller.view;
 
 import org.apache.commons.lang3.BooleanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,14 +28,6 @@ public class ViewProductController extends BaseController {
 
     @Autowired
     private SettingService settingService;
-
-    @Value("${file.uri.root}")
-    private String fileURIRoot;
-
-    @ModelAttribute("fileURIRoot")
-    public String defaultFileURIRoot() {
-        return fileURIRoot;
-    }
 
     @ModelAttribute("displayPrice")
     public boolean displayPrice() {

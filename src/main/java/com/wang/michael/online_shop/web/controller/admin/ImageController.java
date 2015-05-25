@@ -46,17 +46,9 @@ public class ImageController extends BaseController {
     @Value("${file.upload.root}")
     private String fileUploadRoot;
 
-    @Value("${file.uri.root}")
-    private String fileURIRoot;
-
     @ModelAttribute("pageTitle")
     public String defaultPageTitle() {
         return "Images";
-    }
-
-    @ModelAttribute("fileURIRoot")
-    public String defaultFileURIRoot() {
-        return fileURIRoot;
     }
 
     @RequestMapping(value = "/create", method = RequestMethod.GET)
