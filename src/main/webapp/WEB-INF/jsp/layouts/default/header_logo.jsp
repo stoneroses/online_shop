@@ -36,7 +36,7 @@
         placeholder="Enter product name" /> <span id="searchclear" class="glyphicon glyphicon-remove-circle"></span>
     </div>
     <div class="col-sm-6">
-      <span id="newsPanel">test</span>
+      <span id="newsPanel"></span>
     </div>
   </div>
 </div>
