@@ -147,3 +147,8 @@ div.post-content {
 .green-text {
   color: #5B8D13;
 }
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
