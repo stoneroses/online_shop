@@ -64,6 +64,15 @@ public class BaseController {
         }
     }
 
+    @ModelAttribute("copyRightInfo")
+    public String getCopyRightInfo() {
+        try {
+            return this.settingService.findByKey("copy_right_info").getValue();
+        } catch (SettingNotFound e) {
+            return "copy_right_info is not configured";
+        }
+    }
+
     @Value("${resize.resolution}")
     private String resizeResolution;
 
