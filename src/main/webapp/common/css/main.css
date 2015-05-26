@@ -134,12 +134,16 @@ div.post-content {
 }
 
 .vbottom {
-    display: inline-block;
-    vertical-align: bottom;
-    float: none;
+  display: inline-block;
+  vertical-align: bottom;
+  float: none;
 }
 
 #newsPanel {
   margin-top: 10px;
   margin-bottom: 8px;
+}
+
+.green-text {
+  color: #5B8D13;
 }

@@ -47,6 +47,9 @@
     </div><!--
     --><div class="col-sm-6 vbottom">
       <div class="col-sm-12">
+        <h3 class="green-text">${homePageSubtitle}</h3>
+      </div>
+      <div class="col-sm-12">
         <input id="header_logo_productsInput" name="header_logo_productsInput" class="form-control"
           placeholder="Enter product name" /> <span id="searchclear" class="glyphicon glyphicon-remove-circle"></span>
       </div>

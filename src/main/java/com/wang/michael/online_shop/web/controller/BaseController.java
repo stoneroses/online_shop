@@ -64,6 +64,15 @@ public class BaseController {
         }
     }
 
+    @ModelAttribute("homePageSubtitle")
+    public String getHomePageSubtitle() {
+        try {
+            return this.settingService.findByKey("home_page_subtitle").getValue();
+        } catch (SettingNotFound e) {
+            return "home_page_subtitle is not configured";
+        }
+    }
+
     @ModelAttribute("copyRightInfo")
     public String getCopyRightInfo() {
         try {
