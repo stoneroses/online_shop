@@ -139,6 +139,12 @@ div.post-content {
   float: none;
 }
 
+.vcenter {
+  display: inline-block;
+  vertical-align: middle;
+  float: none;
+}
+
 #newsPanel {
   margin-top: 10px;
   margin-bottom: 8px;
