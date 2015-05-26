@@ -6,7 +6,7 @@
   <c:forEach var="imageLocation" items="${homePageCarousel}" varStatus="row">
     <div>
       <a href="${ctx}${fileURIRoot}${imageLocation}" title="${imageLocation}"> <img
-        src="${ctx}${fileURIRoot}${resizeResolution}${imageLocation}" alt="${imageLocation}" style="height: auto;">
+        src="${ctx}${fileURIRoot}${homePageCarouselResizeResolution}${imageLocation}" alt="${imageLocation}" style="height: auto;">
       </a>
     </div>
   </c:forEach>

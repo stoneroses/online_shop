@@ -44,6 +44,11 @@ public class RootController extends BaseController {
     public ModelAndView indexPage() {
         ModelAndView mav = new ModelAndView("index");
         mav.addObject("homePageCarousel", settingService.getHomePageCarousel());
+        try {
+            mav.addObject("homePageCarouselResizeResolution", settingService.findByKey("home_page_resize_resolution").getValue());
+        } catch (SettingNotFound e) {
+            mav.addObject("homePageCarouselResizeResolution", "400x300");
+        }
         mav.addObject("currentNavButton", "home");
         mav.addObject("pageTitle", "page.footer.home");
         return mav;
