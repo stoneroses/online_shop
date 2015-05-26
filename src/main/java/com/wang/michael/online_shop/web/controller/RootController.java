@@ -43,6 +43,7 @@ public class RootController extends BaseController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView indexPage() {
         ModelAndView mav = new ModelAndView("index");
+        mav.addObject("homePageCarousel", settingService.getHomePageCarousel());
         mav.addObject("currentNavButton", "home");
         mav.addObject("pageTitle", "page.footer.home");
         return mav;

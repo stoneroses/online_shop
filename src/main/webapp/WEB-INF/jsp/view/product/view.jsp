@@ -64,4 +64,16 @@
     }, links = this.getElementsByTagName('a');
     blueimp.Gallery(links, options);
   };
+  
+  var carouselOptions = {
+      hidePageScrollbars: false,
+      toggleControlsOnReturn: false,
+      toggleSlideshowOnSpace: false,
+      enableKeyboardNavigation: false,
+      closeOnEscape: false,
+      closeOnSlideClick: false,
+      closeOnSwipeUpOrDown: false,
+      disableScroll: false,
+      startSlideshow: true
+  };
 </script>

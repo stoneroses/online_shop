@@ -1,7 +1,10 @@
 package com.wang.michael.online_shop.service.impl;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -74,6 +77,18 @@ public class SettingServiceImpl implements SettingService {
     public Page<Setting> getSettings(int page, int size) {
         Pageable pageable = new PageRequest(page, size);
         return settingRepository.findAll(pageable);
+    }
+
+    @Override
+    public List<String> getHomePageCarousel() {
+        Setting settingResult;
+        try {
+            settingResult = this.findByKey("home_page_carousel");
+        } catch (SettingNotFound e) {
+            return new ArrayList<String>();
+        }
+        List<String> result = Arrays.asList(StringUtils.split(settingResult.getValue(), "|"));
+        return result;
     }
 
 }

@@ -20,4 +20,6 @@ public interface SettingService {
     public Setting save(Setting setting);
 
     public Page<Setting> getSettings(int page, int size);
+
+    public List<String> getHomePageCarousel();
 }

@@ -7,3 +7,4 @@ INSERT INTO `settings` (`id`, `setting_key`, `setting_value`, `createdDateTime`,
 INSERT INTO `settings` (`id`, `setting_key`, `setting_value`, `createdDateTime`, `updatedDateTime`) VALUES (5, 'display_price', 'false', NOW(), NULL);
 INSERT INTO `settings` (`id`, `setting_key`, `setting_value`, `createdDateTime`, `updatedDateTime`) VALUES (6, 'resize_resolution', '204x115', NOW(), NULL);
 INSERT INTO `settings` (`id`, `setting_key`, `setting_value`, `createdDateTime`, `updatedDateTime`) VALUES (7, 'copy_right_info', 'Copyright © 2010 <a href="/">Onine Shop</a>.', NOW(), NULL);
+INSERT INTO `settings` (`id`, `setting_key`, `setting_value`, `createdDateTime`, `updatedDateTime`) VALUES (8, 'home_page_carousel', 'test', NOW(), NULL);
