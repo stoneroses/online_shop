@@ -32,6 +32,8 @@
       }
       $("#newsPanel").html("<a href='${ctx}/news/" + news[currentNews].id + "'>" + news[currentNews].title + "</a>");
     }
+    updateNews();
+
     setInterval(updateNews, 2000);
 
   });
@@ -39,16 +41,18 @@
 
 <div class="container">
   <div class="row">
-    <div class="col-sm-6">
-      <a href="${ctx}/"> <img alt="${pageTitlePrefix}" src="${ctx}/common/images/logo.png" height="130" width="500">
+    <div class="col-sm-6 vbottom">
+      <a href="${ctx}/"> <img alt="${pageTitlePrefix}" src="${ctx}/common/images/logo.png" height="130" width="100%">
       </a>
-    </div>
-    <div class="col-sm-6">
-      <input id="header_logo_productsInput" name="header_logo_productsInput" class="form-control"
-        placeholder="Enter product name" /> <span id="searchclear" class="glyphicon glyphicon-remove-circle"></span>
-    </div>
-    <div class="col-sm-6">
-      <span id="newsPanel"></span>
+    </div><!--
+    --><div class="col-sm-6 vbottom">
+      <div class="col-sm-12">
+        <input id="header_logo_productsInput" name="header_logo_productsInput" class="form-control"
+          placeholder="Enter product name" /> <span id="searchclear" class="glyphicon glyphicon-remove-circle"></span>
+      </div>
+      <div class="col-sm-12">
+        <p id="newsPanel"></p>
+      </div>
     </div>
   </div>
 </div>

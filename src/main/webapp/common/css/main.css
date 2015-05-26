@@ -125,10 +125,21 @@ div.post-content {
   position: absolute;
   right: 20px;
   top: 0;
-  bottom: 0;
+  bottom: 0px;
   height: 14px;
   margin: auto;
   font-size: 14px;
   cursor: pointer;
   color: #ccc;
+}
+
+.vbottom {
+    display: inline-block;
+    vertical-align: bottom;
+    float: none;
+}
+
+#newsPanel {
+  margin-top: 10px;
+  margin-bottom: 8px;
 }
