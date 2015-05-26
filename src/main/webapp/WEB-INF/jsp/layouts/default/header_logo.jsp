@@ -22,6 +22,18 @@
     $("#searchclear").click(function() {
       $("#header_logo_productsInput").val('');
     });
+
+    var news = ${topTenNewsList};
+    var currentNews = 0;
+    function updateNews() {
+      currentNews++;
+      if (news.length - 1 < currentNews) {
+        currentNews = 0;
+      }
+      $("#newsPanel").html("<a href='${ctx}/news/" + news[currentNews].id + "'>" + news[currentNews].title + "</a>");
+    }
+    setInterval(updateNews, 2000);
+
   });
 </script>
 

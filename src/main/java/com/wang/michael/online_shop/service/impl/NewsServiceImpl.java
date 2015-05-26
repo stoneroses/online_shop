@@ -66,4 +66,10 @@ public class NewsServiceImpl implements NewsService {
         return newsRepository.findAll(pageable);
     }
 
+    @Override
+    public List<News> findTopTenNews() {
+        Pageable topTen = new PageRequest(0, 10);
+        return newsRepository.findAll(topTen).getContent();
+    }
+
 }

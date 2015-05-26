@@ -9,17 +9,24 @@ import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wang.michael.online_shop.exception.SettingNotFound;
 import com.wang.michael.online_shop.model.Category;
 import com.wang.michael.online_shop.model.Link;
+import com.wang.michael.online_shop.model.News;
 import com.wang.michael.online_shop.service.CategoryService;
 import com.wang.michael.online_shop.service.LinkService;
+import com.wang.michael.online_shop.service.NewsService;
 import com.wang.michael.online_shop.service.SettingService;
 
 public class BaseController {
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private NewsService newsService;
 
     @Autowired
     private LinkService linkService;
@@ -30,6 +37,17 @@ public class BaseController {
     @ModelAttribute("categoryList")
     public List<Category> getCategoryList() {
         return this.categoryService.findAllTopCategory();
+    }
+
+    @ModelAttribute("topTenNewsList")
+    public String getNewsList() {
+        List<News> newsList = this.newsService.findTopTenNews();
+        ObjectMapper mapper = new ObjectMapper();
+        try {
+            return mapper.writeValueAsString(newsList);
+        } catch (JsonProcessingException e) {
+            return "[]";
+        }
     }
 
     @ModelAttribute("linkList")

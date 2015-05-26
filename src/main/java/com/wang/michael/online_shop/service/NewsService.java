@@ -18,4 +18,6 @@ public interface NewsService {
     public News save(News news);
 
     public Page<News> getNews(int page, int size);
+
+    public List<News> findTopTenNews();
 }

@@ -13,6 +13,8 @@ import lombok.Data;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "news")
 @Data
@@ -30,10 +32,12 @@ public class News {
     @Size(min = 10, max = 1024)
     private String content;
 
+    @JsonIgnore
     @Column(name = "createdDateTime")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime createdDateTime;
 
+    @JsonIgnore
     @Column(name = "updatedDateTime")
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     private DateTime updatedDateTime;
