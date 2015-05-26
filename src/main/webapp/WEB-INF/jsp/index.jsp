@@ -1,7 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<div class="row">
+<div class="panel panel-default" style="background-color: #eee;">
   <div class="col-lg-7 col-centered">
     <div id="homePageCarousel">
       <c:forEach var="imageLocation" items="${homePageCarousel}" varStatus="row">
