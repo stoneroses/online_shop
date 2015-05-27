@@ -154,7 +154,12 @@ div.post-content {
   color: #5B8D13;
 }
 
-.col-centered{
-    float: none;
-    margin: 0 auto;
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+#homePageCarouselPanel {
+  background-color: #f7fced;
+  height: 370px;
 }

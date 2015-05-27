@@ -1,14 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
-<div class="panel panel-default" style="background-color: #f2fbe3;">
-  <div class="col-lg-7 col-centered">
+<div id="homePageCarouselPanel" class="panel panel-default">
+  <div class="col-lg-5 col-centered">
     <div id="homePageCarousel" style="margin: 20px auto 20px auto;">
       <c:forEach var="imageLocation" items="${homePageCarousel}" varStatus="row">
         <div class="col-centered">
           <a href="${ctx}${fileURIRoot}${imageLocation}" title="${imageLocation}"> <img
             src="${ctx}${fileURIRoot}${homePageCarouselResizeResolution}${imageLocation}" alt="${imageLocation}"
-            style="height: auto;">
+            style="width: 408px; height: 330px;">
           </a>
         </div>
       </c:forEach>
@@ -21,9 +21,8 @@
       slidesToShow : 1,
       slidesToScroll : 1,
       autoplay : true,
-      autoplaySpeed : 1500,
-      pauseOnHover: false,
-      adaptiveHeight: true
+      autoplaySpeed : 2000,
+      pauseOnHover : false,
     });
   });
 </script>
