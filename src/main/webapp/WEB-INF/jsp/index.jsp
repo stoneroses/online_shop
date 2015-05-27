@@ -2,7 +2,7 @@
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 
 <div id="homePageCarouselPanel" class="panel panel-default">
-  <div class="col-lg-5 col-centered">
+  <div class="col-lg-7 col-centered">
     <div id="homePageCarousel" style="margin: 20px auto 20px auto;">
       <c:forEach var="imageLocation" items="${homePageCarousel}" varStatus="row">
         <div class="col-centered">
