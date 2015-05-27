@@ -83,3 +83,17 @@ INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDat
 INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('pigeon_sale_delete', 'delete pigeon sale', NOW(), NULL);
 INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('pigeon_sale_view', 'view pigeon sale', NOW(), NULL);
 INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('pigeon_sale_list', 'list pigeon sale', NOW(), NULL);
+
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('customer_create', 'create customer', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('customer_save', 'save customer', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('customer_edit', 'edit customer', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('customer_delete', 'delete customer', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('customer_view', 'view customer', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('customer_list', 'list customer', NOW(), NULL);
+
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('customer_group_create', 'create customer group', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('customer_group_save', 'save customer group', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('customer_group_edit', 'edit customer group', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('customer_group_delete', 'delete customer group', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('customer_group_view', 'view customer group', NOW(), NULL);
+INSERT INTO `permissions` (`name`, `description`, `createdDateTime`, `updatedDateTime`) VALUES ('customer_group_list', 'list customer group', NOW(), NULL);

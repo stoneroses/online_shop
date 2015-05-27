@@ -278,4 +278,36 @@
     <put-attribute name="body" value="/WEB-INF/jsp/view/product/view.jsp" />
   </definition>
 
+  <definition name="customer-index" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/customer/list.jsp" />
+  </definition>
+
+  <definition name="customer-new" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/customer/new.jsp" />
+  </definition>
+
+  <definition name="customer-edit" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/customer/edit.jsp" />
+  </definition>
+
+  <definition name="customer-view" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/customer/view.jsp" />
+  </definition>
+
+  <definition name="customer-group-index" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/customer_group/list.jsp" />
+  </definition>
+
+  <definition name="customer-group-new" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/customer_group/new.jsp" />
+  </definition>
+
+  <definition name="customer-group-edit" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/customer_group/edit.jsp" />
+  </definition>
+
+  <definition name="customer-group-view" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/customer_group/view.jsp" />
+  </definition>
+
 </tiles-definitions>

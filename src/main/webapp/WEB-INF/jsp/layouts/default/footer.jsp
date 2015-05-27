@@ -34,6 +34,13 @@
               <li><a href="${ctx}/admin/settings"><spring:message code="page.menu.maintenance.settings" /></a></li>
             </shiro:hasPermission>
             <li class="divider"></li>
+            <shiro:hasPermission name="customer_list">
+              <li><a href="${ctx}/admin/customers"><spring:message code="page.menu.maintenance.customers" /></a></li>
+            </shiro:hasPermission>
+            <shiro:hasPermission name="customer_group_list">
+              <li><a href="${ctx}/admin/customer_groups"><spring:message code="page.menu.maintenance.customer.groups" /></a></li>
+            </shiro:hasPermission>
+            <li class="divider"></li>
             <shiro:hasPermission name="permission_list">
               <li><a href="${ctx}/admin/permissions"><spring:message code="page.menu.maintenance.permissions" /></a></li>
             </shiro:hasPermission>
