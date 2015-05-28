@@ -131,4 +131,19 @@ public class RootController extends BaseController {
         return mav;
     }
 
+    @RequestMapping(value = "/how_to_order", method = RequestMethod.GET)
+    public ModelAndView howToOrderPage() {
+        ModelAndView mav = new ModelAndView("how_to_order");
+        String howToOrder = null;
+        try {
+            howToOrder = settingService.findByKey("how_to_order").getValue();
+        } catch (SettingNotFound e) {
+            howToOrder = "Default how to order message. Please add how_to_order settings instead.";
+        }
+        mav.addObject("currentNavButton", "how_to_order");
+        mav.addObject("howToOrder", howToOrder);
+        mav.addObject("pageTitle", "page.nav.how.to.order");
+        return mav;
+    }
+
 }

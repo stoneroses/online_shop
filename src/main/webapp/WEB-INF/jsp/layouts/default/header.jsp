@@ -16,6 +16,7 @@
         <li id="about_us"><a href="${ctx}/about_us"><spring:message code="page.nav.about" /></a></li>
         <li id="contact_us"><a href="${ctx}/contact_us"><spring:message code="page.nav.contact" /></a></li>
         <li id="strayed_pigeons"><a href="${ctx}/strayed_pigeons"><spring:message code="page.nav.found.strayed.pigeons" /></a></li>
+        <li id="how_to_order"><a href="${ctx}/how_to_order"><spring:message code="page.nav.how.to.order" /></a></li>
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
           aria-expanded="false"><spring:message code="page.nav.links" /><span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">

@@ -41,6 +41,9 @@
     <put-attribute name="body" value="/WEB-INF/jsp/strayed_pigeons.jsp" />
   </definition>
 
+  <definition name="how_to_order" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/how_to_order.jsp" />
+  </definition>
 
   <definition name="news-index" extends="default_layout">
     <put-attribute name="body" value="/WEB-INF/jsp/admin/news/list.jsp" />
