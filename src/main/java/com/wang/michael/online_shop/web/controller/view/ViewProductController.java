@@ -29,8 +29,8 @@ public class ViewProductController extends BaseController {
     @Autowired
     private SettingService settingService;
 
-    @ModelAttribute("displayPrice")
-    public boolean displayPrice() {
+    @ModelAttribute("globalDisplayPrice")
+    public boolean globalDisplayPrice() {
         try {
             return BooleanUtils.toBoolean(settingService.findByKey("display_price").getValue());
         } catch (SettingNotFound e) {

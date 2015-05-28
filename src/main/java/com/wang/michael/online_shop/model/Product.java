@@ -55,6 +55,9 @@ public class Product {
     @Column
     private double discount;
 
+    @Column(name = "display_price")
+    private boolean displayPrice;
+
     @Column(length = 4096)
     @Size(min = 2, max = 4096)
     private String description;

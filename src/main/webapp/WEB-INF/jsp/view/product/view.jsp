@@ -11,7 +11,7 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-sm-12">
-        <c:if test="${displayPrice}">
+        <c:if test="${product.displayPrice || globalDisplayPrice}">
           <p>
             <spring:message code="unit.of.measure.money" />
             ${product.price}
@@ -24,7 +24,7 @@
             ${product.nowPrice}
           </p>
         </c:if>
-        <c:if test="${not displayPrice}">
+        <c:if test="${not (product.displayPrice || globalDisplayPrice)}">
           <a href="${ctx}/contact_us?subject=${product.name}" class="btn btn-default">Contact Us</a>
         </c:if>
       </div>

@@ -22,6 +22,7 @@
   <spring:message code="unit.of.measure.money" />
   ${product.nowPrice}
 </p>
+<p>${product.displayPrice}</p>
 <p>${product.description}</p>
 <div class="form-group">
   <label for="imagesThumbnail" class="col-sm-12"><spring:message code="image.thumbnail" /></label>

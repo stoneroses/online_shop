@@ -101,6 +101,13 @@
           </div>
         </div>
         <div class="form-group">
+          <label for="displayPrice" class="col-sm-2 control-label"><spring:message code="product.display.price" /></label>
+          <div class="col-sm-10">
+            <form:checkbox path="displayPrice" class="form-control" />
+            <form:errors path="displayPrice" cssClass="text-danger" />
+          </div>
+        </div>
+        <div class="form-group">
           <label for="sortOrder" class="col-sm-2 control-label"><spring:message code="product.sort.order" /></label>
           <div class="col-sm-10">
             <form:input path="sortOrder" class="form-control" />
