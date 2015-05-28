@@ -310,4 +310,20 @@
     <put-attribute name="body" value="/WEB-INF/jsp/admin/customer_group/view.jsp" />
   </definition>
 
+  <definition name="email-job-index" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/email_job/list.jsp" />
+  </definition>
+
+  <definition name="email-job-new" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/email_job/new.jsp" />
+  </definition>
+
+  <definition name="email-job-edit" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/email_job/edit.jsp" />
+  </definition>
+
+  <definition name="email-job-view" extends="default_layout">
+    <put-attribute name="body" value="/WEB-INF/jsp/admin/email_job/view.jsp" />
+  </definition>
+
 </tiles-definitions>

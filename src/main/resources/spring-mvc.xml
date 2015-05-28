@@ -33,6 +33,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
         <bean class="com.wang.michael.online_shop.web.converter.StringToCategoryConverter" />
         <bean class="com.wang.michael.online_shop.web.converter.StringToCustomerConverter" />
         <bean class="com.wang.michael.online_shop.web.converter.StringToCustomerGroupConverter" />
+        <bean class="com.wang.michael.online_shop.web.converter.StringToJodaDateTimeConverter" />
       </set>
     </property>
   </bean>

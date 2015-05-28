@@ -41,6 +41,10 @@
               <li><a href="${ctx}/admin/customer_groups"><spring:message code="page.menu.maintenance.customer.groups" /></a></li>
             </shiro:hasPermission>
             <li class="divider"></li>
+            <shiro:hasPermission name="email_job_list">
+              <li><a href="${ctx}/admin/email_jobs"><spring:message code="page.menu.maintenance.email.jobs" /></a></li>
+            </shiro:hasPermission>
+            <li class="divider"></li>
             <shiro:hasPermission name="permission_list">
               <li><a href="${ctx}/admin/permissions"><spring:message code="page.menu.maintenance.permissions" /></a></li>
             </shiro:hasPermission>
