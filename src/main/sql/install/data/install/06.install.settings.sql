@@ -10,3 +10,4 @@ INSERT INTO `settings` (`id`, `setting_key`, `setting_value`, `createdDateTime`,
 INSERT INTO `settings` (`id`, `setting_key`, `setting_value`, `createdDateTime`, `updatedDateTime`) VALUES (8, 'home_page_carousel', 'test', NOW(), NULL);
 INSERT INTO `settings` (`id`, `setting_key`, `setting_value`, `createdDateTime`, `updatedDateTime`) VALUES (9, 'home_page_subtitle', 'Australia Wide Pigeon Equipment Online Shop', NOW(), NULL);
 INSERT INTO `settings` (`id`, `setting_key`, `setting_value`, `createdDateTime`, `updatedDateTime`) VALUES (10, 'home_page_resize_resolution', '408x330', NOW(), NULL);
+INSERT INTO `settings` (`id`, `setting_key`, `setting_value`, `createdDateTime`, `updatedDateTime`) VALUES (11, 'home_page_carousel_play_speed', '2000', NOW(), NULL);

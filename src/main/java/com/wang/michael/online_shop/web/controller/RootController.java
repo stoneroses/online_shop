@@ -49,6 +49,11 @@ public class RootController extends BaseController {
         } catch (SettingNotFound e) {
             mav.addObject("homePageCarouselResizeResolution", "400x300");
         }
+        try {
+            mav.addObject("homePageCarouselPlaySpeed", settingService.findByKey("home_page_carousel_play_speed").getValue());
+        } catch (SettingNotFound e) {
+            mav.addObject("homePageCarouselPlaySpeed", "2000");
+        }
         mav.addObject("currentNavButton", "home");
         mav.addObject("pageTitle", "page.footer.home");
         return mav;
