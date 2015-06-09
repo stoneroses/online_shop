@@ -106,7 +106,6 @@ public class ProductController extends BaseController {
     }
 
     @RequestMapping(value = "/search", method = RequestMethod.GET)
-    @RequiresPermissions("product_list")
     public @ResponseBody List<Product> searchByName(@RequestParam("term") String term) {
         return productService.findByName(term);
     }
